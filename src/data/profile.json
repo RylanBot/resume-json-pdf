@@ -1,0 +1,36 @@
+{
+    "name": "Xxx",
+    "avatar": "/avatar.png",
+    "footnote": [
+        {
+            "label": "求职意向",
+            "content": "前端开发实习生"
+        },
+        {
+            "label": "到岗时间",
+            "content": "24年2月底 (可实习六个月)"
+        }
+    ],
+    "info": [
+        {
+            "icon": "HiOutlineMail",
+            "key": "邮箱",
+            "value": "rylanbot@foxmail.com"
+        },
+        {
+            "icon": "PiPhoneCallFill",
+            "key": "电话",
+            "value": "139xxxxxxxx"
+        },
+        {
+            "icon": "MdRssFeed",
+            "key": "博客",
+            "value": "https://rylan.cn"
+        },
+        {
+            "icon": "BiLogoGithub",
+            "key": "",
+            "value": "https://github.com/RylanBot"
+        }
+    ]
+}
