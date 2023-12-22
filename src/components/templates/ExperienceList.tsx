@@ -1,9 +1,10 @@
-import LinkRenderer from '@/components/LinkRenderer';
+
 
 import { ExperienceData, ExperienceItem } from '@/stores/experience';
 
-import getIconComponent from '@/utils/getIconComponent';
-import strongTextParser from '@/utils/strongTextParser';
+import IconParser from '@/helpers/IconParser';
+import strongTextParser from '@/helpers/StrongTextParser';
+import LinkParser from '@/helpers/LinkParser';
 
 const ExperienceCard: React.FC<ExperienceItem> = ({
     title, subtitle, timeline, tech, details
@@ -15,7 +16,7 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
                 {subtitle && (
                     <>
                         <span className='font-normal px-2 text-gray-400'>丨</span>
-                        <LinkRenderer value={subtitle} className={'text-gray-700 text-sm'} />
+                        {LinkParser({ value: subtitle, className: 'text-gray-700 text-sm' })}
                     </>
                 )}
                 {timeline && <span className='float-right text-sm mt-1'>{timeline}</span>}
@@ -44,18 +45,14 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
 
 /* ------------------------------------------------------------ */
 
-interface ExperienceListProps {
-    data?: ExperienceData[];
-}
-
-const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
+const ExperienceList: React.FC<{ data?: ExperienceData[]; }> = ({ data }) => {
     return (
         <div className='mt-2'>
             {data?.map((section, index) => (
                 <div key={index} className="mb-2">
                     <div className="flex items-center mb-2">
-                        {section.icon && getIconComponent(section.icon.trim()) && (
-                            (getIconComponent(section.icon.trim(), 'w-5 h-5 mr-2'))
+                        {section.icon && IconParser(section.icon.trim()) && (
+                            (IconParser(section.icon.trim(), 'w-5 h-5 mr-2'))
                         )}
                         {section.theme && <p className="text-lg font-bold">{section.theme}</p>}
                     </div>

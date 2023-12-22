@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-const strongTextParser = (text: string): ReactNode[] => {
+const StrongTextParser = (text: string): ReactNode[] => {
     const regex = /\*(.*?)\*/g;
     let parts: ReactNode[] = [];
     let lastIndex = 0;
@@ -23,4 +23,4 @@ const strongTextParser = (text: string): ReactNode[] => {
     return parts;
 };
 
-export default strongTextParser;
+export default StrongTextParser;

@@ -3,9 +3,9 @@ import React from 'react';
 import { ExperienceData } from '@/stores/experience';
 import { ProfileData } from '@/stores/profile';
 
-import A4Background from '@/components/A4Background';
-import ExperienceList from '@/templates/ExperienceList';
-import ProfileList from '@/templates/ProfileList';
+import A4Background from '@/components/layout/A4Background';
+import ExperienceList from '@/components/templates/ExperienceList';
+import ProfileList from '@/components/templates/ProfileList';
 
 interface ResumeContentProps {
     profile: ProfileData,

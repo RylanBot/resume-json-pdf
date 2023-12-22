@@ -32,7 +32,7 @@ import * as TiIcons from 'react-icons/ti';
 import * as VscIcons from 'react-icons/vsc';
 import * as WiIcons from 'react-icons/wi';
 
-const getIconComponent = (iconName: string, className?: string): React.ReactElement | null => {
+const IconParser = (iconName: string, className?: string): React.ReactElement | null => {
 
     // 查找大写字母的索引
     const firstUpperCaseIndex = iconName.search(/[A-Z]/);
@@ -139,4 +139,4 @@ const getIconComponent = (iconName: string, className?: string): React.ReactElem
     return React.createElement(IconComponent, { className });
 };
 
-export default getIconComponent;
+export default IconParser;

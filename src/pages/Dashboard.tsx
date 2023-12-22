@@ -1,21 +1,43 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 import useStore from '@/stores/store';
 
 import { BiCodeCurly } from 'react-icons/bi';
 import { BsGithub } from 'react-icons/bs';
-import { FaPencil, FaRegFilePdf } from 'react-icons/fa6';
-import { RiSave3Fill } from 'react-icons/ri';
+import { FaRegFilePdf } from 'react-icons/fa6';
 
-import JsonEditorDrawer from '@/components/JsonEditorDrawer';
-import ResumeContent from '@/components/ResumeContent';
+import ResumeContent from '@/components/layout/ResumeContent';
+import SettingEditor from '@/components/toolkit/SettingEditor';
 
+import { FiDownload } from 'react-icons/fi';
 import ReactToPrint from 'react-to-print';
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
+    const { editModeStore, profileStore, experienceStore, setProfileStore, setExperienceStore } = useStore();
 
-    const { editModeStore, profileStore, experienceStore, setEditModeStore } = useStore();
     const printComponentRef = useRef<HTMLDivElement>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const handleImportClick = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
+        }
+    };
+
+    function importJson(event: React.ChangeEvent<HTMLInputElement>) {
+        const file = event.target.files && event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event: ProgressEvent<FileReader>) => {
+                const content = event.target!.result;
+                const json = JSON.parse(content as string);
+                const profileJson = json.profile;
+                const experienceJson = json.experience;
+                setProfileStore(profileJson)
+                setExperienceStore(experienceJson)
+            };
+            reader.readAsText(file);
+        }
+    };
 
     function exportJson() {
         const data = {
@@ -43,12 +65,11 @@ const Dashboard: React.FC = () => {
             <div className="fixed print-hidden w-full p-2 bg-sky-500 text-white flex justify-between items-center">
                 {/* 左侧按钮 */}
                 <div className="flex justify-start ml-4">
-                    <button
-                        onClick={() => setEditModeStore(!editModeStore)}
-                        className="p-2 w-30 font-semibold bg-white text-sky-600 rounded-lg shadow-md flex items-center justify-center">
+                    <button onClick={exportJson}
+                        className="p-2 w-30 text-sm font-semibold bg-white text-slate-500 rounded-lg shadow-md flex items-center justify-center">
                         <div className="flex items-center">
-                            {editModeStore ? <RiSave3Fill className="mr-2" /> : <FaPencil className="mr-2" />}
-                            <span className="text-xs">{editModeStore ? 'Save' : 'Edit Resume'}</span>
+                            <FiDownload className="mr-2" />
+                            <span className="text-xs">Download Template</span>
                         </div>
                     </button>
                 </div>
@@ -64,29 +85,33 @@ const Dashboard: React.FC = () => {
 
                 {/* 右侧按钮 */}
                 <div className="flex justify-end mr-2">
-                    {!editModeStore && (
-                        <>
-                            <button onClick={exportJson}
-                                className="p-2 w-30 text-sm font-semibold bg-white text-sky-600 rounded-lg shadow-md flex items-center justify-center mr-4">
+                    <input
+                        type="file"
+                        accept=".json"
+                        onChange={importJson}
+                        className="hidden"
+                        ref={fileInputRef}
+                    />
+                    <button
+                        onClick={handleImportClick}
+                        className="p-2 mr-4 w-30 font-semibold bg-white text-sky-600 rounded-lg shadow-md flex items-center justify-center">
+                        <div className="flex items-center">
+                            <BiCodeCurly className="mr-2" />
+                            <span className="text-xs">Import Json</span>
+                        </div>
+                    </button>
+                    <ReactToPrint
+                        trigger={() => (
+                            <button
+                                className={"p-2 w-30 text-sm font-semibold bg-white text-sky-600 rounded-lg shadow-md flex items-center justify-center"}>
                                 <div className="flex items-center">
-                                    <BiCodeCurly className="mr-2" />
-                                    <span className="text-xs">Export Json</span>
+                                    <FaRegFilePdf className="mr-2" />
+                                    <span className="text-xs">Export PDF</span>
                                 </div>
                             </button>
-                            <ReactToPrint
-                                trigger={() => (
-                                    <button
-                                        className={"p-2 w-30 text-sm font-semibold bg-white text-sky-600 rounded-lg shadow-md flex items-center justify-center"}>
-                                        <div className="flex items-center">
-                                            <FaRegFilePdf className="mr-2" />
-                                            <span className="text-xs">Export PDF</span>
-                                        </div>
-                                    </button>
-                                )}
-                                content={() => printComponentRef.current}
-                            />
-                        </>
-                    )}
+                        )}
+                        content={() => printComponentRef.current}
+                    />
                 </div>
             </div>
 
@@ -95,10 +120,11 @@ const Dashboard: React.FC = () => {
                 profile={profileStore}
                 experience={experienceStore}
                 className={resumeOffset}
-                ref={printComponentRef} />
+                ref={printComponentRef}
+            />
 
             {/* 编辑窗 */}
-            {editModeStore && <JsonEditorDrawer />}
+            {editModeStore && <SettingEditor />}
         </div>
     );
 };
