@@ -1,6 +1,6 @@
 [
     {
-        "theme": "教育经历",
+        "section": "教育经历",
         "icon": "PiGraduationCap",
         "items": [
             {
@@ -17,7 +17,7 @@
         ]
     },
     {
-        "theme": "实习经历",
+        "section": "实习经历",
         "icon": "FiUser",
         "items": [
             {
@@ -34,15 +34,27 @@
         ]
     },
     {
-        "theme": "项目经历",
+        "section": "项目经历",
         "icon": "IoCodeSlashSharp",
         "items": [
             {
                 "title": "在线简历生成器",
                 "subtitle": "https://github.com/RylanBot/resume-json-pdf",
                 "timeline": "2023.11 - 2023.12",
-                "tech": "Nextjs + TypeScript + Tailwind CSS",
+                "tech": "React + TypeScript + Tailwind CSS",
                 "details": [
+                    "......",
+                    "......",
+                    "......"
+                ]
+            },
+            {
+                "title": "xxxxxx",
+                "subtitle": "",
+                "timeline": "2023.09 - 2023.12",
+                "tech": "xxx + xxxx + xxxxx",
+                "details": [
+                    "......",
                     "......",
                     "......",
                     "......"
@@ -55,16 +67,6 @@
                 "tech": "xxx + xxxx + xxxxx",
                 "details": [
                     "......",
-                    "......",
-                    "......"
-                ]
-            },
-            {
-                "title": "xxxxxx",
-                "subtitle": "",
-                "timeline": "2023.10 - 2025.01",
-                "tech": "xxx + xxxx + xxxxx",
-                "details": [
                     "......",
                     "......",
                     "......"
@@ -73,7 +75,7 @@
         ]
     },
     {
-        "theme": "专业技能",
+        "section": "专业技能",
         "icon": "PiGear",
         "items": [
             {
@@ -82,6 +84,8 @@
                 "timeline": "",
                 "tech": "",
                 "details": [
+                    "......",
+                    "......",
                     "......",
                     "......",
                     "......"

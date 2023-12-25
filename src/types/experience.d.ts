@@ -3,11 +3,11 @@ export interface ExperienceItem {
     subtitle?: string;
     timeline?: string;
     tech?: string;
-    details: string[];
+    details?: string[];
 }
 
 export interface ExperienceData {
-    theme?: string;
+    section?: string;
     icon?: string;
-    items: ExperienceItem[];
+    items?: ExperienceItem[];
 }

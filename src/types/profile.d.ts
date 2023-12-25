@@ -13,6 +13,6 @@ type ProfileInfo = {
 export interface ProfileData {
   name?: string;
   avatar?: string;
-  footnote: ProfileFootnote[];
-  info: ProfileInfo[];
+  footnote?: ProfileFootnote[];
+  info?: ProfileInfo[];
 }

@@ -1,16 +1,24 @@
-import CustomImage from '@/components/toolkit/CustomImage';
-
-import { ProfileData } from '@/stores/profile';
+import { ProfileData } from '@/types/profile';
 
 import getIconComponent from '@/helpers/IconParser';
 import LinkParser from '@/helpers/LinkParser';
 
-const ProfileList: React.FC<{ data?: ProfileData }> = ({ data }) => {
+interface ProfileListProps {
+    data?: ProfileData;
+    marginBottom?: number;
+}
 
+const ProfileList: React.FC<ProfileListProps> = ({ data, marginBottom }) => {
     return (
-        <div className="flex justify-between items-center mb-2">
+        <div className="flex justify-between items-center"
+            style={{ marginBottom: marginBottom }}
+        >
             <div className="flex">
-                {data?.avatar && (<CustomImage src={data.avatar} />)}
+                {data?.avatar && (
+                    <div className="w-[85px] h-[100px] mr-6 mb-2">
+                        <img width={85} height={100} src={data.avatar} alt="avatar" className='w-full h-full' />
+                    </div>
+                )}
                 <div className='ml-2'>
                     <p className="text-xl font-bold my-3">{data?.name}</p>
                     {data?.footnote && data.footnote?.map((item, index) => (
