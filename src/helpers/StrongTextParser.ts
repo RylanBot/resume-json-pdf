@@ -14,7 +14,9 @@ const StrongTextParser = (text: string): ReactNode[] => {
         parts.push(React.createElement('strong', {
             key: index,
             className: "theme-text-color",
-            style: { filter: 'brightness(80%)' }
+            style: {   
+                color: "rgb(from var(--theme-color) r g b / 75%)",
+            }
         }, p1));
 
         lastIndex = index + match.length;

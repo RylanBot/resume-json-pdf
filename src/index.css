@@ -37,9 +37,8 @@
 }
 
 .theme-divider-color {
-  color: var(--theme-color);
-  border-color: var(--theme-color);
-  opacity: 0.45;
+  border-color: rgb(from var(--theme-color) r g b / 50%);
+  color: rgb(from var(--theme-color) r g b / 50%);
 }
 
 .custom-page-py {
