@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 
 import ReactToPrint from 'react-to-print';
 
@@ -15,9 +15,9 @@ import useEditWithUndo from '@/hooks/useEditWithUndo';
 import JsonService from '@/helpers/JsonService';
 import useModeStore from '@/stores/modeStore';
 
-const buttonStyle = "p-2 text-sm font-semibold bg-white text-sky-600 rounded-lg shadow-md flex items-center justify-center"
+const buttonStyle = "p-2 text-sm font-semibold bg-white text-slate-800 rounded-lg shadow-md flex items-center justify-center"
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
 
     const { editModeStore, setEditModeStore } = useModeStore();
     const { startEditing: startEditingProfile } = useEditWithUndo('profileStore');
@@ -40,7 +40,7 @@ const Dashboard = () => {
         <div>
 
             {/* 顶部栏 */}
-            <div className="fixed print-hidden w-full p-2 bg-sky-600 text-white flex justify-between items-center">
+            <div className="fixed print-hidden w-full p-2 bg-slate-500 text-white flex justify-between items-center">
                 {/* 左侧设置按钮 */}
                 {editModeStore ?
                     (<div className="w-24 ml-4 invisible">

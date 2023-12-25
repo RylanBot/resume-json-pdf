@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { ExperienceData, ExperienceItem } from '@/types/experience';
 
 import IconParser from '@/helpers/IconParser';
@@ -7,23 +9,23 @@ import strongTextParser from '@/helpers/StrongTextParser';
 const ExperienceCard: React.FC<ExperienceItem> = ({
     title, subtitle, timeline, tech, details
 }) => {
-
+    
     return (
         <div className={"font-semibold"}>
             <div className='mb-1'>
-                {title && <span>{title}</span>}
+                {title && <span className='theme-text-color'>{title}</span>}
                 {subtitle && (
                     <>
-                        <span className='font-normal px-2 text-gray-400'>丨</span>
-                        {LinkParser({ value: subtitle, className: 'text-gray-700 text-sm' })}
+                        <span className='font-normal px-2 text-gray-400 theme-divider-color align-middle'>丨</span>
+                        {LinkParser({ value: subtitle, className: 'text-sm theme-text-color align-middle' })}
                     </>
                 )}
-                {timeline && <span className='float-right text-sm mt-1'>{timeline}</span>}
+                {timeline && <span className='float-right text-sm mt-1 theme-text-color'>{timeline}</span>}
             </div>
             {tech && (
                 <p className='mb-1'>
                     {tech.split('+').map((item, index) => (
-                        <span key={index} className="bg-gray-100 rounded py-1 px-2 text-sm text-gray-800 mr-2 italic font-mono">
+                        <span key={index} className="bg-gray-100 rounded py-1 px-2 text-sm mr-2 italic font-mono theme-text-color">
                             {item.trim()}
                         </span>
                     ))}
@@ -32,7 +34,7 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
             <ul className="list-disc list-inside mb-2">
                 {details && details.map((detail, index) => (
                     detail ? (
-                        <li key={index}>
+                        <li key={index} className='theme-marker-color'>
                             <span className='font-normal'>{strongTextParser(detail)}</span>
                         </li>
                     ) : null
@@ -46,24 +48,25 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
 
 interface ExperienceListProps {
     data?: ExperienceData[];
-    marginBottom?: number;
 }
 
-const ExperienceList: React.FC<ExperienceListProps> = ({ data, marginBottom }) => {
+const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
     return (
-        <div className='mt-1'>
+        <div
+            className='mt-1'>
             {data?.map((part, index) => (
                 <div key={index} className="mb-2">
-                    <div className="flex items-center mb-1">
+                    <div
+                        className="flex items-center mb-1">
                         {part.icon && IconParser(part.icon.trim()) && (
-                            (IconParser(part.icon.trim(), 'w-5 h-5 mr-2'))
+                            (IconParser(part.icon.trim(), 'w-5 h-5 mr-2 theme-text-color'))
                         )}
-                        {part.section && <p className="text-lg font-bold">{part.section}</p>}
+                        {part.section && <p className="text-lg font-bold theme-text-color">{part.section}</p>}
                     </div>
                     {/* Divider */}
-                    {part.section && <div className="border-solid border-t border-2 border-gray-500"></div>}
+                    {part.section && <div className="border-solid border-t-2 border-2 theme-divider-color"> </div>}
                     {part.items && part.items.map((item, itemIndex) => (
-                        <div key={itemIndex} className={`mt-1`} style={{ marginBottom: marginBottom }}>
+                        <div key={itemIndex} className="mt-1 custom-experience-mb">
                             <ExperienceCard
                                 title={item.title}
                                 subtitle={item.subtitle}

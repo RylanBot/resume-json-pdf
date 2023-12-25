@@ -1,14 +1,20 @@
-import useEditWithUndo from "@/hooks/useEditWithUndo";
-import useModeStore from "@/stores/modeStore";
-import { StyleData } from "@/types/style";
 import React from "react";
+
 import { BsImageFill } from "react-icons/bs";
 import { RiSave3Fill } from "react-icons/ri";
 import { TbLocationCancel } from "react-icons/tb";
-import StyleSlider from "./StyleSlider";
 
-const titleStyle = "font-semibold text-sky-500 my-3 text-center";
-const buttonStyle = "fixed top-4 p-2 w-30 text-sm font-semibold bg-white text-sky-600 rounded-lg shadow-md flex items-center justify-center"
+import useEditWithUndo from "@/hooks/useEditWithUndo";
+
+import useModeStore from "@/stores/modeStore";
+
+import { StyleData } from "@/types/style";
+
+import ColorPicker from "@/components/toolkit/ColorPicker";
+import StyleSlider from "@/components/toolkit/StyleSlider";
+
+const titleStyle = "font-semibold text-slate-800 my-3";
+const buttonStyle = "fixed top-4 p-2 w-30 text-sm font-semibold bg-white text-slate-800 rounded-lg shadow-md flex items-center justify-center"
 
 const SettingEditor: React.FC = () => {
     const { setEditModeStore } = useModeStore();
@@ -39,9 +45,12 @@ const SettingEditor: React.FC = () => {
         }
     };
 
-
     const handleStyleChange = (key: keyof StyleData, value: number) => {
         updateTempStyle({ [key]: value });
+    };
+
+    const handleColorChange = (newColor: string) => {
+        updateTempStyle({ color: newColor });
     };
 
     return (
@@ -62,16 +71,25 @@ const SettingEditor: React.FC = () => {
                 </button>
 
                 {/* 上传图片 */}
-                <label className="bg-sky-500 hover:bg-sky-700 text-white font-semibold py-2 px-9 rounded inline-flex items-center m-8 cursor-pointer">
+                <label className="bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-9 rounded inline-flex items-center m-8 cursor-pointer">
                     <input type="file" className="hidden" onChange={handleImageChange} />
                     <BsImageFill className="mx-4" />
                     <span className="text-sm">Upload Avatar Image</span>
                 </label>
 
+                {/* 颜色选择器 */}
+                <div className="flex items-center mx-8 mb-8">
+                    <h3 className={`${titleStyle} mr-4`}>Theme Color</h3>
+                    <ColorPicker
+                        color={tempStyleStore?.color}
+                        onChange={handleColorChange}
+                    />
+                </div>
+
                 {/* 滑动修改样式 */}
-                <div className="space-y-16 mx-8 my-4">
-                    <div>
-                        <h3 className={titleStyle}>Page Padding Y</h3>
+                <div className="space-y-12 mx-8">
+                    <div className="flex items-center">
+                        <h3 className={`${titleStyle} mr-4 w-48`}>Page<br />Padding Y</h3>
                         <StyleSlider
                             min={16} max={40}
                             value={tempStyleStore?.pagePy}
@@ -79,8 +97,8 @@ const SettingEditor: React.FC = () => {
                         />
                     </div>
 
-                    <div>
-                        <h3 className={titleStyle}>Profile Margin Bottom</h3>
+                    <div className="flex items-center">
+                        <h3 className={`${titleStyle} mr-4 w-48`}>Profile<br />Margin Bottom</h3>
                         <StyleSlider
                             min={0} max={24}
                             value={tempStyleStore?.profileMb}
@@ -88,8 +106,8 @@ const SettingEditor: React.FC = () => {
                         />
                     </div>
 
-                    <div>
-                        <h3 className={titleStyle}>Experience Margin Bottom</h3>
+                    <div className="flex items-center">
+                        <h3 className={`${titleStyle} mr-4 w-48`}>Experience<br />Margin Bottom</h3>
                         <StyleSlider
                             min={0} max={24}
                             value={tempStyleStore?.experienceMb}

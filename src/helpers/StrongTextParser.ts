@@ -9,8 +9,13 @@ const StrongTextParser = (text: string): ReactNode[] => {
         if (index > lastIndex) {
             parts.push(text.substring(lastIndex, index));
         }
+        
         // 添加加粗文本
-        parts.push(React.createElement('strong', { key: index }, p1));
+        parts.push(React.createElement('strong', {
+            key: index,
+            className: "theme-text-color",
+            style: { filter: 'brightness(80%)' }
+        }, p1));
 
         lastIndex = index + match.length;
         return match;

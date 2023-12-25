@@ -13,11 +13,16 @@ const ResumeContent = React.forwardRef<HTMLDivElement, {}>((_, ref) => {
     return (
         <div ref={ref}>
             <A4Background>
-                <div className="w-[210mm] h-[297mm] bg-white shadow-md overflow-hidden px-10"
-                    style={{ paddingTop: tempStyleStore?.pagePy, paddingBottom: tempStyleStore?.pagePy }}
+                <div style={{
+                    "--theme-color": tempStyleStore?.color,
+                    "--page-py": `${tempStyleStore?.pagePy}px`,
+                    "--profile-mb": `${tempStyleStore?.profileMb}px`,
+                    "--experience-mb": `${tempStyleStore?.experienceMb}px`,
+                } as React.CSSProperties}
+                    className="w-[210mm] h-[297mm] bg-white shadow-md overflow-hidden px-10 custom-page-py"
                 >
-                    <ProfileList data={tempProfileStore} marginBottom={tempStyleStore?.profileMb} />
-                    <ExperienceList data={tempExperienceStore} marginBottom={tempStyleStore?.experienceMb} />
+                    <ProfileList data={tempProfileStore} />
+                    <ExperienceList data={tempExperienceStore}/>
                 </div>
             </A4Background >
         </div >

@@ -20,3 +20,37 @@
   font-family: sans-serif;
   letter-spacing: 0.85px;
 }
+
+:root {
+  --theme-color: #000000;
+  --page-py: 12;
+  --profile-mb: 0;
+  --experience-mb: 0;
+}
+
+.theme-text-color {
+  color: var(--theme-color);
+}
+
+.theme-marker-color::marker {
+  color: var(--theme-color);
+}
+
+.theme-divider-color {
+  color: var(--theme-color);
+  border-color: var(--theme-color);
+  opacity: 0.45;
+}
+
+.custom-page-py {
+  padding-top: var(--page-py);
+  padding-bottom: var(--page-py);
+}
+
+.custom-profile-mb {
+  margin-bottom: var(--profile-mb);
+}
+
+.custom-experience-mb {
+  margin-bottom: var(--experience-mb);
+}

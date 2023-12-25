@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { ProfileData } from '@/types/profile';
 
 import getIconComponent from '@/helpers/IconParser';
@@ -5,14 +7,11 @@ import LinkParser from '@/helpers/LinkParser';
 
 interface ProfileListProps {
     data?: ProfileData;
-    marginBottom?: number;
 }
 
-const ProfileList: React.FC<ProfileListProps> = ({ data, marginBottom }) => {
+const ProfileList: React.FC<ProfileListProps> = ({ data }) => {
     return (
-        <div className="flex justify-between items-center"
-            style={{ marginBottom: marginBottom }}
-        >
+        <div className="flex justify-between items-center custom-profile-mb">
             <div className="flex">
                 {data?.avatar && (
                     <div className="w-[85px] h-[100px] mr-6 mb-2">
@@ -20,10 +19,10 @@ const ProfileList: React.FC<ProfileListProps> = ({ data, marginBottom }) => {
                     </div>
                 )}
                 <div className='ml-2'>
-                    <p className="text-xl font-bold my-3">{data?.name}</p>
+                    <p className="text-xl font-bold my-3 theme-text-color">{data?.name}</p>
                     {data?.footnote && data.footnote?.map((item, index) => (
                         <p className="text-sm font-semibold mt-2" key={index}>
-                            {item.label && <span>{item.label}:&nbsp;</span>}
+                            {item.label && <span className='theme-text-color'>{item.label}:&nbsp;</span>}
                             {item.label && <span className='font-normal'>{item.content}</span>}
                         </p>
                     ))}
@@ -34,9 +33,9 @@ const ProfileList: React.FC<ProfileListProps> = ({ data, marginBottom }) => {
                 {data?.info?.map((item, index) => (
                     <p className="flex text-xs mt-2" key={index}>
                         {item.icon && getIconComponent(item.icon.trim()) && (
-                            getIconComponent(item.icon.trim()!, "w-5 h-5 mr-1")
+                            getIconComponent(item.icon.trim()!, "w-5 h-5 mr-1 theme-text-color")
                         )}
-                        {item.key && <span className="font-bold">{item.key}:&nbsp;</span>}
+                        {item.key && <span className="font-bold theme-text-color">{item.key}:&nbsp;</span>}
                         {item.value && (LinkParser({ value: item.value }))}
                     </p>
                 ))}

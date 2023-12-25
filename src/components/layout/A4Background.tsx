@@ -1,5 +1,6 @@
-import useModeStore from "@/stores/modeStore";
 import React from "react";
+
+import useModeStore from "@/stores/modeStore";
 
 interface A4BackgroundProps {
     children: React.ReactNode;
