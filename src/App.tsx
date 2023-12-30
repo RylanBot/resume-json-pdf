@@ -1,9 +1,13 @@
-import Dashboard from "@/pages/Dashboard"
+import Dashboard from "@/pages/Dashboard";
+import { useMessageHandler } from "@/hooks/useMessageHandler";
 
 function App() {
+  const { contextHolder } = useMessageHandler();
+
   return (
     <>
-      <Dashboard/>
+      {contextHolder}
+      <Dashboard />
     </>
   )
 }
