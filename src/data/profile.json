@@ -13,14 +13,19 @@
     ],
     "info": [
         {
+            "icon": "PiPhoneCallFill",
+            "key": "电话",
+            "value": "139-xxx-xxxxx"
+        },
+        {
             "icon": "HiOutlineMail",
             "key": "邮箱",
             "value": "rylanbot@foxmail.com"
         },
         {
-            "icon": "PiPhoneCallFill",
-            "key": "电话",
-            "value": "139xxxxxxxx"
+            "icon": "PiWechatLogoBold",
+            "key": "微信",
+            "value": "xxxxxx"
         },
         {
             "icon": "MdRssFeed",

@@ -1,0 +1,51 @@
+/* npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media print {
+  .print-hidden {
+    display: none !important;
+  }
+
+  .print-remove-styles {
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.slide-in-right {
+  animation: slideInRight 0.2s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.fading-out {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+.setting-button {
+  @apply p-2 text-sm font-semibold bg-white text-slate-800 rounded-lg shadow-md flex items-center justify-center;
+}
+
+.setting-title{
+  @apply font-semibold text-slate-800 my-3
+}

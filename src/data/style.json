@@ -1,6 +1,7 @@
 {
+    "template": "avatar",
     "color": "#000000",
-    "pagePy": 12,
+    "pagePy": 10,
     "profileMb": 0,
     "experienceMb": 0
 }

@@ -23,7 +23,7 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
                 {timeline && <span className='float-right text-sm mt-1 theme-text-color'>{timeline}</span>}
             </div>
             {tech && (
-                <p className='mb-1'>
+                <p className='mb-2'>
                     {tech.split('+').map((item, index) => (
                         <span key={index} className="bg-gray-100 rounded py-1 px-2 text-sm mr-2 italic font-mono theme-text-color">
                             {item.trim()}
@@ -52,8 +52,7 @@ interface ExperienceListProps {
 
 const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
     return (
-        <div
-            className='mt-1'>
+        <div className='mt-1'>
             {data?.map((part, index) => (
                 <div key={index} className="mb-2">
                     <div

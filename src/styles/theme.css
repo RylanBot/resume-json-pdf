@@ -1,22 +1,4 @@
-/* npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch */
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@media print {
-  .print-hidden {
-    display: none !important;
-  }
-
-  .print-remove-styles {
-    box-shadow: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-}
-
-* {
+.resume-font {
   font-family: sans-serif;
   letter-spacing: 0.85px;
 }

@@ -10,11 +10,7 @@ import useModeStore from "@/stores/modeStore";
 
 import { StyleData } from "@/types/style";
 
-import ColorPicker from "@/components/toolkit/ColorPicker";
 import StyleSlider from "@/components/toolkit/StyleSlider";
-
-const titleStyle = "font-semibold text-slate-800 my-3";
-const buttonStyle = "fixed top-4 p-2 w-30 text-sm font-semibold bg-white text-slate-800 rounded-lg shadow-md flex items-center justify-center"
 
 const SettingEditor: React.FC = () => {
     const { setEditModeStore } = useModeStore();
@@ -33,6 +29,10 @@ const SettingEditor: React.FC = () => {
         setEditModeStore(false)
     }
 
+    const handleTemplateChange = (newTemplate: string) => {
+        updateTempStyle({ template: newTemplate });
+    };
+
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
@@ -45,51 +45,86 @@ const SettingEditor: React.FC = () => {
         }
     };
 
-    const handleStyleChange = (key: keyof StyleData, value: number) => {
-        updateTempStyle({ [key]: value });
-    };
-
     const handleColorChange = (newColor: string) => {
         updateTempStyle({ color: newColor });
     };
 
+    const handleStyleChange = (key: keyof StyleData, value: number) => {
+        updateTempStyle({ [key]: value });
+    };
+
     return (
         <>
-            <div className="fixed top-16 z-5 w-96 overflow-y-auto max-h-screen px-4 py-2 transition-all duration-500 ease-in-out">
-                <button onClick={confirmEdit} className={`${buttonStyle} left-6`}>
+            <div className="fixed top-16 z-5 w-80 overflow-y-auto max-h-screen px-4 py-2 transition-all duration-500 ease-in-out">
+                <button onClick={confirmEdit} className="setting-button fixed top-4 left-6">
                     <div className="flex items-center">
                         <RiSave3Fill className="mr-2" />
                         <span className="text-xs">Save</span>
                     </div>
                 </button>
 
-                <button onClick={cancelEdit} className={`${buttonStyle} left-28`}>
+                <button onClick={cancelEdit} className="setting-button fixed top-4 left-28">
                     <div className="flex items-center">
                         <TbLocationCancel className="mr-2" />
                         <span className="text-xs">Cancel</span>
                     </div>
                 </button>
 
+                {/* 切换模板 */}
+                <div className="flex items-center mx-8 mb-6">
+                    <h3 className="setting-title mr-6">Template</h3>
+                    <div className="flex items-center">
+                        <label className="flex items-center mr-4 cursor-pointer">
+                            <input
+                                type="radio"
+                                value="avatar"
+                                name="template"
+                                checked={tempStyleStore?.template === 'avatar'}
+                                onChange={(e) => handleTemplateChange(e.target.value)}
+                                className="form-radio h-4 w-4 text-blue-600 mr-1 cursor-pointer"
+                            />
+                            <span className="text-sm font-semibold text-slate-800">Avatar</span>
+                        </label>
+                        <label className="flex items-center cursor-pointer">
+                            <input
+                                type="radio"
+                                value="plain"
+                                name="template"
+                                checked={tempStyleStore?.template === 'plain'}
+                                onChange={(e) => handleTemplateChange(e.target.value)}
+                                className="form-radio h-4 w-4 text-blue-600 mr-2 cursor-pointer"
+                            />
+                            <span className="text-sm font-semibold text-slate-800">Plain</span>
+                        </label>
+                    </div>
+                </div>
+
                 {/* 上传图片 */}
-                <label className="bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-9 rounded inline-flex items-center m-8 cursor-pointer">
-                    <input type="file" className="hidden" onChange={handleImageChange} />
-                    <BsImageFill className="mx-4" />
-                    <span className="text-sm">Upload Avatar Image</span>
-                </label>
+                {tempStyleStore?.template === 'avatar' && (
+                    <label className="bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-6 rounded inline-flex items-center mx-8 mb-3 cursor-pointer">
+                        <input type="file" className="hidden" onChange={handleImageChange} />
+                        <BsImageFill className="mr-8 w-3 h-3" />
+                        <span className="text-xs">Upload Avatar Image</span>
+                    </label>
+                )}
 
                 {/* 颜色选择器 */}
-                <div className="flex items-center mx-8 mb-8">
-                    <h3 className={`${titleStyle} mr-4`}>Theme Color</h3>
-                    <ColorPicker
-                        color={tempStyleStore?.color}
-                        onChange={handleColorChange}
-                    />
+                <div className="flex items-center mx-8 my-6 mb-10">
+                    <h3 className="setting-title mr-4">Color</h3>
+                    <div className="px-6 ml-20">
+                        <input
+                            type="color"
+                            value={tempStyleStore?.color}
+                            onChange={(e) => { handleColorChange(e.target.value) }}
+                            className="w-8 h-8 rounded bg-slate-200 p-1 cursor-pointer"
+                        />
+                    </div>
                 </div>
 
                 {/* 滑动修改样式 */}
-                <div className="space-y-12 mx-8">
+                <div className="space-y-8 mx-8">
                     <div className="flex items-center">
-                        <h3 className={`${titleStyle} mr-4 w-48`}>Page<br />Padding Y</h3>
+                        <h3 className="setting-title mr-4 w-48">Page<br />Padding Y</h3>
                         <StyleSlider
                             min={16} max={40}
                             value={tempStyleStore?.pagePy}
@@ -98,7 +133,7 @@ const SettingEditor: React.FC = () => {
                     </div>
 
                     <div className="flex items-center">
-                        <h3 className={`${titleStyle} mr-4 w-48`}>Profile<br />Margin Bottom</h3>
+                        <h3 className="setting-title mr-4 w-48">Profile<br />Margin Bottom</h3>
                         <StyleSlider
                             min={0} max={24}
                             value={tempStyleStore?.profileMb}
@@ -107,7 +142,7 @@ const SettingEditor: React.FC = () => {
                     </div>
 
                     <div className="flex items-center">
-                        <h3 className={`${titleStyle} mr-4 w-48`}>Experience<br />Margin Bottom</h3>
+                        <h3 className="setting-title mr-4 w-48">Experience<br />Margin Bottom</h3>
                         <StyleSlider
                             min={0} max={24}
                             value={tempStyleStore?.experienceMb}
@@ -116,7 +151,7 @@ const SettingEditor: React.FC = () => {
                     </div>
                 </div>
 
-            </div>
+            </div >
         </>
     )
 }

@@ -1,4 +1,5 @@
 export interface StyleData {
+    template?: string,
     color?: string,
     pagePy?: number
     profileMb?: number,

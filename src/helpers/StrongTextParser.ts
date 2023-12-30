@@ -15,7 +15,7 @@ const StrongTextParser = (text: string): ReactNode[] => {
             key: index,
             className: "theme-text-color",
             style: {   
-                color: "rgb(from var(--theme-color) r g b / 75%)",
+                color: "rgb(from var(--theme-color) r g b / 85%)",
             }
         }, p1));
 
