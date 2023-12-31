@@ -20,7 +20,7 @@ const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
                     </div>
                 )}
                 <div className='ml-2'>
-                    <p className="text-xl font-bold mt-1 mb-3 theme-text-color">{data?.name}</p>
+                    <p className="text-2xl font-bold mt-1 mb-3 theme-text-color">{data?.name}</p>
                     {data?.footnote && data.footnote?.map((item, index) => (
                         <p className="text-sm font-semibold mt-2" key={index}>
                             {item.label && <span className='theme-text-color'>{item.label}:&nbsp;</span>}
@@ -34,7 +34,7 @@ const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
                 {data?.info?.map((item, index) => (
                     <p className="flex text-xs mt-2" key={index}>
                         {item.icon && getIconComponent(item.icon.trim()) && (
-                            getIconComponent(item.icon.trim()!, "w-5 h-5 mr-1 theme-text-color")
+                            <span className="mr-1 theme-text-color">{getIconComponent(item.icon.trim(), "w-4 h-4")}</span>
                         )}
                         {item.key && <span className="font-bold theme-text-color">{item.key}:&nbsp;</span>}
                         {item.value && (LinkParser({ value: item.value }))}
@@ -48,38 +48,39 @@ const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
 const ProfileListPlain: React.FC<ProfileListProps> = ({ data }) => {
     return (
         <div className="custom-profile-mb">
+
             <div className="flex-grow flex-shrink">
-                <p className="text-2xl font-bold text-gray-800 text-center mt-3 theme-text-color">{data?.name}</p>
-                
-                {/* 一行两组数据 */}
-                <div className="mt-2 grid grid-cols-2 gap-2">
+                <p className="text-2xl font-bold text-gray-800 text-center mt-2 theme-text-color">{data?.name}</p>
+
+                <div className="mt-2 flex flex-wrap justify-center items-center text-sm gap-1">
                     {data?.footnote?.map((item, index) => (
-                        <p className="text-sm text-gray-600 text-center" key={index}>
-                            {item.label && <span className="font-semibold theme-text-color">{item.label}: </span>}
-                            {item.content}
-                        </p>
+                        <div className="flex justify-center items-center plain-footnote-item" key={index} style={{ flexBasis: 'auto' }}>
+                            <div className="flex justify-center items-center">
+                                {item.label && (
+                                    <span className="font-bold theme-text-color">{item.label}:&nbsp;</span>
+                                )}
+                                {item.content && LinkParser({ value: item.content })}
+                            </div>
+                        </div>
                     ))}
                 </div>
 
-                {/* 一行三组数据 */}
-                <div className="mt-2 mb-4 flex flex-wrap justify-center items-center gap-1 text-sm">
+                <div className="my-2 flex flex-wrap justify-center items-center text-sm gap-1">
                     {data?.info?.map((item, index) => (
-                        <div className="flex justify-center items-center px-2" key={index} style={{ flexBasis: 'calc(33.333% - 0.5rem)', maxWidth: 'calc(33.333% - 0.5rem)' }}>
-                            <div className="flex justify-center items-center">
-                                <span className="mr-1 mt-[0.2rem] theme-text-color">{item.icon && getIconComponent(item.icon.trim())}</span>
-                                <div className="flex">
-                                    {item.key && (
-                                        <span className="font-bold truncate theme-text-color">{item.key}:&nbsp;</span>
-                                    )}
-                                    <span>{item.value && LinkParser({ value: item.value })}</span>
-                                </div>
+                        <div className="flex justify-center items-center plain-info-item" key={index} style={{ flexBasis: 'auto' }}>
+                            <div className="flex items-center">
+                                {item.icon && (<span className="mr-1 mb-[1px] theme-text-color">{getIconComponent(item.icon.trim())}</span>)}
+                                {item.key && (
+                                    <span className="font-bold theme-text-color">{item.key}:&nbsp;</span>
+                                )}
+                                {item.value && LinkParser({ value: item.value })}
                             </div>
                         </div>
                     ))}
                 </div>
 
             </div>
-        </div>
+        </div >
     );
 };
 

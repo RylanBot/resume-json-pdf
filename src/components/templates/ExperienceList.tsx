@@ -9,15 +9,17 @@ import strongTextParser from '@/helpers/StrongTextParser';
 const ExperienceCard: React.FC<ExperienceItem> = ({
     title, subtitle, timeline, tech, details
 }) => {
-    
+
     return (
         <div className={"font-semibold"}>
             <div className='mb-1'>
                 {title && <span className='theme-text-color'>{title}</span>}
                 {subtitle && (
                     <>
-                        <span className='font-normal px-2 text-gray-400 theme-divider-color align-middle'>丨</span>
-                        {LinkParser({ value: subtitle, className: 'text-sm theme-text-color align-middle' })}
+                        <span className='font-normal px-2 text-gray-400 theme-divider-color'>丨</span>
+                        <span>
+                            {LinkParser({ value: subtitle, className: 'text-sm theme-text-color' })}
+                        </span>
                     </>
                 )}
                 {timeline && <span className='float-right text-sm mt-1 theme-text-color'>{timeline}</span>}
@@ -52,7 +54,7 @@ interface ExperienceListProps {
 
 const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
     return (
-        <div className='mt-1'>
+        <div className='mt-2'>
             {data?.map((part, index) => (
                 <div key={index} className="mb-2">
                     <div
@@ -63,7 +65,7 @@ const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
                         {part.section && <p className="text-lg font-bold theme-text-color">{part.section}</p>}
                     </div>
                     {/* Divider */}
-                    {part.section && <div className="border-solid border-t-2 border-2 theme-divider-color"> </div>}
+                    {part.section && <div className="border-solid border-t-2 theme-divider-color"></div>}
                     {part.items && part.items.map((item, itemIndex) => (
                         <div key={itemIndex} className="mt-1 custom-experience-mb">
                             <ExperienceCard

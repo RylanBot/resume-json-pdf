@@ -19,6 +19,8 @@ const ResumeContent = React.forwardRef<HTMLDivElement, {}>((_, ref) => {
                     "--page-py": `${tempStyleStore?.pagePy}px`,
                     "--profile-mb": `${tempStyleStore?.profileMb}px`,
                     "--experience-mb": `${tempStyleStore?.experienceMb}px`,
+                    "--plain-footnote": `${tempStyleStore?.plainFootPx}px`,
+                    "--plain-info": `${tempStyleStore?.plainInfoPx}px`
                 } as React.CSSProperties}
                     className="w-[210mm] h-[297mm] bg-white shadow-md overflow-hidden px-10 custom-page-py"
                 >

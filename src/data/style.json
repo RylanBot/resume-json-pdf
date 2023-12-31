@@ -3,5 +3,7 @@
     "color": "#000000",
     "pagePy": 10,
     "profileMb": 0,
-    "experienceMb": 0
+    "experienceMb": 0,
+    "plainFootPx": 8,
+    "plainInfoPx": 8
 }

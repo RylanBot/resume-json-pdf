@@ -3,5 +3,7 @@ export interface StyleData {
     color?: string,
     pagePy?: number
     profileMb?: number,
-    experienceMb?: number
+    experienceMb?: number,
+    plainFootPx?: number,
+    plainInfoPx?: number
 }

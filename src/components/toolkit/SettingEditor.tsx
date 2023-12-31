@@ -81,7 +81,7 @@ const SettingEditor: React.FC = () => {
                                 name="template"
                                 checked={tempStyleStore?.template === 'avatar'}
                                 onChange={(e) => handleTemplateChange(e.target.value)}
-                                className="form-radio h-4 w-4 text-blue-600 mr-1 cursor-pointer"
+                                className="h-4 w-4 mr-1 cursor-pointer"
                             />
                             <span className="text-sm font-semibold text-slate-800">Avatar</span>
                         </label>
@@ -92,21 +92,12 @@ const SettingEditor: React.FC = () => {
                                 name="template"
                                 checked={tempStyleStore?.template === 'plain'}
                                 onChange={(e) => handleTemplateChange(e.target.value)}
-                                className="form-radio h-4 w-4 text-blue-600 mr-2 cursor-pointer"
+                                className="h-4 w-4 mr-2 cursor-pointer"
                             />
                             <span className="text-sm font-semibold text-slate-800">Plain</span>
                         </label>
                     </div>
                 </div>
-
-                {/* 上传图片 */}
-                {tempStyleStore?.template === 'avatar' && (
-                    <label className="bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-6 rounded inline-flex items-center mx-8 mb-3 cursor-pointer">
-                        <input type="file" className="hidden" onChange={handleImageChange} />
-                        <BsImageFill className="mr-8 w-3 h-3" />
-                        <span className="text-xs">Upload Avatar Image</span>
-                    </label>
-                )}
 
                 {/* 颜色选择器 */}
                 <div className="flex items-center mx-8 my-6 mb-10">
@@ -150,6 +141,39 @@ const SettingEditor: React.FC = () => {
                         />
                     </div>
                 </div>
+
+                {/* 上传图片 */}
+                {tempStyleStore?.template === 'avatar' && (
+                    <label className="bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-6 rounded inline-flex items-center mx-8 my-12 cursor-pointer">
+                        <input type="file" className="hidden" onChange={handleImageChange} />
+                        <BsImageFill className="mr-8 w-3 h-3" />
+                        <span className="text-xs">Upload Avatar Image</span>
+                    </label>
+                )}
+
+                {tempStyleStore?.template === 'plain' && (
+                    <>
+                        <div className="space-y-8 mx-8 mt-8">
+                            <div className="flex items-center">
+                                <h3 className="setting-title mr-4 w-48">Footnote<br />Margin X</h3>
+                                <StyleSlider
+                                    min={8} max={40}
+                                    value={tempStyleStore?.plainFootPx}
+                                    onChange={(newValue) => handleStyleChange('plainFootPx', newValue)}
+                                />
+                            </div>
+                            <div className="flex items-center">
+                                <h3 className="setting-title mr-4 w-48">Info<br />Margin X</h3>
+                                <StyleSlider
+                                    min={8} max={40}
+                                    value={tempStyleStore?.plainInfoPx}
+                                    onChange={(newValue) => handleStyleChange('plainInfoPx', newValue)}
+                                />
+                            </div>
+                        </div>
+
+                    </>
+                )}
 
             </div >
         </>

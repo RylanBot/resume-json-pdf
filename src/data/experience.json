@@ -23,11 +23,11 @@
             {
                 "title": "xxxxx 技术有限公司",
                 "subtitle": "xx 管理系统",
-                "timeline": "2023.07 - 2023.09",
-                "tech": "Vue2 + Vue Router +  Axios + Ant Design",
+                "timeline": "2023.07 - 2023.09", 
+                "tech": "Vue2 + Axios + Ant Design",
                 "details": [
                     "封装 * xxxxx 组件*，解决 xxxxx 问题",
-                    "使用 xxxxxx，*优化 xxxxxx*",
+                    "使用 xxxxx，*优化 xxxxx*",
                     "......"
                 ]
             }
@@ -40,7 +40,7 @@
             {
                 "title": "在线简历生成器",
                 "subtitle": "https://github.com/RylanBot/resume-json-pdf",
-                "timeline": "2023.11 - 2023.12",
+                "timeline": "2023.12 - 2024.01",
                 "tech": "React + TypeScript + Tailwind CSS",
                 "details": [
                     "......",
@@ -63,7 +63,7 @@
             {
                 "title": "xxxxxx",
                 "subtitle": "",
-                "timeline": "2023.10 - 2024.01",
+                "timeline": "2023.10 - 2023.12",
                 "tech": "xxx + xxxx + xxxxx",
                 "details": [
                     "......",

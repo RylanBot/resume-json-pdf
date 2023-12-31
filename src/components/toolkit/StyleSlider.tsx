@@ -24,7 +24,7 @@ const StyleSlider: React.FC<StyleSliderProps> = ({ min, max, value, onChange }) 
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
             />
             <div className="text-center mt-2">
-                <span className="font-mono font-semibold italic">{value} px</span>
+                <span className="font-mono font-semibold italic text-slate-800">{value} px</span>
             </div>
         </div>
     );

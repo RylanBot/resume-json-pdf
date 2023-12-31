@@ -1,5 +1,5 @@
 .resume-font {
-  font-family: sans-serif;
+  font-family: Times;
   letter-spacing: 0.85px;
 }
 
@@ -8,6 +8,8 @@
   --page-py: 12;
   --profile-mb: 0;
   --experience-mb: 0;
+  --plain-footnote: 8;
+  --plain-info: 8;
 }
 
 .theme-text-color {
@@ -34,4 +36,14 @@
 
 .custom-experience-mb {
   margin-bottom: var(--experience-mb);
+}
+
+.plain-footnote-item {
+  padding-left: var(--plain-footnote);
+  padding-right: var(--plain-footnote);
+}
+
+.plain-info-item {
+  padding-left: var(--plain-info);
+  padding-right: var(--plain-info);
 }
