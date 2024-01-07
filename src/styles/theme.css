@@ -8,8 +8,8 @@
   --page-py: 12;
   --profile-mb: 0;
   --experience-mb: 0;
-  --plain-footnote: 8;
-  --plain-info: 8;
+  --plain-footnote-px: 8;
+  --plain-contact-px: 8;
 }
 
 .theme-text-color {
@@ -25,25 +25,25 @@
   color: rgb(from var(--theme-color) r g b / 50%);
 }
 
-.custom-page-py {
+.custom-page {
   padding-top: var(--page-py);
   padding-bottom: var(--page-py);
 }
 
-.custom-profile-mb {
+.custom-profile {
   margin-bottom: var(--profile-mb);
 }
 
-.custom-experience-mb {
+.custom-experience {
   margin-bottom: var(--experience-mb);
 }
 
 .plain-footnote-item {
-  padding-left: var(--plain-footnote);
-  padding-right: var(--plain-footnote);
+  padding-left: var(--plain-footnote-px);
+  padding-right: var(--plain-footnote-px);
 }
 
-.plain-info-item {
-  padding-left: var(--plain-info);
-  padding-right: var(--plain-info);
+.plain-contact-item {
+  padding-left: var(--plain-contact-px);
+  padding-right: var(--plain-contact-px);
 }

@@ -5,5 +5,5 @@ export interface StyleData {
     profileMb?: number,
     experienceMb?: number,
     plainFootPx?: number,
-    plainInfoPx?: number
+    plainContactPx?: number
 }

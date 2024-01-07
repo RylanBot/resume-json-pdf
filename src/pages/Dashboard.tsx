@@ -8,15 +8,18 @@ import { RiFilePdf2Line } from 'react-icons/ri';
 import { TbDownload, TbSettings2, TbUpload } from 'react-icons/tb';
 
 import ResumeContent from '@/components/layout/ResumeContent';
+import LangButton from '@/components/toolkit/LangButton';
 import SettingEditor from '@/components/toolkit/SettingEditor';
 
 import useEditWithUndo from '@/hooks/useEditWithUndo';
+import useLocale from '@/hooks/useLocale';
 
 import JsonService from '@/helpers/JsonService';
 
 import useModeStore from '@/stores/modeStore';
 
 const Dashboard: React.FC = () => {
+    const { locale } = useLocale();
 
     const { editModeStore, setEditModeStore } = useModeStore();
     const { startEditing: startEditingProfile } = useEditWithUndo('profileStore');
@@ -34,8 +37,6 @@ const Dashboard: React.FC = () => {
         setEditModeStore(true);
     };
 
-    const titleOffset = editModeStore ? "ml-80" : "";
-
     return (
         <div>
 
@@ -47,19 +48,21 @@ const Dashboard: React.FC = () => {
                         <button onClick={startEditing} className="setting-button fixed top-4 left-4 w-24">
                             <div className="flex items-center">
                                 <TbSettings2 className="mr-2" />
-                                <span className="text-xs">Setting</span>
+                                <span className="text-xs">{locale.common.SETTING}</span>
                             </div>
                         </button>
                     </div>
                 )}
 
                 {/* 标题 */}
-                <div className={`flex-grow flex justify-center items-center ${titleOffset} transition-all duration-500 ease-in-out`}>
-                    <a className="flex items-center my-2"
+                <div className={`flex-grow flex justify-center items-center ${editModeStore ? "ml-80" : ""} transition-all duration-500 ease-in-out`}>
+                    <a className="flex items-center my-2 mr-4"
                         href="https://github.com/RylanBot/resume-json-pdf" target="_blank" rel="noopener noreferrer">
-                        <BsGithub className="w-8 h-8 mr-8" />
+                        <BsGithub className="w-6 h-6 mr-2" />
                         <p className="text-2xl font-bold">resume-json-pdf</p>
                     </a>
+                    {/* 语言切换 */}
+                    <LangButton />
                 </div>
 
                 {/* 右侧按钮 */}
@@ -81,7 +84,7 @@ const Dashboard: React.FC = () => {
                                 />
                                 <div className="flex items-center">
                                     <TbUpload className="mr-2" />
-                                    <span className="text-xs">Import Json</span>
+                                    <span className="text-xs">{locale.common.IMPORT_JSON}</span>
                                 </div>
                             </label>
 
@@ -90,23 +93,23 @@ const Dashboard: React.FC = () => {
                                 <div className="group inline-block">
                                     <button className="setting-button w-36">
                                         <TbDownload className="mr-2" />
-                                        <span className="text-xs">Export Options</span>
+                                        <span className="text-xs">{locale.common.EXPORT_OPTIONS}</span>
                                     </button>
                                     {/* 下拉选项 */}
                                     <div className="mt-1 w-36 rounded-md shadow-sm bg-white z-50 hidden group-hover:block">
                                         <div className="py-1">
                                             <button onClick={exportJson} className="p-2 text-sm font-semibold bg-white text-slate-800">
-                                                <div className="flex items-center px-4 py-2">
-                                                    <BiCodeCurly className="mr-2" />
-                                                    <span className="text-xs">Export Json</span>
+                                                <div className="flex items-center px-5 py-2">
+                                                    <BiCodeCurly className="mr-3" />
+                                                    <span className="text-xs">{locale.common.EXPORT_JSON}</span>
                                                 </div>
                                             </button>
                                             <ReactToPrint
                                                 trigger={() => (
                                                     <button className="p-2 text-sm font-semibold bg-white text-slate-800">
-                                                        <div className="flex items-center px-4 py-2">
-                                                            <RiFilePdf2Line className="mr-2" />
-                                                            <span className="text-xs">Export PDF</span>
+                                                        <div className="flex items-center px-5 py-2">
+                                                            <RiFilePdf2Line className="mr-3" />
+                                                            <span className="text-xs">{locale.common.EXPORT_PDF}</span>
                                                         </div>
                                                     </button>
                                                 )}

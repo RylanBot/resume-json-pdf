@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { Message, messageContainer } from '@/helpers/MessageContainer';
 import { LuAlertTriangle } from 'react-icons/lu';
 
@@ -16,7 +17,7 @@ export function useMessageHandler() {
     };
   }, []);
 
-  const contextHolder = (
+  const messageContext = (
     <div className="fixed top-16 right-0 p-4 w-64">
       {messages.map((message) => (
         <div
@@ -30,5 +31,5 @@ export function useMessageHandler() {
     </div>
   );
 
-  return { contextHolder };
+  return { messageContext };
 }

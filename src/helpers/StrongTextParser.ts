@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 
 const StrongTextParser = (text: string): ReactNode[] => {
-    const regex = /\*(.*?)\*/g;
+    const regex = /\*\*(.*?)\*\*/g;
     let parts: ReactNode[] = [];
     let lastIndex = 0;
 
@@ -9,12 +9,12 @@ const StrongTextParser = (text: string): ReactNode[] => {
         if (index > lastIndex) {
             parts.push(text.substring(lastIndex, index));
         }
-        
+
         // 添加加粗文本
         parts.push(React.createElement('strong', {
             key: index,
             className: "theme-text-color",
-            style: {   
+            style: {
                 color: "rgb(from var(--theme-color) r g b / 85%)",
             }
         }, p1));

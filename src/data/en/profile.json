@@ -1,0 +1,37 @@
+{
+    "name": "Xxx",
+    "avatar": "/avatar.png",
+    "footnote": [
+        {
+            "label": "Frontend Engineer",
+            "content": ""
+        }
+    ],
+    "contact": [
+        {
+            "icon": "PiPhoneCallFill",
+            "key": "",
+            "value": "139-xxx-xxxxx"
+        },
+        {
+            "icon": "HiOutlineMail",
+            "key": "",
+            "value": "rylanbot@foxmail.com"
+        },
+        {
+            "icon": "BiLogoGithub",
+            "key": "",
+            "value": "https://github.com/RylanBot"
+        },
+        {
+            "icon": "LiaLinkedinIn",
+            "key": "",
+            "value": "https://linkedin.com/in/xxxxxxxx"
+        },
+        {
+            "icon": "MdRssFeed",
+            "key": "Blog",
+            "value": "https://rylan.cn"
+        }
+    ]
+}

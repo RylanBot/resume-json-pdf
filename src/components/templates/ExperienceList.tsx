@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { ExperienceData, ExperienceItem } from '@/types/experience';
 
@@ -9,25 +9,51 @@ import strongTextParser from '@/helpers/StrongTextParser';
 const ExperienceCard: React.FC<ExperienceItem> = ({
     title, subtitle, timeline, tech, details
 }) => {
+    const titleRef = useRef<HTMLSpanElement>(null);
+    const subtitleRef = useRef<HTMLSpanElement>(null);
+    const [shouldBreak, setShouldBreak] = useState(false);
+
+    // 避免 title + subtitle过长，实现自动换行
+    useEffect(() => {
+        setShouldBreak(false);
+        // 确保在 DOM 更新数据后测量
+        setTimeout(() => {
+            const titleWidth = titleRef.current ? titleRef.current.offsetWidth : 0;
+            const subtitleWidth = subtitleRef.current ? subtitleRef.current.offsetWidth : 0;
+
+            if (titleWidth + subtitleWidth > 525) {
+                setShouldBreak(true);
+            }
+        }, 0);
+
+    }, [title, subtitle]);
 
     return (
-        <div className={"font-semibold"}>
-            <div className='mb-1'>
-                {title && <span className='theme-text-color'>{title}</span>}
-                {subtitle && (
-                    <>
-                        <span className='font-normal px-2 text-gray-400 theme-divider-color'>丨</span>
-                        <span>
-                            {LinkParser({ value: subtitle, className: 'text-sm theme-text-color' })}
+        <div className="font-semibold">
+            <div>
+                {title && (<span ref={titleRef} className='theme-text-color align-middle'>{title}</span>)}
+                {shouldBreak && <br />}
+                <span className=''>
+                    {subtitle && (
+                        <>
+                            {!shouldBreak && <span className='font-normal text-gray-400 theme-divider-color mx-2 align-middle'>丨</span>}
+                            <span ref={subtitleRef} className='theme-text-color text-sm align-middle'>
+                                {LinkParser({ value: subtitle, className: 'theme-text-color' })}
+                            </span>
+                        </>
+                    )}
+                    {timeline && (
+                        <span className={`text-sm mt-1 theme-text-color float-right ${shouldBreak ? "-mt-5" : ""}`}>
+                            {timeline}
                         </span>
-                    </>
-                )}
-                {timeline && <span className='float-right text-sm mt-1 theme-text-color'>{timeline}</span>}
+                    )}
+                </span>
             </div>
+
             {tech && (
-                <p className='mb-2'>
+                <p className='mb-1'>
                     {tech.split('+').map((item, index) => (
-                        <span key={index} className="bg-gray-100 rounded py-1 px-2 text-sm mr-2 italic font-mono theme-text-color">
+                        <span key={index} className="bg-gray-100 rounded py-0.5 px-2 text-xs mr-2 italic font-mono font-bold theme-text-color">
                             {item.trim()}
                         </span>
                     ))}
@@ -42,7 +68,7 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
                     ) : null
                 ))}
             </ul>
-        </div>
+        </div >
     );
 };
 
@@ -67,7 +93,7 @@ const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
                     {/* Divider */}
                     {part.section && <div className="border-solid border-t-2 theme-divider-color"></div>}
                     {part.items && part.items.map((item, itemIndex) => (
-                        <div key={itemIndex} className="mt-1 custom-experience-mb">
+                        <div key={itemIndex} className="mt-1 custom-experience">
                             <ExperienceCard
                                 title={item.title}
                                 subtitle={item.subtitle}

@@ -3,7 +3,7 @@ type ProfileFootnote = {
   content?: string;
 }
 
-type ProfileInfo = {
+type ProfileContact = {
   icon?: string;
   key?: string;
   value?: string;
@@ -14,5 +14,5 @@ export interface ProfileData {
   name?: string;
   avatar?: string;
   footnote?: ProfileFootnote[];
-  info?: ProfileInfo[];
+  contact?: ProfileContact[];
 }

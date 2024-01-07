@@ -43,9 +43,9 @@
 }
 
 .setting-button {
-  @apply p-2 text-sm font-semibold bg-white text-slate-800 rounded-lg shadow-md flex items-center justify-center;
+  @apply px-1 py-2 text-sm font-semibold bg-white text-slate-800 rounded-lg shadow-md flex items-center justify-center;
 }
 
-.setting-title{
-  @apply font-semibold text-slate-800 my-3
+.setting-title {
+  @apply font-semibold text-slate-800 text-sm my-3 whitespace-pre-wrap;
 }

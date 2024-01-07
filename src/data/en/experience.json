@@ -1,46 +1,47 @@
 [
     {
-        "section": "教育经历",
+        "section": "EDUCATION",
         "icon": "PiGraduationCap",
         "items": [
             {
-                "title": "xx 大学",
-                "subtitle": "软件工程",
-                "timeline": "2021.09 - 2025.07",
+                "title": "xx University, China",
+                "subtitle": "B.E. in Software Engineering",
+                "timeline": "Sept. 2021 - July 2025",
                 "tech": "",
                 "details": [
-                    "*相关课程：*算法与数据结构（xx），计算机结构（xx），软件测试（xx），数据库（xx）等",
-                    "*荣誉奖项：*第 x 届 xxxx 大赛金奖，xx 大学 xxxxxx 奖学金",
-                    "*英语水平：*CET-4（xxx），CET-6（xxx）"
+                    "**GPA:** x.xx/4.0",
+                    "**Courses:** Algorithms and Data structure, Computer Network, Software Testing, Database, etc.",
+                    "**Awards:** xxxx Competition Gold Prize, xxxx Scholarship"
                 ]
             }
         ]
     },
     {
-        "section": "实习经历",
+        "section": "INTERNSHIPS",
         "icon": "FiUser",
         "items": [
             {
-                "title": "xxxxx 技术有限公司",
-                "subtitle": "xx 管理系统",
-                "timeline": "2023.07 - 2023.09", 
+                "title": "xxxx Technology Co., Ltd.",
+                "subtitle": "xx Management System",
+                "timeline": "July 2023 - Sept. 2023",
                 "tech": "Vue2 + Axios + Ant Design",
                 "details": [
-                    "封装 * xxxxx 组件*，解决 xxxxx 问题",
-                    "使用 xxxxx，*优化 xxxxx*",
+                    "Encapsulated a **xxxxx component** to address the xxxxx problem",
+                    "Implemented xxxxx and succeeded in **optimizing xxxxx**",
+                    "......",
                     "......"
                 ]
             }
         ]
     },
     {
-        "section": "项目经历",
+        "section": "PROJECTS",
         "icon": "IoCodeSlashSharp",
         "items": [
             {
-                "title": "在线简历生成器",
+                "title": "Online Resume Generator",
                 "subtitle": "https://github.com/RylanBot/resume-json-pdf",
-                "timeline": "2023.12 - 2024.01",
+                "timeline": "Dec. 2023 - Jan. 2024",
                 "tech": "React + TypeScript + Tailwind CSS",
                 "details": [
                     "......",
@@ -51,7 +52,7 @@
             {
                 "title": "xxxxxx",
                 "subtitle": "",
-                "timeline": "2023.09 - 2023.12",
+                "timeline": "Sept. 2023 - Dec. 2023",
                 "tech": "xxx + xxxx + xxxxx",
                 "details": [
                     "......",
@@ -63,7 +64,7 @@
             {
                 "title": "xxxxxx",
                 "subtitle": "",
-                "timeline": "2023.10 - 2023.12",
+                "timeline": "Otc. 2023 - Dec. 2023",
                 "tech": "xxx + xxxx + xxxxx",
                 "details": [
                     "......",
@@ -75,7 +76,7 @@
         ]
     },
     {
-        "section": "专业技能",
+        "section": "SKILLS",
         "icon": "PiGear",
         "items": [
             {
@@ -84,6 +85,7 @@
                 "timeline": "",
                 "tech": "",
                 "details": [
+                    "......",
                     "......",
                     "......",
                     "......"

@@ -14,7 +14,7 @@ const profileSchema = {
 const validateProfile = ajv.compile(profileSchema);
 
 function JsonService() {
-    const { profileStore, experienceStore, styleStore, setProfileStore, setExperienceStore, setStyleStore } = useDataStore();
+    const { profileStore, experienceStore, styleStore, setProfileStore, setExperienceStore, setStyleStore } = useDataStore.getState();
 
     const importJson = (file: File) => {
         const reader = new FileReader();
