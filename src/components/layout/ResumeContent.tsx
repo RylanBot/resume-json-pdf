@@ -22,7 +22,7 @@ const ResumeContent = React.forwardRef<HTMLDivElement, {}>((_, ref) => {
                     "--plain-footnote-px": `${tempStyleStore.plainFootPx}px`,
                     "--plain-contact-px": `${tempStyleStore.plainContactPx}px`
                 } as React.CSSProperties}
-                    className="bg-white overflow-hidden px-10 shadow-md custom-page"
+                    className="w-[210mm] h-[297mm] bg-white overflow-hidden px-10 shadow-md custom-page"
                 >
                     <ProfileList data={tempProfileStore} theme={tempStyleStore.template} />
                     <ExperienceList data={tempExperienceStore} />
