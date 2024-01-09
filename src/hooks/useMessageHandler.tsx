@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { Message, messageContainer } from '@/helpers/MessageContainer';
 import { LuAlertTriangle } from 'react-icons/lu';
+
+import { Message, messageContainer } from '@/helpers/MessageContainer';
 
 export function useMessageHandler() {
   const [messages, setMessages] = useState<Message[]>([]);

@@ -6,8 +6,6 @@ export interface Locale {
 interface Common {
     IMPORT_JSON: string;
     EXPORT_OPTIONS: string;
-    EXPORT_JSON: string;
-    EXPORT_PDF: string;
     SETTING: string;
     SAVE: string;
     CANCEL: string;

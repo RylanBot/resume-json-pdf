@@ -2,10 +2,15 @@ import { useEffect } from "react";
 
 import useDataStore, { TempStore } from "@/stores/dataStore";
 
-/* 页面传参进行预览显示的时候不使用真正的 data，只暴露 temp data */
+import { StyleData } from "@/types/style";
+import { ProfileData } from "@/types/profile";
+import { ExperienceData } from "@/types/experience";
+
+/* 只暴露 temp data 实现页面预览 */
 function useEditWithUndo<K extends keyof TempStore>(key: K) {
     const { setTempStore, resetTempStore, [key]: originalStore, tempStores } = useDataStore();
 
+    // 依赖真正 data，确保数据一致
     useEffect(() => {
         setTempStore(key, originalStore);
     }, [originalStore]);
@@ -14,16 +19,17 @@ function useEditWithUndo<K extends keyof TempStore>(key: K) {
         profileStore: useDataStore.getState().setProfileStore,
         experienceStore: useDataStore.getState().setExperienceStore,
         styleStore: useDataStore.getState().setStyleStore,
-    } as Record<K, (newValue: any) => void>;;
+    } as Record<K, (newValue: StyleData | ProfileData | ExperienceData[]) => void>;
 
-    const startEditing = () => {
+    const startEdit = () => {
         setTempStore(key, originalStore);
     };
 
     const confirmEdit = () => {
         const setter = originalSetters[key];
-        if (setter) {
-            setter(tempStores[key]);
+        const value = tempStores[key];
+        if (setter && value) {
+            setter(value);
         }
     };
 
@@ -35,7 +41,7 @@ function useEditWithUndo<K extends keyof TempStore>(key: K) {
         setTempStore(key, { ...tempStores[key], ...newData });
     };
 
-    return { tempStore: tempStores[key], startEditing, confirmEdit, cancelEdit, updateTempData };
+    return { tempStore: tempStores[key], startEdit, confirmEdit, cancelEdit, updateTempData };
 }
 
 export default useEditWithUndo;

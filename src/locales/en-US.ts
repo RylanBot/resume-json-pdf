@@ -4,12 +4,10 @@ const enUS: Locale = {
     common: {
         IMPORT_JSON: 'Import JSON',
         EXPORT_OPTIONS: 'Export Options',
-        EXPORT_JSON: "Export JSON",
-        EXPORT_PDF: "Export PDF",
         SETTING: "Setting",
         SAVE: "Save",
         CANCEL: "Cancel",
-        UPLOAD_AVATAR: "Upload Avatar Image"
+        UPLOAD_AVATAR: "Upload Image"
     },
     field: {
         TEMPLATE: "Template",

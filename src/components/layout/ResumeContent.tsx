@@ -15,16 +15,16 @@ const ResumeContent = React.forwardRef<HTMLDivElement, {}>((_, ref) => {
         <div ref={ref}>
             <A4Background>
                 <div style={{
-                    "--theme-color": tempStyleStore?.color,
-                    "--page-py": `${tempStyleStore?.pagePy}px`,
-                    "--profile-mb": `${tempStyleStore?.profileMb}px`,
-                    "--experience-mb": `${tempStyleStore?.experienceMb}px`,
-                    "--plain-footnote-px": `${tempStyleStore?.plainFootPx}px`,
-                    "--plain-contact-px": `${tempStyleStore?.plainContactPx}px`
+                    "--theme-color": tempStyleStore.color,
+                    "--page-py": `${tempStyleStore.pagePy}px`,
+                    "--profile-mb": `${tempStyleStore.profileMb}px`,
+                    "--experience-mb": `${tempStyleStore.experienceMb}px`,
+                    "--plain-footnote-px": `${tempStyleStore.plainFootPx}px`,
+                    "--plain-contact-px": `${tempStyleStore.plainContactPx}px`
                 } as React.CSSProperties}
-                    className="w-[210mm] h-[297mm] bg-white shadow-md overflow-hidden px-10 custom-page"
+                    className="bg-white overflow-hidden px-10 shadow-md custom-page"
                 >
-                    <ProfileList data={tempProfileStore} theme={tempStyleStore?.template} />
+                    <ProfileList data={tempProfileStore} theme={tempStyleStore.template} />
                     <ExperienceList data={tempExperienceStore} />
                 </div>
             </A4Background >

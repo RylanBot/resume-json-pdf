@@ -3,8 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ExperienceData, ExperienceItem } from '@/types/experience';
 
 import IconParser from '@/helpers/IconParser';
-import LinkParser from '@/helpers/LinkParser';
-import strongTextParser from '@/helpers/StrongTextParser';
+import { LinkParser, StrongTextParser } from '@/helpers/TextParser';
 
 const ExperienceCard: React.FC<ExperienceItem> = ({
     title, subtitle, timeline, tech, details
@@ -31,51 +30,46 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
     return (
         <div className="font-semibold">
             <div>
-                {title && (<span ref={titleRef} className='theme-text-color align-middle'>{title}</span>)}
+                <span ref={titleRef} className='theme-text-color align-middle'>{title}</span>
                 {shouldBreak && <br />}
-                <span className=''>
+                <span>
                     {subtitle && (
                         <>
                             {!shouldBreak && <span className='font-normal text-gray-400 theme-divider-color mx-2 align-middle'>丨</span>}
                             <span ref={subtitleRef} className='theme-text-color text-sm align-middle'>
-                                {LinkParser({ value: subtitle, className: 'theme-text-color' })}
+                                {LinkParser(subtitle, 'theme-text-color')}
                             </span>
                         </>
                     )}
-                    {timeline && (
-                        <span className={`text-sm mt-1 theme-text-color float-right ${shouldBreak ? "-mt-5" : ""}`}>
-                            {timeline}
-                        </span>
-                    )}
+                    <span className={`text-sm mt-1 theme-text-color float-right ${shouldBreak ? "-mt-5" : ""}`}>
+                        {timeline}
+                    </span>
                 </span>
             </div>
-
-            {tech && (
-                <p className='mb-1'>
-                    {tech.split('+').map((item, index) => (
+            <p className='mb-1'>
+                {tech?.split('+')
+                    .filter(item => item.trim() !== '')
+                    .map((item, index) => (
                         <span key={index} className="bg-gray-100 rounded py-0.5 px-2 text-xs mr-2 italic font-mono font-bold theme-text-color">
                             {item.trim()}
                         </span>
                     ))}
-                </p>
-            )}
+            </p>
             <ul className="list-disc list-inside mb-2">
-                {details && details.map((detail, index) => (
-                    detail ? (
-                        <li key={index} className='theme-marker-color'>
-                            <span className='font-normal'>{strongTextParser(detail)}</span>
-                        </li>
-                    ) : null
+                {details?.map((detail, index) => (
+                    <li key={index} className='theme-marker-color'>
+                        <span className='font-normal'>{StrongTextParser(detail)}</span>
+                    </li>
                 ))}
             </ul>
-        </div >
+        </div>
     );
 };
 
 /* ------------------------------------------------------------ */
 
 interface ExperienceListProps {
-    data?: ExperienceData[];
+    data: ExperienceData[];
 }
 
 const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
@@ -83,16 +77,15 @@ const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
         <div className='mt-2'>
             {data?.map((part, index) => (
                 <div key={index} className="mb-2">
-                    <div
-                        className="flex items-center mb-1">
+                    <div className="flex items-center mb-1">
                         {part.icon && IconParser(part.icon.trim()) && (
                             (IconParser(part.icon.trim(), 'w-5 h-5 mr-2 theme-text-color'))
                         )}
-                        {part.section && <p className="text-lg font-bold theme-text-color">{part.section}</p>}
+                        <p className="text-lg font-bold theme-text-color">{part.section}</p>
                     </div>
                     {/* Divider */}
                     {part.section && <div className="border-solid border-t-2 theme-divider-color"></div>}
-                    {part.items && part.items.map((item, itemIndex) => (
+                    {part.items?.map((item, itemIndex) => (
                         <div key={itemIndex} className="mt-1 custom-experience">
                             <ExperienceCard
                                 title={item.title}

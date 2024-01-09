@@ -6,9 +6,9 @@ import { ProfileData } from '@/types/profile';
 import { StyleData } from '@/types/style';
 
 export interface TempStore {
-  styleStore?: StyleData;
-  profileStore?: ProfileData;
-  experienceStore?: ExperienceData[];
+  styleStore: StyleData;
+  profileStore: ProfileData;
+  experienceStore: ExperienceData[];
 }
 
 interface DataStore extends TempStore {

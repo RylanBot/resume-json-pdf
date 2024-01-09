@@ -1,6 +1,20 @@
 import React, { ReactNode } from "react";
 
-const StrongTextParser = (text: string): ReactNode[] => {
+export const LinkParser = (value: string, className?: string): React.ReactElement => {
+    const isHttpUrl = value.startsWith('https://') || value.startsWith('http://');
+
+    if (isHttpUrl) {
+        const displayText = value.replace(/^https?:\/\//, '');
+        return React.createElement('a',
+            { href: value, className: className, target: "_blank", rel: "noopener noreferrer" },
+            displayText
+        );
+    }
+
+    return React.createElement('span', { className: className }, value);
+};
+
+export const StrongTextParser = (text: string): ReactNode[] => {
     const regex = /\*\*(.*?)\*\*/g;
     let parts: ReactNode[] = [];
     let lastIndex = 0;
@@ -10,7 +24,6 @@ const StrongTextParser = (text: string): ReactNode[] => {
             parts.push(text.substring(lastIndex, index));
         }
 
-        // 添加加粗文本
         parts.push(React.createElement('strong', {
             key: index,
             className: "theme-text-color",
@@ -29,5 +42,3 @@ const StrongTextParser = (text: string): ReactNode[] => {
 
     return parts;
 };
-
-export default StrongTextParser;

@@ -9,8 +9,8 @@ interface A4BackgroundProps {
 const A4Background: React.FC<A4BackgroundProps> = ({ children }) => {
     const { editModeStore } = useModeStore();
     return (
-        <div className={`print-remove-styles flex flex-col items-center bg-gray-300 overflow-auto ${editModeStore ? "ml-80" : ""} transition-all duration-500 ease-in-out`}>
-            <div className="print-remove-styles bg-white shadow-xl mt-20 mb-5 resume-font">
+        <div id="export-html" className={`print-remove-styles flex flex-col items-center bg-gray-300 overflow-auto ${editModeStore ? "ml-80" : ""} transition-all duration-500 ease-in-out`}>
+            <div id="export-page" className="w-[210mm] h-[297mm] print-remove-styles overflow-hidden mt-24 mb-6 resume-font">
                 {children}
             </div>
         </div>

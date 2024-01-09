@@ -1,11 +1,13 @@
 import React, { useRef } from 'react';
 
-import ReactToPrint from 'react-to-print';
-
 import { BiCodeCurly } from 'react-icons/bi';
 import { BsGithub } from 'react-icons/bs';
 import { RiFilePdf2Line } from 'react-icons/ri';
-import { TbDownload, TbSettings2, TbUpload } from 'react-icons/tb';
+import { TbBrandHtml5, TbDownload, TbSettings2, TbUpload } from 'react-icons/tb';
+
+import { exportHtml, exportJson, importJson } from '@/helpers/FileService';
+
+import ReactToPrint from 'react-to-print';
 
 import ResumeContent from '@/components/layout/ResumeContent';
 import LangButton from '@/components/toolkit/LangButton';
@@ -14,26 +16,22 @@ import SettingEditor from '@/components/toolkit/SettingEditor';
 import useEditWithUndo from '@/hooks/useEditWithUndo';
 import useLocale from '@/hooks/useLocale';
 
-import JsonService from '@/helpers/JsonService';
-
 import useModeStore from '@/stores/modeStore';
 
 const Dashboard: React.FC = () => {
     const { locale } = useLocale();
 
     const { editModeStore, setEditModeStore } = useModeStore();
-    const { startEditing: startEditingProfile } = useEditWithUndo('profileStore');
-    const { startEditing: startEditingExperience } = useEditWithUndo('experienceStore');
-    const { startEditing: startEditingStyle } = useEditWithUndo('styleStore');
+    const { startEdit: startEditProfile } = useEditWithUndo('profileStore');
+    const { startEdit: startEditExperience } = useEditWithUndo('experienceStore');
+    const { startEdit: startEditStyle } = useEditWithUndo('styleStore');
 
     const printComponentRef = useRef<HTMLDivElement>(null);
 
-    const { importJson, exportJson } = JsonService();
-
-    const startEditing = () => {
-        startEditingProfile();
-        startEditingExperience()
-        startEditingStyle();
+    const handleStartEdit = () => {
+        startEditProfile();
+        startEditExperience()
+        startEditStyle();
         setEditModeStore(true);
     };
 
@@ -45,7 +43,7 @@ const Dashboard: React.FC = () => {
                 {/* 左侧设置按钮 */}
                 {!editModeStore && (
                     <div className="flex justify-start ml-4">
-                        <button onClick={startEditing} className="setting-button fixed top-4 left-4 w-24">
+                        <button onClick={handleStartEdit} className="setting-button fixed top-4 left-4 w-24">
                             <div className="flex items-center">
                                 <TbSettings2 className="mr-2" />
                                 <span className="text-xs">{locale.common.SETTING}</span>
@@ -99,17 +97,23 @@ const Dashboard: React.FC = () => {
                                     <div className="mt-1 w-36 rounded-md shadow-sm bg-white z-50 hidden group-hover:block">
                                         <div className="py-1">
                                             <button onClick={exportJson} className="p-2 text-sm font-semibold bg-white text-slate-800">
-                                                <div className="flex items-center px-5 py-2">
-                                                    <BiCodeCurly className="mr-3" />
-                                                    <span className="text-xs">{locale.common.EXPORT_JSON}</span>
+                                                <div className="flex items-center px-5 py-1">
+                                                    <BiCodeCurly className="mr-4" />
+                                                    <span className="text-xs">JSON</span>
+                                                </div>
+                                            </button>
+                                            <button onClick={exportHtml} className="p-2 text-sm font-semibold bg-white text-slate-800">
+                                                <div className="flex items-center px-5 py-1">
+                                                    <TbBrandHtml5 className="mr-4" />
+                                                    <span className="text-xs">HTML</span>
                                                 </div>
                                             </button>
                                             <ReactToPrint
                                                 trigger={() => (
                                                     <button className="p-2 text-sm font-semibold bg-white text-slate-800">
-                                                        <div className="flex items-center px-5 py-2">
-                                                            <RiFilePdf2Line className="mr-3" />
-                                                            <span className="text-xs">{locale.common.EXPORT_PDF}</span>
+                                                        <div className="flex items-center px-5 py-1">
+                                                            <RiFilePdf2Line className="mr-4" />
+                                                            <span className="text-xs">PDF</span>
                                                         </div>
                                                     </button>
                                                 )}

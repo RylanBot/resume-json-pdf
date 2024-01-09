@@ -4,12 +4,10 @@ const zhCN: Locale = {
     common: {
         IMPORT_JSON: '导入 JSON',
         EXPORT_OPTIONS: '导出 选项',
-        EXPORT_JSON: "导出 JSON",
-        EXPORT_PDF: "导出 PDF",
         SETTING: "设置",
         SAVE: "保存",
         CANCEL: "取消",
-        UPLOAD_AVATAR: "上传头像照片"
+        UPLOAD_AVATAR: "上传照片"
     },
     field: {
         TEMPLATE: "模板",
