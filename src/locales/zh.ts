@@ -1,6 +1,6 @@
 import { Locale } from "@/types/locale";
 
-const zhCN: Locale = {
+const zhLang: Locale = {
     common: {
         IMPORT_JSON: '导入 JSON',
         EXPORT_OPTIONS: '导出 选项',
@@ -20,4 +20,4 @@ const zhCN: Locale = {
     }
 };
 
-export default zhCN;
+export default zhLang;

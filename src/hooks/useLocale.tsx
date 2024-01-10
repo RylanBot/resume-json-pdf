@@ -1,18 +1,18 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Locale } from '@/types/locale';
-
-import LangEN from '@/locales/en-US';
-import LangCN from '@/locales/zh-CN';
+import DataLoader, { LANG_PACK } from '@/helpers/DataLoader';
 
 function useLocale() {
     const { lang } = useParams();
 
-    const locale = useMemo<Locale>(() => {
-        return lang === 'cn' ? LangCN : LangEN;
+    useEffect(() => {
+        DataLoader(lang || 'en');
     }, [lang]);
 
+    const locale = useMemo(() => {
+        return LANG_PACK[lang || 'en'];
+    }, [lang]);
     return { locale };
 }
 

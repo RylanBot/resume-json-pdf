@@ -10,8 +10,8 @@ import { exportHtml, exportJson, importJson } from '@/helpers/FileService';
 import ReactToPrint from 'react-to-print';
 
 import ResumeContent from '@/components/layout/ResumeContent';
-import LangButton from '@/components/toolkit/LangButton';
-import SettingEditor from '@/components/toolkit/SettingEditor';
+import SettingEditor from '@/components/layout/SettingEditor';
+import LangSwitch from '@/components/toolkit/LangSwitch';
 
 import useEditWithUndo from '@/hooks/useEditWithUndo';
 import useLocale from '@/hooks/useLocale';
@@ -60,7 +60,7 @@ const Dashboard: React.FC = () => {
                         <p className="text-2xl font-bold">resume-json-pdf</p>
                     </a>
                     {/* 语言切换 */}
-                    <LangButton />
+                    <LangSwitch />
                 </div>
 
                 {/* 右侧按钮 */}

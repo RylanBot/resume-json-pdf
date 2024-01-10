@@ -1,9 +1,8 @@
 import { messageContainer } from "@/helpers/MessageContainer";
 import useDataStore from "@/stores/dataStore";
 
-const { profileStore, experienceStore, styleStore, setProfileStore, setExperienceStore, setStyleStore } = useDataStore.getState();
-
 export const importJson = (file: File) => {
+    const { setProfileStore, setExperienceStore, setStyleStore } = useDataStore.getState();
     const reader = new FileReader();
     reader.onload = () => {
         const content = reader.result as string;
@@ -16,7 +15,6 @@ export const importJson = (file: File) => {
             setStyleStore(styleJson);
             setProfileStore(profileJson);
             setExperienceStore(experienceJson);
-
         } catch (e) {
             messageContainer.info("Invalid JSON format");
         }
@@ -25,8 +23,10 @@ export const importJson = (file: File) => {
 }
 
 export const exportJson = () => {
+    const { profileStore, experienceStore, styleStore } = useDataStore.getState();
     const data = { style: styleStore, profile: profileStore, experience: experienceStore };
     const jsonString = JSON.stringify(data, null, 2);
+    
     const blob = new Blob([jsonString], { type: "application/json" });
     const href = URL.createObjectURL(blob);
     const link = document.createElement('a');

@@ -4,16 +4,16 @@ import { BsImageFill } from "react-icons/bs";
 import { RiSave3Fill } from "react-icons/ri";
 import { TbLocationCancel } from "react-icons/tb";
 
+import { formatTitle } from "@/helpers/TextParser";
+
 import { StyleData } from "@/types/style";
 
-import { formatTitle } from "@/helpers/LocaleService";
+import StyleSlider from "@/components/toolkit/StyleSlider";
 
 import useEditWithUndo from "@/hooks/useEditWithUndo";
 import useLocale from "@/hooks/useLocale";
 
 import useModeStore from "@/stores/modeStore";
-
-import StyleSlider from "@/components/toolkit/StyleSlider";
 
 const SettingEditor: React.FC = () => {
     const { locale } = useLocale();
@@ -180,7 +180,7 @@ const SettingEditor: React.FC = () => {
                     </>
                 )}
 
-            </div >
+            </div>
         </>
     )
 }

@@ -1,6 +1,6 @@
 import { Locale } from "@/types/locale";
 
-const enUS: Locale = {
+const enLang: Locale = {
     common: {
         IMPORT_JSON: 'Import JSON',
         EXPORT_OPTIONS: 'Export Options',
@@ -20,4 +20,4 @@ const enUS: Locale = {
     }
 };
 
-export default enUS;
+export default enLang;

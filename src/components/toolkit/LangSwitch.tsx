@@ -1,15 +1,15 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-const LangButton: React.FC = () => {
+const LangSwitch: React.FC = () => {
     const { lang } = useParams();
 
     return (
         <div className='text-sm'>
             <Link
-                to="/cn"
-                className={`px-2 py-1 ${lang === "cn" ? 'text-[#d6fbff] font-semibold' : 'text-slate-200'}`}
-                aria-disabled={lang === "cn"}
+                to="/zh"
+                className={`px-2 py-1 ${lang === "zh" ? 'text-[#d6fbff] font-semibold' : 'text-slate-200'}`}
+                aria-disabled={lang === "zh"}
             >
                 中文版
             </Link>
@@ -25,4 +25,4 @@ const LangButton: React.FC = () => {
     )
 }
 
-export default LangButton;
+export default LangSwitch;
