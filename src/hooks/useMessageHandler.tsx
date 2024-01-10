@@ -4,7 +4,7 @@ import { LuAlertTriangle } from 'react-icons/lu';
 
 import { Message, messageContainer } from '@/helpers/MessageContainer';
 
-export function useMessageHandler() {
+function useMessageHandler() {
   const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
@@ -34,3 +34,5 @@ export function useMessageHandler() {
 
   return { messageContext };
 }
+
+export default useMessageHandler;
