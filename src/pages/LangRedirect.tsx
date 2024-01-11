@@ -7,13 +7,12 @@ const LangRedirect = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // 游览器默认语言
+        // 获取浏览器默认语言
         const browserLang = navigator.language.split('-')[0];
-        if (VALID_LANG.includes(browserLang)) {
-            navigate(`/${browserLang}`, { replace: true });
-        } else {
-            navigate("/en", { replace: true });
-        }
+
+        const langToUse = VALID_LANG.includes(browserLang) ? browserLang : 'en';
+
+        navigate(`/${langToUse}`, { replace: true });
     }, []);
 
     return <></>

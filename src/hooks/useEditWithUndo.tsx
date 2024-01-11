@@ -2,9 +2,9 @@ import { useEffect } from "react";
 
 import useDataStore, { TempStore } from "@/stores/dataStore";
 
-import { StyleData } from "@/types/style";
-import { ProfileData } from "@/types/profile";
 import { ExperienceData } from "@/types/experience";
+import { ProfileData } from "@/types/profile";
+import { StyleData } from "@/types/style";
 
 /* 只暴露 temp data 实现页面预览 */
 function useEditWithUndo<K extends keyof TempStore>(key: K) {

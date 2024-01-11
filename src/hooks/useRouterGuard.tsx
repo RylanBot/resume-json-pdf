@@ -1,7 +1,7 @@
 import { ComponentType } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
-import { VALID_LANG } from '@/helpers/DataLoader';
+import { JsonInit, VALID_LANG } from '@/helpers/DataLoader';
 
 function useRouterGuard() {
 
@@ -11,6 +11,9 @@ function useRouterGuard() {
 
             if (!lang || !VALID_LANG.includes(lang)) {
                 return <Navigate to="/" replace />;
+            } else {
+                // 加载简历数据放在这，避免调用 useLocale 时被覆盖
+                JsonInit(lang);
             }
 
             return <Component {...props} />;
