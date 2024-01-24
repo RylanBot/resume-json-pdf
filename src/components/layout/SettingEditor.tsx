@@ -131,7 +131,7 @@ const SettingEditor: React.FC = () => {
                     <div className="flex items-center">
                         <h3 className="setting-title mr-4 w-48">{formatTitle(locale.field.PROFILE_MARGIN_BOTTOM)}</h3>
                         <StyleSlider
-                            min={0} max={24}
+                            min={8} max={24}
                             value={tempStyleStore.profileMb}
                             onChange={(newValue) => handleStyleChange('profileMb', newValue)}
                         />
@@ -140,9 +140,18 @@ const SettingEditor: React.FC = () => {
                     <div className="flex items-center">
                         <h3 className="setting-title mr-4 w-48">{formatTitle(locale.field.EXPERIENCE_MARGIN_BOTTOM)}</h3>
                         <StyleSlider
-                            min={0} max={24}
+                            min={8} max={24}
                             value={tempStyleStore.experienceMb}
                             onChange={(newValue) => handleStyleChange('experienceMb', newValue)}
+                        />
+                    </div>
+
+                    <div className="flex items-center">
+                        <h3 className="setting-title mr-4 w-48">{formatTitle(locale.field.DETAILS_FONT)}</h3>
+                        <StyleSlider
+                            min={14} max={16}
+                            value={tempStyleStore.detailsFont}
+                            onChange={(newValue) => handleStyleChange('detailsFont', newValue)}
                         />
                     </div>
                 </div>

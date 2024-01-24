@@ -10,6 +10,7 @@
   --experience-mb: 0;
   --plain-footnote-px: 8;
   --plain-contact-px: 8;
+  --detail-font: 14;
 }
 
 .theme-text-color {
@@ -46,4 +47,8 @@
 .plain-contact-item {
   padding-left: var(--plain-contact-px);
   padding-right: var(--plain-contact-px);
+}
+
+.details-font {
+  font-size: var(--detail-font);
 }

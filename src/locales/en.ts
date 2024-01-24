@@ -17,6 +17,7 @@ const enLang: Locale = {
         EXPERIENCE_MARGIN_BOTTOM: "Experience Margin Bottom",
         FOOTNOTE_PADDING_X: "Footnote Padding X",
         CONTACT_PADDING_X: "Contact Padding X",
+        DETAILS_FONT: "Details Font Size"
     }
 };
 

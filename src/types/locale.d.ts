@@ -20,4 +20,5 @@ interface Field {
     EXPERIENCE_MARGIN_BOTTOM: string;
     FOOTNOTE_PADDING_X: string;
     CONTACT_PADDING_X: string;
+    DETAILS_FONT: string;
 }

@@ -28,7 +28,7 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
     }, [title, subtitle]);
 
     return (
-        <div className="font-semibold">
+        <div className="font-semibold text-base">
             <div>
                 <span ref={titleRef} className='theme-text-color align-middle'>{title}</span>
                 {shouldBreak && <br />}
@@ -55,7 +55,7 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
                         </span>
                     ))}
             </p>
-            <ul className="list-disc list-inside mb-2 text-sm">
+            <ul className="list-disc list-inside mb-2 details-font">
                 {details?.map((detail, index) => (
                     <li key={index} className='theme-marker-color'>
                         <span className='font-normal'>{StrongTextParser(detail)}</span>
@@ -77,14 +77,14 @@ const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
         <div className='mt-2'>
             {data?.map((part, index) => (
                 <div key={index} className="mb-2">
-                    <div className="flex items-center mb-1">
+                    <div className="flex items-center mb-0.5">
                         {part.icon && IconParser(part.icon.trim()) && (
                             (IconParser(part.icon.trim(), 'w-5 h-5 mr-2 theme-text-color'))
                         )}
-                        <p className="text-lg font-bold theme-text-color">{part.section}</p>
+                        <p className="font-bold theme-text-color text-lg">{part.section}</p>
                     </div>
                     {/* Divider */}
-                    {part.section && <div className="border-solid border-t-2 theme-divider-color mb-1.5"></div>}
+                    {part.section && <div className="border-solid border-t-2 theme-divider-color mb-1"></div>}
                     {part.items?.map((item, itemIndex) => (
                         <div key={itemIndex} className="custom-experience">
                             <ExperienceCard

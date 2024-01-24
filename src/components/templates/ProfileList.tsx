@@ -21,7 +21,7 @@ const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
                     </div>
                 )}
                 <div className='ml-2'>
-                    <p className="text-2xl font-bold mt-1 mb-3 theme-text-color">{data.name}</p>
+                    <p className="text-xl font-bold mt-1 mb-3 theme-text-color">{data.name}</p>
                     {data.footnote?.map((item, index) => (
                         <p className="text-sm font-semibold mt-2" key={index}>
                             <span className='theme-text-color'>{item.label}</span>
@@ -51,7 +51,7 @@ const ProfileListPlain: React.FC<ProfileListProps> = ({ data }) => {
         <div className="custom-profile">
 
             <div className="flex-grow flex-shrink">
-                <p className="text-2xl font-bold text-gray-800 text-center mt-2 theme-text-color">{data?.name}</p>
+                <p className="text-xl font-bold text-gray-800 text-center mt-2 theme-text-color">{data?.name}</p>
 
                 <div className="mt-2 flex flex-wrap justify-center items-center text-sm gap-1">
                     {data.footnote?.map((item, index) => (
