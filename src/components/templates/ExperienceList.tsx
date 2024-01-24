@@ -55,7 +55,7 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
                         </span>
                     ))}
             </p>
-            <ul className="list-disc list-inside mb-2">
+            <ul className="list-disc list-inside mb-2 text-sm">
                 {details?.map((detail, index) => (
                     <li key={index} className='theme-marker-color'>
                         <span className='font-normal'>{StrongTextParser(detail)}</span>
@@ -84,9 +84,9 @@ const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
                         <p className="text-lg font-bold theme-text-color">{part.section}</p>
                     </div>
                     {/* Divider */}
-                    {part.section && <div className="border-solid border-t-2 theme-divider-color"></div>}
+                    {part.section && <div className="border-solid border-t-2 theme-divider-color mb-1.5"></div>}
                     {part.items?.map((item, itemIndex) => (
-                        <div key={itemIndex} className="mt-1 custom-experience">
+                        <div key={itemIndex} className="custom-experience">
                             <ExperienceCard
                                 title={item.title}
                                 subtitle={item.subtitle}
