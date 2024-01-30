@@ -52,20 +52,22 @@ const ProfileListPlain: React.FC<ProfileListProps> = ({ data }) => {
 
             <div className="flex-grow flex-shrink">
                 <p className="text-xl font-bold text-gray-800 text-center mt-2 theme-text-color">{data?.name}</p>
-
-                <div className="mt-2 flex flex-wrap justify-center items-center text-sm gap-1">
-                    {data.footnote?.map((item, index) => (
-                        <div className="flex justify-center items-center plain-footnote-item" key={index} style={{ flexBasis: 'auto' }}>
-                            <div className="flex justify-center items-center">
-                                <span className="font-bold theme-text-color">{item.label}</span>
-                                {item.label && item.content && <span className='theme-text-color'>:&nbsp;</span>}
-                                {item.content && LinkParser(item.content)}
+                
+                {data.footnote && data?.footnote?.length > 0 && (
+                    <div className="flex flex-wrap justify-center items-center text-sm gap-1 mt-2">
+                        {data.footnote?.map((item, index) => (
+                            <div className="flex justify-center items-center plain-footnote-item" key={index} style={{ flexBasis: 'auto' }}>
+                                <div className="flex justify-center items-center">
+                                    <span className="font-bold theme-text-color">{item.label}</span>
+                                    {item.label && item.content && <span className='theme-text-color'>:&nbsp;</span>}
+                                    {item.content && LinkParser(item.content)}
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                )}
 
-                <div className="my-2 flex flex-wrap justify-center items-center text-sm gap-1">
+                <div className="flex flex-wrap justify-center items-center text-sm gap-1 mt-2">
                     {data.contact?.map((item, index) => (
                         <div className="flex justify-center items-center plain-contact-item" key={index} style={{ flexBasis: 'auto' }}>
                             <div className="flex items-center">
