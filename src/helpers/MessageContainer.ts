@@ -31,6 +31,8 @@ class MessageContainer {
     }
 
     public info(content: string) {
+        const isDuplicate = this.messages.some(message => message.content === content);
+        if (isDuplicate) return;
         const message = { id: this.messageId++, content };
         this.messages.push(message);
         this.handlers.forEach(handler => handler(this.messages));

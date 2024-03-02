@@ -45,7 +45,7 @@ export const StrongTextParser = (text: string): ReactNode[] => {
 
 export const TechParser = (text: string): React.ReactElement => {
     const techItems = text
-        .split('+')
+        .split(/(?<!\+)\+ *(?=\+?)/)  // 不匹配连续加号
         .filter(item => item.trim() !== '')
         .map((item, index) =>
             React.createElement('span', {

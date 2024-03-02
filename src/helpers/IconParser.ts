@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { messageContainer } from "@/helpers/MessageContainer";
+
+import { IconType } from 'react-icons';
 import * as AiIcons from 'react-icons/ai';
 import * as BiIcons from 'react-icons/bi';
 import * as BsIcons from 'react-icons/bs';
@@ -32,6 +35,44 @@ import * as TiIcons from 'react-icons/ti';
 import * as VscIcons from 'react-icons/vsc';
 import * as WiIcons from 'react-icons/wi';
 
+/**
+ * 图标库索引
+ */
+interface IconLibrary {
+    [key: string]: { [key: string]: IconType };
+}
+
+const iconLibrary: IconLibrary = {
+    'ai': AiIcons,
+    'bi': BiIcons,
+    'bs': BsIcons,
+    'cg': CgIcons,
+    'ci': CiIcons,
+    'di': DiIcons,
+    'fa': { ...FaIcons, ...Fa6Icons },
+    'fc': FcIcons,
+    'fi': FiIcons,
+    'gi': GiIcons,
+    'go': GoIcons,
+    'gr': GrIcons,
+    'hi': { ...HiIcons, ...Hi2Icons },
+    'im': ImIcons,
+    'io': { ...IoIcons, ...Io5Icons },
+    'lia': LiaIcons,
+    'lu': LuIcons,
+    'md': MdIcons,
+    'pi': PiIcons,
+    'ri': RiIcons,
+    'rx': RxIcons,
+    'si': SiIcons,
+    'sl': SlIcons,
+    'tb': TbIcons,
+    'tfi': TfiIcons,
+    'ti': TiIcons,
+    'vsc': VscIcons,
+    'wi': WiIcons,
+};
+
 const IconParser = (iconName: string, className?: string): React.ReactElement | null => {
 
     // 查找大写字母的索引
@@ -42,98 +83,10 @@ const IconParser = (iconName: string, className?: string): React.ReactElement | 
     const prefixEndIndex = secondUpperCaseIndex !== -1 ? firstUpperCaseIndex + secondUpperCaseIndex + 1 : firstUpperCaseIndex + 1;
     const prefix = iconName.substring(0, prefixEndIndex).toLowerCase();
 
-    // 处理同一个库不同系列
-    const iconPart = iconName.substring(firstUpperCaseIndex);
-
-    let IconComponent;
-
-    switch (prefix) {
-        case 'ai':
-            IconComponent = AiIcons[iconName as keyof typeof AiIcons];
-            break;
-        case 'bi':
-            IconComponent = BiIcons[iconName as keyof typeof BiIcons];
-            break;
-        case 'bs':
-            IconComponent = BsIcons[iconName as keyof typeof BsIcons];
-            break;
-        case 'cg':
-            IconComponent = CgIcons[iconName as keyof typeof CgIcons];
-            break;
-        case 'ci':
-            IconComponent = CiIcons[iconName as keyof typeof CiIcons];
-            break;
-        case 'di':
-            IconComponent = DiIcons[iconName as keyof typeof DiIcons];
-            break;
-        case 'fa':
-            IconComponent = iconPart in Fa6Icons ? Fa6Icons[iconPart as keyof typeof Fa6Icons] : FaIcons[iconPart as keyof typeof FaIcons];
-            break;
-        case 'fc':
-            IconComponent = FcIcons[iconName as keyof typeof FcIcons];
-            break;
-        case 'fi':
-            IconComponent = FiIcons[iconName as keyof typeof FiIcons];
-            break;
-        case 'gi':
-            IconComponent = GiIcons[iconName as keyof typeof GiIcons];
-            break;
-        case 'go':
-            IconComponent = GoIcons[iconName as keyof typeof GoIcons];
-            break;
-        case 'gr':
-            IconComponent = GrIcons[iconName as keyof typeof GrIcons];
-            break;
-        case 'hi':
-            IconComponent = iconPart in Hi2Icons ? Hi2Icons[iconPart as keyof typeof Hi2Icons] : HiIcons[iconPart as keyof typeof HiIcons];
-            break;
-        case 'im':
-            IconComponent = ImIcons[iconName as keyof typeof ImIcons];
-            break;
-        case 'io':
-            IconComponent = iconPart in Io5Icons ? Io5Icons[iconPart as keyof typeof Io5Icons] : IoIcons[iconPart as keyof typeof IoIcons];
-            break;
-        case 'lia':
-            IconComponent = LiaIcons[iconName as keyof typeof LiaIcons];
-            break;
-        case 'lu':
-            IconComponent = LuIcons[iconName as keyof typeof LuIcons];
-            break;
-        case 'md':
-            IconComponent = MdIcons[iconName as keyof typeof MdIcons];
-            break;
-        case 'pi':
-            IconComponent = PiIcons[iconName as keyof typeof PiIcons];
-            break;
-        case 'ri':
-            IconComponent = RiIcons[iconName as keyof typeof RiIcons];
-            break;
-        case 'rx':
-            IconComponent = RxIcons[iconName as keyof typeof RxIcons];
-            break;
-        case 'si':
-            IconComponent = SiIcons[iconName as keyof typeof SiIcons];
-            break;
-        case 'sl':
-            IconComponent = SlIcons[iconName as keyof typeof SlIcons];
-            break;
-        case 'tb':
-            IconComponent = TbIcons[iconName as keyof typeof TbIcons];
-            break;
-        case 'tfi':
-            IconComponent = TfiIcons[iconName as keyof typeof TfiIcons];
-            break;
-        case 'ti':
-            IconComponent = TiIcons[iconName as keyof typeof TiIcons];
-            break;
-        case 'vsc':
-            IconComponent = VscIcons[iconName as keyof typeof VscIcons];
-            break;
-        case 'wi':
-            IconComponent = WiIcons[iconName as keyof typeof WiIcons];
-            break;
-        default:
-            return null;
+    const IconComponent = iconLibrary[prefix]?.[iconName];
+    if (!IconComponent) {
+        messageContainer.info(`${iconName} not found`);
+        return null;
     }
 
     return React.createElement(IconComponent, { className });
