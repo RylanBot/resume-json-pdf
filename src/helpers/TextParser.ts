@@ -1,17 +1,17 @@
 import React, { ReactNode } from "react";
 
-export const LinkParser = (value: string, className?: string): React.ReactElement => {
-    const isHttpUrl = value.startsWith('https://') || value.startsWith('http://');
+export const LinkParser = (text: string, className?: string): React.ReactElement => {
+    const isHttpUrl = text.startsWith('https://') || text.startsWith('http://');
 
     if (isHttpUrl) {
-        const displayText = value.replace(/^https?:\/\//, '');
+        const displayText = text.replace(/^https?:\/\//, '');
         return React.createElement('a',
-            { href: value, className: className, target: "_blank", rel: "noopener noreferrer" },
+            { href: text, className: className, target: "_blank", rel: "noopener noreferrer" },
             displayText
         );
     }
 
-    return React.createElement('span', { className: className }, value);
+    return React.createElement('span', { className: className }, text);
 };
 
 export const StrongTextParser = (text: string): ReactNode[] => {
@@ -41,6 +41,20 @@ export const StrongTextParser = (text: string): ReactNode[] => {
     }
 
     return parts;
+};
+
+export const TechParser = (text: string): React.ReactElement => {
+    const techItems = text
+        .split('+')
+        .filter(item => item.trim() !== '')
+        .map((item, index) =>
+            React.createElement('span', {
+                key: index,
+                className: "bg-gray-100 rounded py-0.5 px-2 text-xs mr-2 italic font-mono font-bold theme-text-color",
+            }, item.trim())
+        );
+
+    return React.createElement(React.Fragment, {}, ...techItems);
 };
 
 /**

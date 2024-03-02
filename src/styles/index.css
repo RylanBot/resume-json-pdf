@@ -49,3 +49,7 @@
 .setting-title {
   @apply font-semibold text-slate-800 text-sm my-3 whitespace-pre-wrap;
 }
+
+.editable{
+  @apply p-0.5 rounded-sm focus:outline-none focus:border-2 focus:border-gray-300;
+}
