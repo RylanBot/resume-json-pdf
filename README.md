@@ -20,14 +20,18 @@
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-点击查看-lightseagreen?style=for-the-badge&logo=vercel)](https://project.resume-json-pdf.rylan.cn/)
 
+**在线导出 JSON 模板 → 本地修改数据 → 上传修改后的 JSON 文件 → 在线导出 PDF / HTML 简历**  
+
 > [!Tip]  
-> **在线导出 JSON 模板 → 本地修改数据 → 上传修改后的 JSON 文件 → 在线导出 PDF / HTML 简历**
+> **引入了简单的在线编辑文字的功能 → 设置模式下点击相关文字**  
+
+这个项目的开发初衷是为了制作简历时能更关注于文字本身，不纠结页面表单的填写和样式的排版，并实现最大程度的动态拓展。更推荐本地填写，在线微调，暂时未支持复杂的在线增删功能。
 
 #### 参数说明
 
-- **缺少某个字段不会报错，但页面相应部分渲染为空白，可能导致排版错位**
+- 缺少某个字段不会报错，但页面相应部分渲染为空白，可能导致排版错位
 
-- **注意 JSON 格式规范，缺少括号逗号等情况会导入失败**
+- 注意 JSON 格式规范，缺少括号逗号等情况会导入失败
 
 **Profile**  
 | 字段 | 含义 | 备注 |
@@ -54,6 +58,7 @@
 | experienceMb | 经历部分 下外边距 | number |
 | plainFootPx | 附加说明 左右内边距 | number（只对 plain 模板有效）|
 | plainContactPx | 联系方式 左右内边距 | number（只对 plain 模板有效）|
+| detailsFont | 描述内容 字体大小 | number |
 
 ### 🔮 二次开发
 
