@@ -1,17 +1,21 @@
 import React, { ReactNode } from "react";
 
-export const LinkParser = (text: string, className?: string): React.ReactElement => {
-    const isHttpUrl = text.startsWith('https://') || text.startsWith('http://');
+import useModeStore from "@/stores/modeStore";
 
-    if (isHttpUrl) {
-        const displayText = text.replace(/^https?:\/\//, '');
-        return React.createElement('a',
-            { href: text, className: className, target: "_blank", rel: "noopener noreferrer" },
-            displayText
-        );
+export const LinkParser = (text: string, className?: string): React.ReactElement => {
+    const { editModeStore } = useModeStore.getState();
+
+    const isHttpUrl = text.startsWith('https://') || text.startsWith('http://');
+    const displayText = text.replace(/^https?:\/\//, '');
+
+    if (editModeStore || !isHttpUrl) {
+        return React.createElement('span', { className: className }, displayText);
     }
 
-    return React.createElement('span', { className: className }, text);
+    return React.createElement('a',
+        { href: text, className: className, target: "_blank", rel: "noopener noreferrer" },
+        displayText
+    );
 };
 
 export const StrongTextParser = (text: string): ReactNode[] => {

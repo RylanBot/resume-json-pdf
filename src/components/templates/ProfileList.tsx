@@ -50,7 +50,7 @@ const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
                                 :&nbsp;
                             </span>
                         }
-                        {contact.value && <EditableText text={contact.value} path={`profile.contact[${conIndex}].value`} />}
+                        {contact.value && <EditableText type={"link"} text={contact.value} path={`profile.contact[${conIndex}].value`} />}
                     </p>
                 ))}
             </div>
