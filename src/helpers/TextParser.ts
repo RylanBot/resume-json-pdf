@@ -1,17 +1,21 @@
 import React, { ReactNode } from "react";
 
-export const LinkParser = (value: string, className?: string): React.ReactElement => {
-    const isHttpUrl = value.startsWith('https://') || value.startsWith('http://');
+import useModeStore from "@/stores/modeStore";
 
-    if (isHttpUrl) {
-        const displayText = value.replace(/^https?:\/\//, '');
-        return React.createElement('a',
-            { href: value, className: className, target: "_blank", rel: "noopener noreferrer" },
-            displayText
-        );
+export const LinkParser = (text: string, className?: string): React.ReactElement => {
+    const { editModeStore } = useModeStore.getState();
+
+    const isHttpUrl = text.startsWith('https://') || text.startsWith('http://');
+    const displayText = text.replace(/^https?:\/\//, '');
+
+    if (editModeStore || !isHttpUrl) {
+        return React.createElement('span', { className: className }, displayText);
     }
 
-    return React.createElement('span', { className: className }, value);
+    return React.createElement('a',
+        { href: text, className: className, target: "_blank", rel: "noopener noreferrer" },
+        displayText
+    );
 };
 
 export const StrongTextParser = (text: string): ReactNode[] => {
@@ -41,6 +45,20 @@ export const StrongTextParser = (text: string): ReactNode[] => {
     }
 
     return parts;
+};
+
+export const TechParser = (text: string): React.ReactElement => {
+    const techItems = text
+        .split(/(?<!\+)\+ *(?=\+?)/)  // 不匹配连续加号
+        .filter(item => item.trim() !== '')
+        .map((item, index) =>
+            React.createElement('span', {
+                key: index,
+                className: "bg-gray-100 rounded py-0.5 px-2 text-xs mr-2 italic font-mono font-bold theme-text-color",
+            }, item.trim())
+        );
+
+    return React.createElement(React.Fragment, {}, ...techItems);
 };
 
 /**

@@ -19,31 +19,36 @@ const SettingEditor: React.FC = () => {
     const { locale } = useLocale();
 
     const { setEditModeStore } = useModeStore();
-    const { confirmEdit: confirmEditProfile, cancelEdit: cancelEditProfile, updateTempData: updateTempProfile } = useEditWithUndo('profileStore');
-    const { tempStore: tempStyleStore, confirmEdit: confirmEditStyle, cancelEdit: cancelEditStyle, updateTempData: updateTempStyle } = useEditWithUndo('styleStore');
+
+    // DashBoard.tsx 统一 start，这里统一 confirm + cancel
+    const { tempStore: tempStyleStore, confirmEdit: confirmEditStyle, cancelEdit: cancelEditStyle, updateTempValue: updateTempStyle } = useEditWithUndo('styleStore');
+    const { confirmEdit: confirmEditProfile, cancelEdit: cancelEditProfile, updateTempValue: updateTempProfile } = useEditWithUndo('profileStore');
+    const { confirmEdit: confirmEditEx, cancelEdit: cancelEditEx } = useEditWithUndo('experienceStore');
 
     const handleConfirmEdit = () => {
         confirmEditStyle();
         confirmEditProfile();
+        confirmEditEx();
         setEditModeStore(false)
     }
 
     const handleCancelEdit = () => {
         cancelEditStyle();
         cancelEditProfile();
+        cancelEditEx();
         setEditModeStore(false)
     }
 
     const handleTemplateChange = (newTemplate: string) => {
-        updateTempStyle({ template: newTemplate });
+        updateTempStyle('template', newTemplate);
     };
 
     const handleColorChange = (newColor: string) => {
-        updateTempStyle({ color: newColor });
+        updateTempStyle('color', newColor);
     };
 
     const handleStyleChange = (key: keyof StyleData, value: number) => {
-        updateTempStyle({ [key]: value });
+        updateTempStyle(`[${key}]`, value);
     };
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +57,7 @@ const SettingEditor: React.FC = () => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 const base64String = reader.result as string;
-                updateTempProfile({ avatar: base64String });
+                updateTempProfile('avatar', base64String);
             };
             reader.readAsDataURL(file);
         }

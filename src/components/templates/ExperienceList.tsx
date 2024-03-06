@@ -2,11 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { ExperienceData, ExperienceItem } from '@/types/experience';
 
-import IconParser from '@/helpers/IconParser';
-import { LinkParser, StrongTextParser } from '@/helpers/TextParser';
+import EditableText from '@/components/toolkit/EditableText';
 
-const ExperienceCard: React.FC<ExperienceItem> = ({
-    title, subtitle, timeline, tech, details
+interface ExperienceCardProp extends ExperienceItem {
+    sectionIndex: number;
+    itemIndex: number;
+}
+
+const ExperienceCard: React.FC<ExperienceCardProp> = ({
+    sectionIndex, itemIndex, title, subtitle, timeline, tech, details
 }) => {
     const titleRef = useRef<HTMLSpanElement>(null);
     const subtitleRef = useRef<HTMLSpanElement>(null);
@@ -28,37 +32,41 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
     }, [title, subtitle]);
 
     return (
-        <div className="font-semibold text-base">
+        <div className="text-base">
             <div>
-                <span ref={titleRef} className='theme-text-color align-middle'>{title}</span>
+                {title &&
+                    <span ref={titleRef}>
+                        <EditableText text={title} path={`experience.${sectionIndex}.items[${itemIndex}].title`}
+                            className="font-semibold theme-text-color align-middle"
+                        />
+                    </span>
+                }
                 {shouldBreak && <br />}
                 <span>
                     {subtitle && (
                         <>
-                            {!shouldBreak && <span className='font-normal text-gray-400 theme-divider-color mx-2 align-middle'>丨</span>}
-                            <span ref={subtitleRef} className='theme-text-color text-sm align-middle'>
-                                {LinkParser(subtitle, 'theme-text-color')}
+                            {!shouldBreak && <span className="font-normal text-gray-400 theme-divider-color mx-2 align-middle">丨</span>}
+                            <span ref={subtitleRef} className="theme-text-color text-sm align-middle">
+                                <EditableText type={"link"} text={subtitle} path={`experience.${sectionIndex}.items[${itemIndex}].subtitle`}
+                                    className="theme-text-color"
+                                />
                             </span>
                         </>
                     )}
-                    <span className={`text-sm mt-1 theme-text-color float-right ${shouldBreak ? "-mt-5" : ""}`}>
-                        {timeline}
-                    </span>
+                    {timeline && (
+                        <span className={`text-sm mt-1 theme-text-color float-right ${shouldBreak ? "-mt-5" : ""}`}>
+                            <EditableText text={timeline} path={`experience.${sectionIndex}.items[${itemIndex}].timeline`} />
+                        </span>
+                    )}
                 </span>
             </div>
-            <p className='mb-1'>
-                {tech?.split('+')
-                    .filter(item => item.trim() !== '')
-                    .map((item, index) => (
-                        <span key={index} className="bg-gray-100 rounded py-0.5 px-2 text-xs mr-2 italic font-mono font-bold theme-text-color">
-                            {item.trim()}
-                        </span>
-                    ))}
+            <p className="mb-1">
+                {tech && <EditableText type={"tech"} text={tech} path={`experience.${sectionIndex}.items[${itemIndex}].tech`} />}
             </p>
             <ul className="list-disc list-inside mb-2 details-font">
-                {details?.map((detail, index) => (
-                    <li key={index} className='theme-marker-color'>
-                        <span className='font-normal'>{StrongTextParser(detail)}</span>
+                {details?.filter(detail => detail.trim()).map((detail, detailIndex) => (
+                    <li key={detailIndex} className="theme-marker-color font-normal">
+                        <EditableText type={"strong"} text={detail} path={`experience.${sectionIndex}.items[${itemIndex}].details[${detailIndex}]`} />
                     </li>
                 ))}
             </ul>
@@ -66,28 +74,34 @@ const ExperienceCard: React.FC<ExperienceItem> = ({
     );
 };
 
-/* ------------------------------------------------------------ */
-
 interface ExperienceListProps {
     data: ExperienceData[];
 }
 
 const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
     return (
-        <div className='mt-2'>
-            {data?.map((part, index) => (
-                <div key={index} className="mb-2">
+        <div>
+            {data?.map((part, sectionIndex) => (
+                <div key={sectionIndex}>
                     <div className="flex items-center mb-0.5">
-                        {part.icon && IconParser(part.icon.trim()) && (
-                            (IconParser(part.icon.trim(), 'w-5 h-5 mr-2 theme-text-color'))
-                        )}
-                        <p className="font-bold theme-text-color text-lg">{part.section}</p>
+                        {part.icon &&
+                            <EditableText type={"icon"} text={part.icon} path={`experience.${sectionIndex}.icon`}
+                                className="w-5 h-5 mr-2 theme-text-color"
+                            />
+                        }
+                        {part.section &&
+                            <EditableText text={part.section} path={`experience.${sectionIndex}.section`}
+                                className="font-bold theme-text-color text-lg"
+                            />
+                        }
                     </div>
-                    {/* Divider */}
+                    {/* 分割线 */}
                     {part.section && <div className="border-solid border-t-2 theme-divider-color mb-1"></div>}
                     {part.items?.map((item, itemIndex) => (
                         <div key={itemIndex} className="custom-experience">
                             <ExperienceCard
+                                sectionIndex={sectionIndex}
+                                itemIndex={itemIndex}
                                 title={item.title}
                                 subtitle={item.subtitle}
                                 timeline={item.timeline}

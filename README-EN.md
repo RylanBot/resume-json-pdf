@@ -20,14 +20,18 @@
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20for%20visist-lightseagreen?style=for-the-badge&logo=vercel)](https://project.resume-json-pdf.rylan.cn/)
 
+**Export JSON template online → Modify data locally → Upload modified JSON File → Export PDF / HTML resume online**
+
 > [!Tip]  
-> **Export JSON template online → Modify data locally → Upload modified JSON File → Export PDF / HTML resume online**
+> **Introduced a simple online text editing feature → Click on the relevant text in the setting mode**
+
+The original intention of this project is to focus more on the content of the resume itself, without worrying about filling out page forms and formatting styles, and to achieve maximum dynamic expansion. It is recommended to fill out locally, fine-tune online, and currently does not support complex online adding and deleting functions.
 
 #### Parameter
 
-- **Missing a certain field won't result in an error, but the corresponding part will be rendered as blank, potentially causing layout issues.**
+- Missing a certain field won't result in an error, but the corresponding part will be rendered as blank, potentially causing layout issues.
 
-- **Pay attention to JSON format specifications; missing parentheses, commas, etc., can lead to import failures.**
+- Pay attention to JSON format specifications; missing parentheses, commas, etc., can lead to import failures.
 
 **Profile**  
 | Field | Meaning | Note |
@@ -54,6 +58,7 @@
 | experienceMb | Experience Margin bottom | Number |
 | plainFootPx | Footnote Padding X | Number (only valid for the plain template) |
 | plainContactPx | Contact Padding X | Number (only valid for the plain template) |
+| detailsFont | | number |
 
 ### 🔮 For Development
 
