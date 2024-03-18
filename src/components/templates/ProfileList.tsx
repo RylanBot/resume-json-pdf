@@ -39,7 +39,7 @@ const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
 
             <div className="flex flex-col ml-20">
                 {data.contact?.map((contact, conIndex) => (
-                    <p className="flex text-xs mt-2" key={conIndex}>
+                    <p className="flex text-xs mt-1" key={conIndex}>
                         {contact.icon &&
                             <EditableText type={"icon"} text={contact.icon.trim()} path={`profile.contact[${conIndex}].icon`}
                                 className="w-4 h-4 mr-1 theme-text-color"
@@ -83,7 +83,7 @@ const ProfileListPlain: React.FC<ProfileListProps> = ({ data }) => {
                     </div>
                 )}
 
-                <div className="flex flex-wrap justify-center items-center text-sm gap-1 mt-2">
+                <div className="flex flex-wrap justify-center items-center text-sm mt-1">
                     {data.contact?.map((item, index) => (
                         <div className="flex justify-center items-center plain-contact-item" key={index} style={{ flexBasis: 'auto' }}>
                             <div className="flex items-center">
