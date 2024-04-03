@@ -1,17 +1,17 @@
 import React from 'react';
 
-import A4Background from '@/components/toolkit/A4Background';
 import ExperienceList from '@/components/templates/ExperienceList';
 import ProfileList from '@/components/templates/ProfileList';
+import A4Background from '@/components/toolkit/A4Background';
 
 import useEditWithUndo from '@/hooks/useEditWithUndo';
 
-const ResumeContent = React.forwardRef<HTMLDivElement, {}>((_, ref) => {
+const ResumeContent = React.forwardRef<HTMLDivElement, object>((_, ref) => {
     const { tempStore: tempStyleStore } = useEditWithUndo('styleStore');
     const { tempStore: tempProfileStore } = useEditWithUndo('profileStore');
     const { tempStore: tempExperienceStore } = useEditWithUndo('experienceStore');
 
-    return (    
+    return (
         <div ref={ref}>
             <A4Background>
                 <div style={{

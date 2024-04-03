@@ -4,7 +4,7 @@ import useModeStore from "@/stores/modeStore";
 
 interface A4BackgroundProps {
     children: React.ReactNode;
-};
+}
 
 const A4Background: React.FC<A4BackgroundProps> = ({ children }) => {
     const { editModeStore } = useModeStore();
