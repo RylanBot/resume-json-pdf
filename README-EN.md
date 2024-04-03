@@ -77,8 +77,8 @@ npm run dev
 
 ## 🌷 Preview
 
-![resume-json-pdf-avatar-en](https://s2.loli.net/2024/01/08/dxwsEZrMiPtgn9U.png)
+![resume-json-pdf-avatar-en](https://s2.loli.net/2024/04/04/kbIAlWcZ2yTL4QP.png)
 
 ---
 
-![resume-json-pdf-plain-en](https://s2.loli.net/2024/01/08/Th36RyJZAMDYiwr.png)
+![resume-json-pdf-plain-en](https://s2.loli.net/2024/04/04/eKzltbmI8JAcUBR.png)

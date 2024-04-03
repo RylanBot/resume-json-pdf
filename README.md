@@ -77,8 +77,8 @@ npm run dev
 
 ## 🌷 效果预览
 
-![resume-json-pdf-avatar-cn](https://s2.loli.net/2024/01/08/9ucs62Y4fEZkASB.png)
+![resume-json-pdf-avatar-cn](https://s2.loli.net/2024/04/04/ufcTWdvGJFsh2zN.png)
 
 ---
 
-![resume-json-pdf-plain-cn](https://s2.loli.net/2024/01/08/H1X72sIriJMk3Tq.png)
+![resume-json-pdf-plain-cn](https://s2.loli.net/2024/04/04/pks6K4Tdz3c7aYM.png)
