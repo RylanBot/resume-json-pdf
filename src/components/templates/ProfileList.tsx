@@ -69,7 +69,7 @@ const ProfileListPlain: React.FC<ProfileListProps> = ({ data }) => {
                 </p>
 
                 {data.footnote && data?.footnote?.length > 0 && (
-                    <div className="flex flex-wrap justify-center items-center text-sm gap-1 mt-2">
+                    <div className="flex flex-wrap justify-center items-center text-sm gap-1 mt-1">
                         {data.footnote?.map((footnote, footIndex) => (
                             <div className="flex justify-center items-center plain-footnote-item" key={footIndex} style={{ flexBasis: 'auto' }}>
                                 <div className="flex justify-center items-center">
@@ -89,7 +89,7 @@ const ProfileListPlain: React.FC<ProfileListProps> = ({ data }) => {
                             <div className="flex items-center">
                                 {item.icon &&
                                     <EditableText type={"icon"} text={item.icon.trim()} path={`profile.contact[${index}].icon`}
-                                        className='mr-1 mb-[1px] theme-text-color'
+                                        className='mr-1 mt-[1.5px] theme-text-color'
                                     />
                                 }
                                 {item.key && (

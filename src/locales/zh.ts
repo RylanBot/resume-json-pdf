@@ -18,6 +18,7 @@ const zhLang: Locale = {
         FOOTNOTE_PADDING_X: "附加说明 左右内边距",
         CONTACT_PADDING_X: "联系方式 左右内边距",
         DETAILS_FONT: "经历描述 字体大小",
+        FONT_STYLE: "字体"
     }
 };
 

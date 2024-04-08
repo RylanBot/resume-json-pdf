@@ -12,7 +12,7 @@ const EN_EXPERIENCE: ExperienceData[] = [
                 tech: "",
                 details: [
                     "**GPA:** x.xx/4.0",
-                    "**Courses:** Algorithms and Data structure, Computer Network, Software Testing, Database, etc.",
+                    "**Courses:** Algorithms and Data structure, Computer Network, Database, etc.",
                     "**Awards:** xxxx Competition Gold Prize, xxxx Scholarship"
                 ]
             }

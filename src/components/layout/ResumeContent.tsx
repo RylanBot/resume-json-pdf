@@ -6,6 +6,8 @@ import A4Background from '@/components/toolkit/A4Background';
 
 import useEditWithUndo from '@/hooks/useEditWithUndo';
 
+import '@/styles/theme.css';
+
 const ResumeContent = React.forwardRef<HTMLDivElement, object>((_, ref) => {
     const { tempStore: tempStyleStore } = useEditWithUndo('styleStore');
     const { tempStore: tempProfileStore } = useEditWithUndo('profileStore');
@@ -15,13 +17,14 @@ const ResumeContent = React.forwardRef<HTMLDivElement, object>((_, ref) => {
         <div ref={ref}>
             <A4Background>
                 <div style={{
+                    fontFamily: `${tempStyleStore.fontStyle === 'fancy' ? 'Noto Serif SC' : 'Times'}`,
                     "--theme-color": tempStyleStore.color,
                     "--page-py": `${tempStyleStore.pagePy}px`,
                     "--profile-mb": `${tempStyleStore.profileMb}px`,
                     "--experience-mb": `${tempStyleStore.experienceMb}px`,
                     "--plain-footnote-px": `${tempStyleStore.plainFootPx}px`,
                     "--plain-contact-px": `${tempStyleStore.plainContactPx}px`,
-                    "--detail-font": `${tempStyleStore.detailsFont}px`
+                    "--font-base-size": `${tempStyleStore.detailsFont}px`
                 } as React.CSSProperties}
                     className="w-[210mm] h-[297mm] bg-white overflow-hidden px-10 shadow-md custom-page"
                 >

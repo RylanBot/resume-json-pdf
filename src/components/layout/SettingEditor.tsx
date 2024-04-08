@@ -43,6 +43,10 @@ const SettingEditor: React.FC = () => {
         updateTempStyle('template', newTemplate);
     };
 
+    const handleFontStyleChange = (newColor: string) => {
+        updateTempStyle('fontStyle', newColor);
+    };
+
     const handleColorChange = (newColor: string) => {
         updateTempStyle('color', newColor);
     };
@@ -81,17 +85,17 @@ const SettingEditor: React.FC = () => {
                 </button>
 
                 {/* 切换模板 */}
-                <div className="flex items-center ml-8 mb-6">
-                    <h3 className="setting-title mr-8">{locale.field.TEMPLATE}</h3>
+                <div className="flex items-center ml-8 mb-3">
+                    <h3 className="setting-title mr-5 w-16">{locale.field.TEMPLATE}</h3>
                     <div className="flex items-center justify-center flex-grow">
-                        <label className="flex items-center mr-4 cursor-pointer">
+                        <label className="flex items-center cursor-pointer mr-7">
                             <input
                                 type="radio"
                                 value="avatar"
                                 name="template"
-                                checked={tempStyleStore?.template === 'avatar'}
+                                checked={tempStyleStore.template === 'avatar'}
                                 onChange={(e) => handleTemplateChange(e.target.value)}
-                                className="h-4 w-4 mr-1 cursor-pointer"
+                                className="h-4 w-4 mr-2 cursor-pointer"
                             />
                             <span className="text-sm font-semibold text-slate-800">Avatar</span>
                         </label>
@@ -109,8 +113,37 @@ const SettingEditor: React.FC = () => {
                     </div>
                 </div>
 
+                {/* 切换字体 */}
+                <div className="flex items-center ml-8 mb-3">
+                    <h3 className="setting-title mr-6 w-16">{locale.field.FONT_STYLE}</h3>
+                    <div className="flex items-center justify-center flex-grow">
+                        <label className="flex items-center mr-5 cursor-pointer">
+                            <input
+                                type="radio"
+                                value="default"
+                                name="font"
+                                checked={tempStyleStore.fontStyle === 'default'}
+                                onChange={(e) => handleFontStyleChange(e.target.value)}
+                                className="h-4 w-4 mr-2 cursor-pointer"
+                            />
+                            <span className="text-sm font-semibold text-slate-800">Default</span>
+                        </label>
+                        <label className="flex items-center cursor-pointer">
+                            <input
+                                type="radio"
+                                value="fancy"
+                                name="font"
+                                checked={tempStyleStore.fontStyle === 'fancy'}
+                                onChange={(e) => handleFontStyleChange(e.target.value)}
+                                className="h-4 w-4 mr-2 cursor-pointer"
+                            />
+                            <span className="text-sm font-semibold text-slate-800">Fancy</span>
+                        </label>
+                    </div>
+                </div>
+
                 {/* 颜色选择器 */}
-                <div className="flex items-center mx-8 my-6 mb-10">
+                <div className="flex items-center mx-8 my-6">
                     <h3 className="setting-title mr-4">{formatTitle(locale.field.COLOR)}</h3>
                     <div className="px-6 ml-24">
                         <input
