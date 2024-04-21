@@ -39,6 +39,8 @@ const EditableText: React.FC<EditableTextProps> = (
                     return <>{TechParser(rawText ?? '')}</>;
                 // case 'icon':
                 //     return <>{(IconParser(rawText?.trim() ?? '', className))}</>
+                case 'icon':
+                    return <> <i className={`${rawText} ${className}`}></i></>
                 default:
                     return <span className={className}>{rawText}</span>;
             }

@@ -1,39 +1,34 @@
-import { ProfileData } from "@/types/profile";
+import { ProfileData } from '@/types/profile';
 
 const EN_PROFILE: ProfileData = {
-    name: "Xxx",
-    avatar: "https://s2.loli.net/2024/01/09/fJvOraZGAHyI6wW.png",
+    name: 'Xxx',
+    avatar: 'https://s2.loli.net/2024/01/09/fJvOraZGAHyI6wW.png',
     footnote: [
         {
-            label: "Front-end Engineer",
-            content: ""
+            label: 'Front-end Engineer',
+            content: ''
         }
     ],
     contact: [
         {
-            icon: "PiPhoneCallFill",
-            key: "",
-            value: "139-xxx-xxxxx"
+            icon: 'fa-solid fa-envelope',
+            key: '',
+            value: 'rylanbot@foxmail.com'
         },
         {
-            icon: "HiOutlineMail",
-            key: "",
-            value: "rylanbot@foxmail.com"
+            icon: 'fab fa-github',
+            key: '',
+            value: 'https://github.com/RylanBot'
         },
         {
-            icon: "BiLogoGithub",
-            key: "",
-            value: "https://github.com/RylanBot"
+            icon: 'fa-brands fa-linkedin-in',
+            key: '',
+            value: 'https://linkedin.com/in/xxxxxxxx'
         },
         {
-            icon: "LiaLinkedinIn",
-            key: "",
-            value: "https://linkedin.com/in/xxxxxxxx"
-        },
-        {
-            icon: "MdRssFeed",
-            key: "Blog",
-            value: "https://rylan.cn"
+            icon: 'fa-solid fa-rss',
+            key: 'Blog',
+            value: 'https://rylan.cn'
         }
     ]
 };

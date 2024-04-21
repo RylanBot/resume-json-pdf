@@ -84,11 +84,11 @@ const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
             {data?.map((part, sectionIndex) => (
                 <div key={sectionIndex}>
                     <div className="flex items-center">
-                        {/* {part.icon &&
+                        {part.icon &&
                             <EditableText type={"icon"} text={part.icon} path={`experience.${sectionIndex}.icon`}
-                                className="w-5 h-5 mr-2 theme-text-color"
+                                className="w-5 h-5 mr-1 theme-text-color"
                             />
-                        } */}
+                        }
                         {part.section &&
                             <EditableText text={part.section} path={`experience.${sectionIndex}.section`}
                                 className="font-bold theme-text-color text-section"

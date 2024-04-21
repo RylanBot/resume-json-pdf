@@ -3,7 +3,7 @@ import { ExperienceData } from "@/types/experience";
 const EN_EXPERIENCE: ExperienceData[] = [
     {
         section: "EDUCATION",
-        icon: "PiGraduationCap",
+        icon: 'fas fa-graduation-cap',
         items: [
             {
                 title: "xx University, China",
@@ -20,13 +20,13 @@ const EN_EXPERIENCE: ExperienceData[] = [
     },
     {
         section: "INTERNSHIPS",
-        icon: "FiUser",
+        icon: 'fa-solid fa-user',
         items: [
             {
                 title: "xxxx Technology Co., Ltd.",
                 subtitle: "xxx Department",
                 timeline: "July 2023 - Sept. 2023",
-                tech: "Vue2 + Axios + Ant Design",
+                tech: "Vue + Ant Design",
                 details: [
                     "Encapsulated a **xxxxx component** to address the xxxxx problem",
                     "Implemented xxxxx and succeeded in **optimizing xxxxx**",
@@ -38,7 +38,7 @@ const EN_EXPERIENCE: ExperienceData[] = [
     },
     {
         section: "PROJECTS",
-        icon: "IoCodeSlashSharp",
+        icon: 'fas fa-code',
         items: [
             {
                 title: "Online Resume Generator",
@@ -78,7 +78,7 @@ const EN_EXPERIENCE: ExperienceData[] = [
     },
     {
         section: "SKILLS",
-        icon: "PiGear",
+        icon: 'fas fa-cog',
         items: [
             {
                 title: "",
@@ -86,6 +86,7 @@ const EN_EXPERIENCE: ExperienceData[] = [
                 timeline: "",
                 tech: "",
                 details: [
+                    "......",
                     "......",
                     "......",
                     "......",
