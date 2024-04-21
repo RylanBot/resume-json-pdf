@@ -20,7 +20,7 @@ export const LinkParser = (text: string, className?: string): React.ReactElement
 
 export const StrongTextParser = (text: string): ReactNode[] => {
     const regex = /\*\*(.*?)\*\*/g;
-    let parts: ReactNode[] = [];
+    const parts: ReactNode[] = [];
     let lastIndex = 0;
 
     text.replace(regex, (match: string, p1: string, index: number) => {

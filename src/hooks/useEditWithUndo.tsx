@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import _ from 'lodash';
 
 import useDataStore, { TempStore } from "@/stores/dataStore";
 
 import { ExperienceData } from "@/types/experience";
 import { ProfileData } from "@/types/profile";
 import { StyleData } from "@/types/style";
+
+import _ from 'lodash';
 
 /**
  * 只暴露 temp data 实现页面预览
@@ -17,6 +18,7 @@ function useEditWithUndo<K extends keyof TempStore>(storeType: K) {
     // 依赖真正 data，确保数据一致
     useEffect(() => {
         setTempStore(storeType, originalStore);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [originalStore]);
 
     const originalSetters = {

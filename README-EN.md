@@ -7,7 +7,7 @@
 ## 🔥 Features
 
 - **Support for multiple templates**：Provide versions with and without photos in both Chinese and English.
-- **Support for icon integration**: Reference the [react-icons](https://react-icons.github.io/react-icons/) library.
+- **Support for icon integration**: Reference to the [Font Awesome](https://fontawesome.com/icons) library. ✨
 - **Support for bold text**：Enclose value within the 'details' field in double asterisks, e.g., " ** Optimize xxx ** " will render as "**Optimize xxx**".
 - **Support for linking**：Use "http" or "https" at the beginning of 'value' and 'subtitle' fields, e.g., "https: \//github.com/RylanBot" will render as "[github.com/RylanBot](https://github.com/RylanBot)"
 - **Support for tech stack separation**：Use plus signs within the 'tech' field，e.g., "React+TypeScript+Tailwind CSS" will render as "_`React` `TypeScript` `Tailwind CSS`_".
@@ -52,13 +52,14 @@ The original intention of this project is to focus more on the content of the re
 | Field | Meaning | Note |
 | :--- | :--- | :--- |
 | template | | avatar / plain |
+| fontStyle ✨ | | default / fancy |
 | color | | Hexadecimal |
 | pagePy | Resume Padding Y | Number |
 | profileMb | Profile Margin bottom | Number |
 | experienceMb | Experience Margin bottom | Number |
 | plainFootPx | Footnote Padding X | Number (only valid for the plain template) |
 | plainContactPx | Contact Padding X | Number (only valid for the plain template) |
-| detailsFont | | number |
+| detailsFont | Experience Section Font Size | number |
 
 ### 🔮 For Development
 
@@ -77,8 +78,8 @@ npm run dev
 
 ## 🌷 Preview
 
-![resume-json-pdf-avatar-en](https://s2.loli.net/2024/01/08/dxwsEZrMiPtgn9U.png)
+![resume-json-pdf-avatar-en](https://s2.loli.net/2024/04/21/6sS5EQIpol7vPzW.png)
 
 ---
 
-![resume-json-pdf-plain-en](https://s2.loli.net/2024/01/08/Th36RyJZAMDYiwr.png)
+![resume-json-pdf-plain-en](https://s2.loli.net/2024/04/21/hSBOZIYumoEDd14.png)

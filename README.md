@@ -7,7 +7,7 @@
 ## 🔥 功能介绍
 
 - **支持多个模板**：目前提供含照片和无照片的中英文版本
-- **支持引入图标**：参考 [react-icons](https://react-icons.github.io/react-icons/) 库
+- **支持引入图标**：参考 [Font Awesome](https://fontawesome.com/icons) 库 ✨
 - **支持文字加粗**：details 字段中使用双星号包裹，比如 “ ** 优化 xxx ** ” 会被渲染成 “ **优化 xxx** ”
 - **支持链接跳转**：value 和 subtitle 字段使用 “http” 或者 “https” 开头，比如 “https: \//github.com/RylanBot” 会被渲染成 “[github.com/RylanBot](https://github.com/RylanBot)”
 - **支持技术栈拆分**：tech 字段中使用加号连接，比如 “React+TypeScript+Tailwind CSS” 会被渲染成 “_`React` `TypeScript` `Tailwind CSS`_”
@@ -52,13 +52,14 @@
 | 字段 | 含义 | 备注 |
 | :--- | :--- | :--- |
 | template | 模板 | avatar / plain |
+| fontStyle ✨ | 字体 | default / fancy |
 | color | 颜色 | 16 进制格式 |
 | pagePy | 简历页面 上下内边距 | number |
 | profileMb | 个人信息 下外边距 | number |
 | experienceMb | 经历部分 下外边距 | number |
 | plainFootPx | 附加说明 左右内边距 | number（只对 plain 模板有效）|
 | plainContactPx | 联系方式 左右内边距 | number（只对 plain 模板有效）|
-| detailsFont | 描述内容 字体大小 | number |
+| detailsFont | 经历部分 字体大小 | number |
 
 ### 🔮 二次开发
 
@@ -77,8 +78,8 @@ npm run dev
 
 ## 🌷 效果预览
 
-![resume-json-pdf-avatar-cn](https://s2.loli.net/2024/01/08/9ucs62Y4fEZkASB.png)
+![resume-json-pdf-avatar-cn](https://s2.loli.net/2024/04/21/VD2dbJneyHAuZOW.png)
 
 ---
 
-![resume-json-pdf-plain-cn](https://s2.loli.net/2024/01/08/H1X72sIriJMk3Tq.png)
+![resume-json-pdf-plain-cn](https://s2.loli.net/2024/04/21/3oanYrBTEsqgSKJ.png)

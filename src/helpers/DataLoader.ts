@@ -8,13 +8,12 @@ import useDataStore from '@/stores/dataStore';
 import enLang from '@/locales/en';
 import zhLang from '@/locales/zh';
 
-import styleJson from '@/data/style.json';
+import COMMON_STYLE from '@/data/style';
 
-import experienceJsonEn from '@/data/en/experience.json';
-import profileJsonEn from '@/data/en/profile.json';
-
-import experienceJsonZh from '@/data/zh/experience.json';
-import profileJsonZh from '@/data/zh/profile.json';
+import EN_EXPERIENCE from '@/data/en/experience';
+import EN_PROFILE from '@/data/en/profile';
+import ZH_EXPERIENCE from '@/data/zh/experience';
+import ZH_PROFILE from '@/data/zh/profile';
 
 /**
  * 在这里添加所有支持的语言
@@ -44,14 +43,14 @@ export const LANG_PACK: LangData = {
  * 配置对应的简历数据
  */
 const RESUME_JSON: JsonData = {
-    style: styleJson,
+    style: COMMON_STYLE,
     experience: {
-        'en': experienceJsonEn,
-        'zh': experienceJsonZh,
+        'en': EN_EXPERIENCE,
+        'zh': ZH_EXPERIENCE,
     },
     profile: {
-        'en': profileJsonEn,
-        'zh': profileJsonZh,
+        'en': EN_PROFILE,
+        'zh': ZH_PROFILE,
     },
 };
 

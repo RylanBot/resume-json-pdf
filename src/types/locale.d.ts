@@ -10,6 +10,7 @@ interface Common {
     SAVE: string;
     CANCEL: string;
     UPLOAD_AVATAR: string;
+    LATEST_NOTICE: string;
 }
 
 interface Field {
@@ -21,4 +22,5 @@ interface Field {
     FOOTNOTE_PADDING_X: string;
     CONTACT_PADDING_X: string;
     DETAILS_FONT: string;
+    FONT_STYLE: string;
 }

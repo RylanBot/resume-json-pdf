@@ -12,6 +12,8 @@ export const importJson = (file: File) => {
             const profileJson = json.profile;
             const experienceJson = json.experience;
 
+            if (!styleJson || !profileJson || !experienceJson) throw new Error();
+            
             setStyleStore(styleJson);
             setProfileStore(profileJson);
             setExperienceStore(experienceJson);
@@ -26,7 +28,7 @@ export const exportJson = () => {
     const { profileStore, experienceStore, styleStore } = useDataStore.getState();
     const data = { style: styleStore, profile: profileStore, experience: experienceStore };
     const jsonString = JSON.stringify(data, null, 2);
-    
+
     const blob = new Blob([jsonString], { type: "application/json" });
     const href = URL.createObjectURL(blob);
     const link = document.createElement('a');
