@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import useMessageHandler from '@/hooks/useMessageHandler';
-import useRouterGuard from '@/hooks/useRouterGuard';
+import { withLangGuard } from '@/hooks/useRouterGuard';
 
 import Dashboard from "@/pages/Dashboard";
 import LangRedirect from '@/pages/LangRedirect';
@@ -9,8 +9,7 @@ import LangRedirect from '@/pages/LangRedirect';
 function App() {
   const { messageContext } = useMessageHandler();
 
-  const { useLangGuard } = useRouterGuard();
-  const GuardedDashboard = useLangGuard(Dashboard);
+  const GuardedDashboard = withLangGuard(Dashboard);
 
   return (
     <>

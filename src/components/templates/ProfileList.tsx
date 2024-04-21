@@ -40,10 +40,10 @@ const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
             <div className="flex flex-col ml-20">
                 {data.contact?.map((contact, conIndex) => (
                     <p className="flex text-xs mt-1" key={conIndex}>
-                        {contact.icon &&
+                        {/* {contact.icon &&
                             <EditableText type={"icon"} text={contact.icon.trim()} path={`profile.contact[${conIndex}].icon`}
                                 className="w-4 h-4 mr-1 theme-text-color"
-                            />}
+                            />} */}
                         {contact.key &&
                             <span className="theme-text-color pt-0.5">
                                 <EditableText text={contact.key} path={`profile.contact[${conIndex}].key`} className="font-bold" />
@@ -69,7 +69,7 @@ const ProfileListPlain: React.FC<ProfileListProps> = ({ data }) => {
                 </p>
 
                 {data.footnote && data?.footnote?.length > 0 && (
-                    <div className="flex flex-wrap justify-center items-center text-sm gap-1 mt-2">
+                    <div className="flex flex-wrap justify-center items-center text-sm gap-1 mt-1">
                         {data.footnote?.map((footnote, footIndex) => (
                             <div className="flex justify-center items-center plain-footnote-item" key={footIndex} style={{ flexBasis: 'auto' }}>
                                 <div className="flex justify-center items-center">
@@ -87,11 +87,11 @@ const ProfileListPlain: React.FC<ProfileListProps> = ({ data }) => {
                     {data.contact?.map((item, index) => (
                         <div className="flex justify-center items-center plain-contact-item" key={index} style={{ flexBasis: 'auto' }}>
                             <div className="flex items-center">
-                                {item.icon &&
+                                {/* {item.icon &&
                                     <EditableText type={"icon"} text={item.icon.trim()} path={`profile.contact[${index}].icon`}
-                                        className='mr-1 mb-[1px] theme-text-color'
+                                        className='mr-1 mt-[1.5px] theme-text-color'
                                     />
-                                }
+                                } */}
                                 {item.key && (
                                     <span className="font-bold theme-text-color">
                                         <EditableText text={item.key} path={`profile.contact[${index}].key`} />

@@ -21,4 +21,5 @@ interface Field {
     FOOTNOTE_PADDING_X: string;
     CONTACT_PADDING_X: string;
     DETAILS_FONT: string;
+    FONT_STYLE: string;
 }

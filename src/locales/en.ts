@@ -11,13 +11,14 @@ const enLang: Locale = {
     },
     field: {
         TEMPLATE: "Template",
+        FONT_STYLE: "Font",
         COLOR: "Color",
         PAGE_PADDING_Y: "Page Padding Y",
         PROFILE_MARGIN_BOTTOM: "Profile Margin Bottom",
         EXPERIENCE_MARGIN_BOTTOM: "Experience Margin Bottom",
         FOOTNOTE_PADDING_X: "Footnote Padding X",
         CONTACT_PADDING_X: "Contact Padding X",
-        DETAILS_FONT: "Details Font Size"
+        DETAILS_FONT: "Experience Font Size",
     }
 };
 

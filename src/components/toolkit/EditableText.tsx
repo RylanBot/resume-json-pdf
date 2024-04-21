@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import IconParser from '@/helpers/IconParser';
+// import IconParser from '@/helpers/IconParser';
 import { LinkParser, StrongTextParser, TechParser } from '@/helpers/TextParser';
 import useEditWithUndo from '@/hooks/useEditWithUndo';
 import useModeStore from '@/stores/modeStore';
@@ -9,7 +9,7 @@ interface EditableTextProps {
     /* 不传类型则默认渲染纯文本 */
     type?: "strong" | "link" | "tech" | "icon";
     text?: string;
-    /*  索引路径，比如 profile.name，experience.[0].item[1].details[2] */
+    /* 索引路径，比如 profile.name，experience.[0].item[1].details[2] */
     path: string;
     className?: string;
 }
@@ -23,8 +23,8 @@ const EditableText: React.FC<EditableTextProps> = (
     const [rawText, setRawText] = useState<string | undefined>(text);
     const editableRef = useRef<HTMLSpanElement>(null);
 
-    // 提取开头，判断数据来源（profile, experience）
-    const { updateTempValue } = useEditWithUndo(`${path.split('.')[0]}Store` as any);
+    // 提取开头，判断数据来源
+    const { updateTempValue } = useEditWithUndo(`${path.split('.')[0]}Store` as 'profileStore' | 'experienceStore');
 
     const RenderText = () => {
         if (isEditing) {
@@ -37,8 +37,8 @@ const EditableText: React.FC<EditableTextProps> = (
                     return <>{LinkParser(rawText ?? '', className)}</>;
                 case 'tech':
                     return <>{TechParser(rawText ?? '')}</>;
-                case 'icon':
-                    return <>{(IconParser(rawText?.trim() ?? '', className))}</>
+                // case 'icon':
+                //     return <>{(IconParser(rawText?.trim() ?? '', className))}</>
                 default:
                     return <span className={className}>{rawText}</span>;
             }

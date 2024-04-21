@@ -32,12 +32,12 @@ const ExperienceCard: React.FC<ExperienceCardProp> = ({
     }, [title, subtitle]);
 
     return (
-        <div className="text-base">
+        <div>
             <div>
                 {title &&
                     <span ref={titleRef}>
                         <EditableText text={title} path={`experience.${sectionIndex}.items[${itemIndex}].title`}
-                            className="font-semibold theme-text-color align-middle"
+                            className="font-bold theme-text-color align-middle text-title"
                         />
                     </span>
                 }
@@ -46,15 +46,15 @@ const ExperienceCard: React.FC<ExperienceCardProp> = ({
                     {subtitle && (
                         <>
                             {!shouldBreak && <span className="font-normal text-gray-400 theme-divider-color mx-2 align-middle">丨</span>}
-                            <span ref={subtitleRef} className="theme-text-color text-sm align-middle">
+                            <span ref={subtitleRef} className="align-middle">
                                 <EditableText type={"link"} text={subtitle} path={`experience.${sectionIndex}.items[${itemIndex}].subtitle`}
-                                    className="theme-text-color"
+                                    className="theme-text-color font-semibold text-details "
                                 />
                             </span>
                         </>
                     )}
                     {timeline && (
-                        <span className={`text-sm mt-1 theme-text-color float-right ${shouldBreak ? "-mt-5" : ""}`}>
+                        <span className={`text-sm mt-1 theme-text-color float-right text-details ${shouldBreak ? "-mt-5" : ""}`}>
                             <EditableText text={timeline} path={`experience.${sectionIndex}.items[${itemIndex}].timeline`} />
                         </span>
                     )}
@@ -63,9 +63,9 @@ const ExperienceCard: React.FC<ExperienceCardProp> = ({
             <p className="mb-1">
                 {tech && <EditableText type={"tech"} text={tech} path={`experience.${sectionIndex}.items[${itemIndex}].tech`} />}
             </p>
-            <ul className="list-disc list-inside mb-2 details-font">
+            <ul className="list-disc list-inside mb-2">
                 {details?.filter(detail => detail.trim()).map((detail, detailIndex) => (
-                    <li key={detailIndex} className="theme-marker-color font-normal">
+                    <li key={detailIndex} className="theme-marker-color font-normal text-details">
                         <EditableText type={"strong"} text={detail} path={`experience.${sectionIndex}.items[${itemIndex}].details[${detailIndex}]`} />
                     </li>
                 ))}
@@ -83,15 +83,15 @@ const ExperienceList: React.FC<ExperienceListProps> = ({ data }) => {
         <div>
             {data?.map((part, sectionIndex) => (
                 <div key={sectionIndex}>
-                    <div className="flex items-center mb-0.5">
-                        {part.icon &&
+                    <div className="flex items-center">
+                        {/* {part.icon &&
                             <EditableText type={"icon"} text={part.icon} path={`experience.${sectionIndex}.icon`}
                                 className="w-5 h-5 mr-2 theme-text-color"
                             />
-                        }
+                        } */}
                         {part.section &&
                             <EditableText text={part.section} path={`experience.${sectionIndex}.section`}
-                                className="font-bold theme-text-color text-lg"
+                                className="font-bold theme-text-color text-section"
                             />
                         }
                     </div>
