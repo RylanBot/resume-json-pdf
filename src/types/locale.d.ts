@@ -10,6 +10,7 @@ interface Common {
     SAVE: string;
     CANCEL: string;
     UPLOAD_AVATAR: string;
+    LATEST_NOTICE: string;
 }
 
 interface Field {
