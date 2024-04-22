@@ -86,9 +86,9 @@ const SettingEditor: React.FC = () => {
 
                 {/* 切换模板 */}
                 <div className="flex items-center ml-8 mb-3">
-                    <h3 className="setting-title mr-5 w-16">{locale.field.TEMPLATE}</h3>
-                    <div className="flex items-center justify-center flex-grow">
-                        <label className="flex items-center cursor-pointer mr-7">
+                    <h3 className="setting-title mr-4 w-16">{locale.field.TEMPLATE}</h3>
+                    <div className="flex">
+                        <label className="flex items-center cursor-pointer w-24">
                             <input
                                 type="radio"
                                 value="avatar"
@@ -115,9 +115,9 @@ const SettingEditor: React.FC = () => {
 
                 {/* 切换字体 */}
                 <div className="flex items-center ml-8 mb-3">
-                    <h3 className="setting-title mr-6 w-16">{locale.field.FONT_STYLE}</h3>
-                    <div className="flex items-center justify-center flex-grow">
-                        <label className="flex items-center mr-[21px] cursor-pointer">
+                    <h3 className="setting-title mr-4 w-16">{locale.field.FONT_STYLE}</h3>
+                    <div className="flex">
+                        <label className="flex cursor-pointer w-24">
                             <input
                                 type="radio"
                                 value="default"
@@ -128,7 +128,7 @@ const SettingEditor: React.FC = () => {
                             />
                             <span className="text-sm font-semibold text-slate-800">Default</span>
                         </label>
-                        <label className="flex items-center cursor-pointer">
+                        <label className="flex cursor-pointer">
                             <input
                                 type="radio"
                                 value="fancy"
