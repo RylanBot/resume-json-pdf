@@ -20,8 +20,8 @@ const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
                     </div>
                 )}
                 <div className='ml-2'>
-                    <p className='text-xl font-bold mt-1 mb-3 theme-text-color'>
-                        {data.name && <EditableText text={data.name} path={`profile.name`} />}
+                    <p className='text-xl mt-1 mb-3 theme-text-color'>
+                        {data.name && <EditableText text={data.name} path={`profile.name`} className={'font-bold'} />}
                     </p>
                     {data.footnote?.map((footnote, footIndex) => (
                         <p className='text-sm mt-2' key={footIndex}>
@@ -42,7 +42,7 @@ const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
                     <p className='flex' key={conIndex}>
                         {contact.icon &&
                             <EditableText type={'icon'} text={contact.icon.trim()} path={`profile.contact[${conIndex}].icon`}
-                                className='w-4 h-4 mr-1  theme-text-color'
+                                className='w-4 h-4 mr-1 theme-text-color'
                             />}
                         {contact.key &&
                             <span className='theme-text-color mt-0.5'>
