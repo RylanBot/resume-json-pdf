@@ -8,7 +8,7 @@ const zhLang: Locale = {
         SAVE: '保存',
         CANCEL: '取消',
         UPLOAD_AVATAR: '上传照片',
-        LATEST_NOTICE: '最近项目进行了部分重构。旧用户可以查看 README 并重新下载一份 JSON 模板。感谢支持~'
+        LATEST_NOTICE: '最近项目进行了部分重构。旧用户可以查看 README 并重新下载一份 JSON 模板。感谢支持。'
     },
     field: {
         TEMPLATE: '模板',

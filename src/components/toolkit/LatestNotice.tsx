@@ -22,9 +22,9 @@ const LatestNotice = () => {
     return (
         <>
             {showNotice && (
-                <div className='fixed top-60 right-12 bg-sky-700 text-white w-40 p-4 rounded-lg shadow-md font-serif'>
+                <div className='fixed top-72 right-12 bg-slate-500 text-white w-40 p-4 rounded-lg shadow-md'>
                     <div className='flex justify-center items-center mb-4'>
-                        <p className='font-bold text-lg'>Notice</p>
+                        <p className='font-bold text-lg font-serif italic'>Notice</p>
                         <button
                             className='ml-auto'
                             onClick={handleClose}
