@@ -13,10 +13,10 @@ const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
     return (
         <div className='flex justify-between items-center custom-profile'>
 
-            <div className='flex items-center '>
+            <div className='flex items-center'>
                 {data.avatar && (
                     <div className='w-[80px] h-[100px] mr-6'>
-                        <img src={data.avatar} alt='avatar' className='w-full h-full' />
+                        <img src={data.avatar} className='w-full h-full' />
                     </div>
                 )}
                 <div className='ml-2'>

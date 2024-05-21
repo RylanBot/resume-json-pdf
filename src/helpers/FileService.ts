@@ -13,7 +13,7 @@ export const importJson = (file: File) => {
             const experienceJson = json.experience;
 
             if (!styleJson || !profileJson || !experienceJson) throw new Error();
-            
+
             setStyleStore(styleJson);
             setProfileStore(profileJson);
             setExperienceStore(experienceJson);
@@ -42,33 +42,64 @@ export const exportJson = () => {
 
 export const exportHtml = () => {
     const element = document.getElementById('export-html');
+    if (!element) return;
+    const clone = element.cloneNode(true) as HTMLElement;
 
+    // 引入外部 link
+    // eslint-disable-next-line prefer-const
+    let links: { rel: string; href: string; crossOrigin?: string }[] = [
+        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css', crossOrigin: 'anonymous' }
+    ];
+    
+    const { styleStore } = useDataStore.getState();
+    if (styleStore.fontStyle === 'fancy') {
+        links.push(
+            { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+            { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
+            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap' }
+        );
+    }
+
+    links.forEach(linkAttrs => {
+        const linkEl = document.createElement('link');
+        linkEl.setAttribute('rel', linkAttrs.rel);
+        linkEl.setAttribute('href', linkAttrs.href);
+        if (linkAttrs.crossOrigin) {
+            linkEl.setAttribute('crossorigin', linkAttrs.crossOrigin);
+        }
+        clone.insertBefore(linkEl, clone.firstChild);
+    });
+
+    // 引入内部 CSS
     const styleSheets = Array.from(document.styleSheets);
     let cssString = '';
     styleSheets.forEach(sheet => {
-        if (sheet.cssRules) {
-            const rules = Array.from(sheet.cssRules);
-            rules.forEach(rule => {
-                cssString += rule.cssText;
-            });
-        } else if (sheet.href) {
-            cssString += `@import url('${sheet.href}');`;
+        try {
+            if (sheet.cssRules) {
+                const rules = Array.from(sheet.cssRules);
+                rules.forEach(rule => {
+                    cssString += rule.cssText;
+                });
+            } else if (sheet.href) {
+                cssString += `@import url('${sheet.href}');`;
+            }
+        } catch (error) {
+            console.warn(error);
         }
     });
 
     const customCss = `
         #export-page {
             margin: 35px 0 !important;
-            width: 210mm !important;
-            height: 286mm !important;
+        }
+        #contact-icon {
+            margin-top: 4px;
         }
     `;
     cssString += customCss;
 
     const styleEl = document.createElement('style');
     styleEl.appendChild(document.createTextNode(cssString));
-
-    const clone = element!.cloneNode(true) as HTMLElement;
     clone.insertBefore(styleEl, clone.firstChild);
 
     const html = clone.outerHTML;

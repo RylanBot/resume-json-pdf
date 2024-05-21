@@ -1,23 +1,22 @@
 import React, { useRef } from 'react';
+import ReactToPrint from 'react-to-print';
 
 import { BiCodeCurly } from 'react-icons/bi';
 import { BsGithub } from 'react-icons/bs';
 import { RiFilePdf2Line } from 'react-icons/ri';
 import { TbBrandHtml5, TbDownload, TbSettings2, TbUpload } from 'react-icons/tb';
 
-import { exportHtml, exportJson, importJson } from '@/helpers/FileService';
-
-import ReactToPrint from 'react-to-print';
-
 import ResumeContent from '@/components/layout/ResumeContent';
 import SettingEditor from '@/components/layout/SettingEditor';
 import LangSwitch from '@/components/toolkit/LangSwitch';
+import LatestNotice from '@/components/toolkit/LatestNotice';
+
+import { exportHtml, exportJson, importJson } from '@/helpers/FileService';
 
 import useEditWithUndo from '@/hooks/useEditWithUndo';
 import useLocale from '@/hooks/useLocale';
 
 import useModeStore from '@/stores/modeStore';
-import LatestNotice from '@/components/toolkit/LatestNotice';
 
 const Dashboard: React.FC = () => {
     const { locale } = useLocale();

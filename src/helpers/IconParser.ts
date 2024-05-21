@@ -35,9 +35,6 @@ import * as TiIcons from 'react-icons/ti';
 import * as VscIcons from 'react-icons/vsc';
 import * as WiIcons from 'react-icons/wi';
 
-/**
- * 图标库索引
- */
 interface IconLibrary {
     [key: string]: { [key: string]: IconType };
 }
@@ -73,8 +70,11 @@ const iconLibrary: IconLibrary = {
     'wi': WiIcons,
 };
 
+/**
+ * @deprecated
+ * 图标库索引
+ */
 const IconParser = (iconName: string, className?: string): React.ReactElement | null => {
-
     // 查找大写字母的索引
     const firstUpperCaseIndex = iconName.search(/[A-Z]/);
     const secondUpperCaseIndex = iconName.substring(firstUpperCaseIndex + 1).search(/[A-Z]/);

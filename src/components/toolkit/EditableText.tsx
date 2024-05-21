@@ -37,10 +37,9 @@ const EditableText: React.FC<EditableTextProps> = (
                     return <>{LinkParser(rawText ?? '', className)}</>;
                 case 'tech':
                     return <>{TechParser(rawText ?? '')}</>;
-                // case 'icon':
-                //     return <>{(IconParser(rawText?.trim() ?? '', className))}</>
                 case 'icon':
-                    return <> <i className={`${rawText} ${className}`}></i></>
+                    // return <>{(IconParser(rawText?.trim() ?? '', className))}</>
+                    return <> <i id="contact-icon" className={`${rawText} ${className}`}></i></>
                 default:
                     return <span className={className}>{rawText}</span>;
             }
@@ -50,7 +49,7 @@ const EditableText: React.FC<EditableTextProps> = (
     const handleClick = () => {
         if (editModeStore) {
             setIsEditing(true);
-            /*  确保点击时将焦点设置到元素上，触发边框样式*/
+            /*  确保点击时将焦点设置到元素上，触发边框样式 */
             setTimeout(() => {
                 editableRef.current?.focus();
             }, 0);
