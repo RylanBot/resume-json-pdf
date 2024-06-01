@@ -19,30 +19,40 @@ const ExperienceCard: React.FC<ExperienceCardProp> = ({
     const subtitleRef = useRef<HTMLSpanElement>(null);
     const timelineRef = useRef<HTMLSpanElement>(null);
 
-    const [shouldBreak, setShouldBreak] = useState(false);
+    const [lineBreak, setLineBreak] = useState(false);
+
+    const pixelsToMm = (pixel: number) => pixel / 3.78;
 
     // 避免 title + subtitle 过长，实现自动换行
     useEffect(() => {
-        setShouldBreak(false);
+        const titleElement = titleRef.current;
+        const subtitleElement = subtitleRef.current;
+        const timelineElement = timelineRef.current;
 
-        // 像素到毫米的转换
-        const pixelsToMm = (pixel: number) => pixel / 3.78;
-        // 确保在 DOM 更新数据后测量
-        setTimeout(() => {
-            const titleWidth = titleRef.current?.offsetWidth || 0;
-            const subtitleWidth = subtitleRef.current?.offsetWidth || 0;
-            const timelineWidth = timelineRef.current?.offsetWidth || 0;
+        if (!titleElement || !subtitleElement || !timelineElement) return;
 
-            const pagePxMn = pixelsToMm(40) // px-10
+        const observer = new MutationObserver(() => {
+            const titleWidth = titleElement.offsetWidth || 0;
+            const subtitleWidth = subtitleElement.offsetWidth || 0;
+            const timelineWidth = timelineElement.offsetWidth || 0;
+
+            const pagePxMn = pixelsToMm(40); // px-10
             const titleWidthInMn = pixelsToMm(titleWidth);
             const subtitleWidthInMn = pixelsToMm(subtitleWidth);
             const timelineWidthInMn = pixelsToMm(timelineWidth);
 
-            if (titleWidthInMn + subtitleWidthInMn + timelineWidthInMn + pagePxMn * 2 > 205) {
-                setShouldBreak(true);
-            }
-        }, 0);
-    }, [title, subtitle, tempStores.styleStore.detailsFont]);
+            const shouldBreak = titleWidthInMn + subtitleWidthInMn + timelineWidthInMn + pagePxMn * 2 > 205;
+            setLineBreak(shouldBreak);
+        });
+
+        observer.observe(titleElement, { childList: true, subtree: true });
+        observer.observe(subtitleElement, { childList: true, subtree: true });
+        observer.observe(timelineElement, { childList: true, subtree: true });
+
+        return () => {
+            observer.disconnect();
+        };
+    }, [tempStores]);
 
     return (
         <div>
@@ -54,11 +64,11 @@ const ExperienceCard: React.FC<ExperienceCardProp> = ({
                         />
                     </span>
                 }
-                {shouldBreak && <br />}
+                {lineBreak && <br />}
                 <span>
                     {subtitle && (
                         <>
-                            {!shouldBreak && <span className='font-normal text-gray-400 theme-divider-color mx-1 align-middle'>丨</span>}
+                            {!lineBreak && <span className='font-normal text-gray-400 theme-divider-color mx-1 align-middle'>丨</span>}
                             <span ref={subtitleRef} className='align-middle'>
                                 <EditableText type={'link'} text={subtitle} path={`experience.${sectionIndex}.items[${itemIndex}].subtitle`}
                                     className='theme-text-color font-semibold text-details '
@@ -67,7 +77,7 @@ const ExperienceCard: React.FC<ExperienceCardProp> = ({
                         </>
                     )}
                     {timeline && (
-                        <span ref={timelineRef} className={`text-sm mt-1 theme-text-color float-right text-details ${shouldBreak ? '-mt-5' : ''}`}>
+                        <span ref={timelineRef} className={`text-sm mt-1 theme-text-color float-right text-details ${lineBreak ? '-mt-5' : ''}`}>
                             <EditableText text={timeline} path={`experience.${sectionIndex}.items[${itemIndex}].timeline`} />
                         </span>
                     )}
