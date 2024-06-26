@@ -8,8 +8,8 @@
 
 - **Support for multiple templates**：Provide versions with and without photos in both Chinese and English.
 - **Support for icon integration**: Reference to the [Font Awesome](https://fontawesome.com/icons) library. ✨
-- **Support for bold text**：Enclose value within the 'details' field in double asterisks, e.g., " ** Optimize xxx ** " will render as "**Optimize xxx**".
-- **Support for linking**：Use "http" or "https" at the beginning of 'value' and 'subtitle' fields, e.g., "https: \//github.com/RylanBot" will render as "[github.com/RylanBot](https://github.com/RylanBot)"
+- **Support for bold text**：Enclose text in double asterisks, e.g., " ** Optimize xxx ** " will render as "**Optimize xxx**".
+- **Support for linking**：Use "http" or "https" at the beginning of text, e.g., "https: \//github.com/RylanBot" will render as "[github.com/RylanBot](https://github.com/RylanBot)"
 - **Support for tech stack separation**：Use plus signs within the 'tech' field，e.g., "React+TypeScript+Tailwind CSS" will render as "_`React` `TypeScript` `Tailwind CSS`_".
 - **Support for custom colors**：Choose and preview your preferred styles online.
 - **Support for custom layout**：Create section such as "1 Internships + 3 Projects" or "2 Internships + 2 Projects", or introduce additional elements like "Published Papers" as long as they maintain a neat page. When there is less content, adjust margin or padding to ensure proper design.
@@ -38,8 +38,8 @@ The original intention of this project is to focus more on the content of the re
 | :--- | :--- | :--- |
 | name | | |
 | avatar | | Uploaded online defaults to Base64 storage or modified locally to a image link |
-| footnote[] | | { "label": "", "content": "" } |
-| contact[] | | { "icon": "", "key": "", "value": "" } |
+| footnote[] | | |
+| contact[] | | { "icon": "", "value": "" } |
 
 **Experience[ ]**  
 | Field | Meaning | Note |

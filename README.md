@@ -8,8 +8,8 @@
 
 - **支持多个模板**：目前提供含照片和无照片的中英文版本
 - **支持引入图标**：参考 [Font Awesome](https://fontawesome.com/icons) 库 ✨
-- **支持文字加粗**：details 字段中使用双星号包裹，比如 “ ** 优化 xxx ** ” 会被渲染成 “ **优化 xxx** ”
-- **支持链接跳转**：value 和 subtitle 字段使用 “http” 或者 “https” 开头，比如 “https: \//github.com/RylanBot” 会被渲染成 “[github.com/RylanBot](https://github.com/RylanBot)”
+- **支持文字加粗**：使用双星号包裹，比如 “ ** 优化 xxx ** ” 会被渲染成 “ **优化 xxx** ”
+- **支持链接跳转**：使用 “http” 或者 “https” 开头，比如 “https: \//github.com/RylanBot” 会被渲染成 “[github.com/RylanBot](https://github.com/RylanBot)”
 - **支持技术栈拆分**：tech 字段中使用加号连接，比如 “React+TypeScript+Tailwind CSS” 会被渲染成 “_`React` `TypeScript` `Tailwind CSS`_”
 - **支持自定义颜色**：在线挑选并预览你喜欢的样式
 - **支持自定义排版**：“一段实习+三个项目”或者“两段实习+两个项目”，或者额外引入“发表论文”等分区，保证整齐即可。文字内容较少时，通过调节部分边距使页面布局合理
@@ -38,8 +38,8 @@
 | :--- | :--- | :--- |
 | name | 名字 | |
 | avatar | 照片 | 在线上传默认转为 Base64 储存，本地可以修改为图床对应的链接 |
-| footnote[] | 附加说明 | { "label": "标签", "content": "内容" } |
-| contact[] | 联系方式 | { "icon": "图标", "key": "键", "value": "值" } |
+| footnote[] | 附加说明 | |
+| contact[] | 联系方式 | { "icon": "图标", "value": "值" } |
 
 **Experience[ ]**  
 | 字段 | 含义 | 备注 |
