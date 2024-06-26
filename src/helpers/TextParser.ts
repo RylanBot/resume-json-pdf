@@ -2,72 +2,110 @@ import React, { ReactNode } from "react";
 
 import useModeStore from "@/stores/modeStore";
 
-export const LinkParser = (text: string, className?: string): React.ReactElement => {
-    const { editModeStore } = useModeStore.getState();
+/**
+ * 解析加粗文本与链接
+ */
+export const DefaultParser = (text: string, className?: string): ReactNode[] => {
+  const { editModeStore } = useModeStore();
 
-    const isHttpUrl = text.startsWith('https://') || text.startsWith('http://');
-    const displayText = text.replace(/^https?:\/\//, '');
+  const parts: ReactNode[] = [];
+  let index = 0;
+
+  const createBold = (text: string) => {
+    return React.createElement(
+      "strong",
+      {
+        key: index++,
+        className: "theme-text-color",
+        style: { color: "rgb(from var(--theme-color) r g b / 85%)" },
+      },
+      text
+    );
+  };
+
+  const pushText = (text: string) => {
+    parts.push(
+      React.createElement("span", { key: index++, className: className }, text)
+    );
+  };
+
+  const pushBold = (text: string) => {
+    parts.push(createBold(text));
+  };
+
+  const pushLink = (text: string, bold: boolean) => {
+    const httpRegex = /^https?:\/\//;
+    const isHttpUrl = httpRegex.test(text);
+    const displayText = text.replace(httpRegex, "");
+
+    const textElement = bold
+      ? createBold(displayText)
+      : React.createElement(
+        "span",
+        { key: index++, className: className },
+        displayText
+      );
 
     if (editModeStore || !isHttpUrl) {
-        return React.createElement('span', { className: className }, displayText);
+      parts.push(textElement);
+    } else {
+      parts.push(
+        React.createElement(
+          "a",
+          {
+            key: index++,
+            href: text,
+            className: className,
+            target: "_blank",
+            rel: "noopener noreferrer",
+          },
+          textElement
+        )
+      );
+    }
+  };
+
+  const regex = /(\*\*\s*(https?:\/\/[^\s]*?)\s*\*\*)|(\*\*\s*(.*?)\s*\*\*)|(\s*https?:\/\/[^\s]+\s*)/g;
+
+  let match;
+  let lastIndex = 0;
+  while ((match = regex.exec(text)) !== null) {
+    pushText(text.substring(lastIndex, match.index));
+
+    if (match[1]) {
+      pushLink(match[2], true);
+    } else if (match[3]) {
+      pushBold(match[4]);
+    } else if (match[5]) {
+      pushLink(match[5], false);
     }
 
-    return React.createElement('a',
-        { href: text, className: className, target: "_blank", rel: "noopener noreferrer" },
-        displayText
-    );
-};
+    lastIndex = regex.lastIndex;
+  }
 
-export const StrongTextParser = (text: string): ReactNode[] => {
-    const regex = /\*\*(.*?)\*\*/g;
-    const parts: ReactNode[] = [];
-    let lastIndex = 0;
+  pushText(text.substring(lastIndex));
 
-    text.replace(regex, (match: string, p1: string, index: number) => {
-        if (index > lastIndex) {
-            parts.push(text.substring(lastIndex, index));
-        }
-
-        parts.push(React.createElement('strong', {
-            key: index,
-            className: "theme-text-color",
-            style: {
-                color: "rgb(from var(--theme-color) r g b / 85%)",
-            }
-        }, p1));
-
-        lastIndex = index + match.length;
-        return match;
-    });
-
-    if (lastIndex < text.length) {
-        parts.push(text.substring(lastIndex));
-    }
-
-    return parts;
-};
-
-export const TechParser = (text: string): React.ReactElement => {
-    const techItems = text
-        .split(/(?<!\+)\+ *(?=\+?)/)  // 不匹配连续加号
-        .filter(item => item.trim() !== '')
-        .map((item, index) =>
-            React.createElement('span', {
-                key: index,
-                className: "bg-gray-100 rounded py-0.5 px-2 text-xs mr-2 italic font-mono font-bold theme-text-color",
-            }, item.trim())
-        );
-
-    return React.createElement(React.Fragment, {}, ...techItems);
+  return parts;
 };
 
 /**
- * 处理不同语言造成的换行情况不同 
+ * 解析技术栈
  */
-export const formatTitle = (title: string) => {
-    const words = title.split(' ');
-    if (words.length > 1) {
-        return words[0] + '\n' + words.slice(1).join(' ');
-    }
-    return title;
-}
+export const TechParser = (text: string): React.ReactElement => {
+  const techItems = text
+    .split(/(?<!\+)\+ *(?=\+?)/) // 不匹配连续加号
+    .filter((item) => item.trim() !== "")
+    .map((item, index) =>
+      React.createElement(
+        "span",
+        {
+          key: index,
+          className:
+            "bg-gray-100 rounded py-0.5 px-2 text-xs mr-2 italic font-mono font-bold theme-text-color",
+        },
+        item.trim()
+      )
+    );
+
+  return React.createElement(React.Fragment, {}, ...techItems);
+};
