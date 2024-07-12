@@ -5,7 +5,6 @@ import useEditWithUndo from '@/hooks/useEditWithUndo';
 import useModeStore from '@/stores/modeStore';
 
 interface EditableTextProps {
-    /* 不传类型则默认渲染纯文本 */
     type?: "icon";
     text: string;
     /* 索引路径，比如 profile.name，experience.[0].item[1].details[2] */
@@ -41,7 +40,7 @@ const EditableText: React.FC<EditableTextProps> = (
     const handleClick = () => {
         if (editModeStore) {
             setIsEditing(true);
-            /*  确保点击时将焦点设置到元素上，触发边框样式 */
+            // 确保点击时将焦点设置到元素上，触发边框样式
             setTimeout(() => {
                 editableRef.current?.focus();
             }, 0);
@@ -61,6 +60,23 @@ const EditableText: React.FC<EditableTextProps> = (
         }
     };
 
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+        // 禁止换行
+        if (event.key === 'Enter') {
+            event.preventDefault();
+        }
+    };
+
+    const handlePaste = (event: React.ClipboardEvent<HTMLSpanElement>) => {
+        const items = event.clipboardData.items;
+        Array.from(items).forEach(item => {
+            // 禁止粘贴图片
+            if (item.type.indexOf('image') !== -1) {
+                event.preventDefault();
+            }
+        });
+    };
+
     useEffect(() => {
         setIsEditing(false);
         setRawText(text);
@@ -73,6 +89,8 @@ const EditableText: React.FC<EditableTextProps> = (
             contentEditable={isEditing}
             onClick={handleClick}
             onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
+            onPaste={handlePaste}
             suppressContentEditableWarning={true} // 强行绕过 React 的警告
             className="font-normal editable"
         >
