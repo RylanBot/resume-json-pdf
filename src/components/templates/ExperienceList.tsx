@@ -70,7 +70,7 @@ const ExperienceCard: React.FC<ExperienceCardProp> = ({
                         <>
                             {!lineBreak && <span className='font-normal text-gray-400 theme-divider-color mx-1 align-middle'>丨</span>}
                             <span ref={subtitleRef} className='align-middle'>
-                                <EditableText type={'link'} text={subtitle} path={`experience.${sectionIndex}.items[${itemIndex}].subtitle`}
+                                <EditableText text={subtitle} path={`experience.${sectionIndex}.items[${itemIndex}].subtitle`}
                                     className='theme-text-color font-semibold text-details '
                                 />
                             </span>
@@ -83,13 +83,13 @@ const ExperienceCard: React.FC<ExperienceCardProp> = ({
                     )}
                 </span>
             </div>
-            <p className='mb-1'>
-                {tech && <EditableText type={'tech'} text={tech} path={`experience.${sectionIndex}.items[${itemIndex}].tech`} />}
+            <p className='mb-1 theme-text-color'>
+                {tech && <EditableText text={tech} path={`experience.${sectionIndex}.items[${itemIndex}].tech`} />}
             </p>
             <ul className='list-disc list-inside mb-2'>
                 {details?.filter(detail => detail.trim()).map((detail, detailIndex) => (
                     <li key={detailIndex} className='theme-marker-color font-normal text-details'>
-                        <EditableText type={'strong'} text={detail} path={`experience.${sectionIndex}.items[${itemIndex}].details[${detailIndex}]`} />
+                        <EditableText text={detail} path={`experience.${sectionIndex}.items[${itemIndex}].details[${detailIndex}]`} />
                     </li>
                 ))}
             </ul>

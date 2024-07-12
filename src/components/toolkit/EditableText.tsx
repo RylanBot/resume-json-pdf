@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-// import IconParser from '@/helpers/IconParser';
-import { LinkParser, StrongTextParser, TechParser } from '@/helpers/TextParser';
+import TextParser from '@/helpers/TextParser';
 import useEditWithUndo from '@/hooks/useEditWithUndo';
 import useModeStore from '@/stores/modeStore';
 
 interface EditableTextProps {
     /* 不传类型则默认渲染纯文本 */
-    type?: "strong" | "link" | "tech" | "icon";
-    text?: string;
+    type?: "icon";
+    text: string;
     /* 索引路径，比如 profile.name，experience.[0].item[1].details[2] */
     path: string;
     className?: string;
@@ -31,17 +30,10 @@ const EditableText: React.FC<EditableTextProps> = (
             return rawText;
         } else {
             switch (type) {
-                case 'strong':
-                    return <>{StrongTextParser(rawText ?? '')}</>;
-                case 'link':
-                    return <>{LinkParser(rawText ?? '', className)}</>;
-                case 'tech':
-                    return <>{TechParser(rawText ?? '')}</>;
                 case 'icon':
-                    // return <>{(IconParser(rawText?.trim() ?? '', className))}</>
-                    return <> <i id="contact-icon" className={`${rawText} ${className}`}></i></>
+                    return <i id="contact-icon" className={`${rawText ?? ""} ${className}`}></i>;
                 default:
-                    return <span className={className}>{rawText}</span>;
+                    return <>{TextParser(rawText ?? "", className)}</>;
             }
         }
     };

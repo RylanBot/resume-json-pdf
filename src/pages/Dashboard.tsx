@@ -38,7 +38,7 @@ const Dashboard: React.FC = () => {
     return (
         <div>
             {/* 顶部栏 */}
-            <div className="fixed print-hidden w-full p-2 bg-slate-600 text-white flex justify-between items-center">
+            <div className="fixed z-10 print-hidden w-full p-2 bg-slate-600 text-white flex justify-between items-center">
                 {/* 左侧设置按钮 */}
                 {!editModeStore && (
                     <div className="flex justify-start ml-4">

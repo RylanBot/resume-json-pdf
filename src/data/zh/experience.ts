@@ -26,7 +26,7 @@ const ZH_EXPERIENCE: ExperienceData[] = [
                 title: 'xxxx 技术有限公司',
                 subtitle: 'xxx 部门',
                 timeline: '2023.07 - 2023.09',
-                tech: "Vue + Ant Design",
+                tech: "***`Vue` `Ant Design`***",
                 details: [
                     '封装 **xxxxx 组件**，解决 xxxxx 问题',
                     '使用 xxxxx，**优化 xxxxx**',
@@ -44,7 +44,7 @@ const ZH_EXPERIENCE: ExperienceData[] = [
                 title: '在线简历生成器',
                 subtitle: 'https://github.com/RylanBot/resume-json-pdf',
                 timeline: '2023.12 - 2024.01',
-                tech: 'React + TypeScript + Tailwind CSS',
+                tech: '***`React` `TypeScript` `Tailwind CSS`***',
                 details: [
                     '......',
                     '......',
@@ -55,7 +55,7 @@ const ZH_EXPERIENCE: ExperienceData[] = [
                 title: 'xxxxxx',
                 subtitle: '',
                 timeline: '2023.09 - 2023.12',
-                tech: 'xxx + xxxx + xxxxx',
+                tech: '***`xxx` `xxxx` `xxxxx`***',
                 details: [
                     '......',
                     '......',
@@ -67,7 +67,7 @@ const ZH_EXPERIENCE: ExperienceData[] = [
                 title: 'xxxxxx',
                 subtitle: '',
                 timeline: '2023.10 - 2023.12',
-                tech: 'xxx + xxxx + xxxxx',
+                tech: '***`xxx` `xxxx` `xxxxx`***',
                 details: [
                     '......',
                     '......',

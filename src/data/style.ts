@@ -3,7 +3,7 @@ import { StyleData } from "@/types/style";
 const COMMON_STYLE: StyleData = {
     template: "avatar",
     fontStyle: "default",
-    color: "#000000",
+    color: "#225081",
     pagePy: 12,
     profileMb: 8,
     experienceMb: 8,
