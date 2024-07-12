@@ -1,67 +1,73 @@
 # resume-json-pdf
 
-中文文档 | [README in English](./README-EN.md)
+English | [简体中文](./README-CN.md) 
 
-**本地 “沉浸式” 编写 JSON 文件，在线生成 PDF / HTML 简历 📄**
+**Edit JSON files locally for an engaging writing process and obtain PDF / HTML resumes online 📄**
 
-## 🔥 功能介绍
+## 🔥 Feature
 
-- **支持多个模板**：目前提供含照片和无照片的中英文版本
-- **支持引入图标**：参考 [Font Awesome](https://fontawesome.com/icons) 库 ✨
-- **支持文字加粗**：details 字段中使用双星号包裹，比如 “ ** 优化 xxx ** ” 会被渲染成 “ **优化 xxx** ”
-- **支持链接跳转**：value 和 subtitle 字段使用 “http” 或者 “https” 开头，比如 “https: \//github.com/RylanBot” 会被渲染成 “[github.com/RylanBot](https://github.com/RylanBot)”
-- **支持技术栈拆分**：tech 字段中使用加号连接，比如 “React+TypeScript+Tailwind CSS” 会被渲染成 “_`React` `TypeScript` `Tailwind CSS`_”
-- **支持自定义颜色**：在线挑选并预览你喜欢的样式
-- **支持自定义排版**：“一段实习+三个项目”或者“两段实习+两个项目”，或者额外引入“发表论文”等分区，保证整齐即可。文字内容较少时，通过调节部分边距使页面布局合理
+### 💕 Support Markdown Syntax
+(The following syntax can be nested)
+- **Italic text**: \*Italic\* will be rendered as *Italic* 
+- **Bold text**: \*\*Bold\*\* will be rendered as **Bold**
+- **Inline code blocks**: \`React\` \`TypeScript\` \`Tailwind CSS\` will be rendered as `React` `TypeScript` `Tailwind CSS`
+- **Links**: https://github.com/RylanBot will be rendered as [github.com/RylanBot](https://github.com/RylanBot)
 
-## 🧙🏻 快速上手
+### 💕 Support Custom Styles
+- **Templates**: Versions with and without photos
+- **Icons**: Refer to the [Font Awesome](https://fontawesome.com/icons) library
+- **Fonts**: Default (Times) or Noto Serif SC
+- **Colors**: Use a color picker to select
+- **Layout**: Adjust margins for a reasonable page design
 
-### 🔮 开箱即用
+## 🧙🏻 Quick Start
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-点击查看-lightseagreen?style=for-the-badge&logo=vercel)](https://project.resume-json-pdf.rylan.cn/)
+### 🔮 Ready to Use
 
-**在线导出 JSON 模板 → 本地修改数据 → 上传修改后的 JSON 文件 → 在线导出 PDF / HTML 简历**  
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20for%20visist-lightseagreen?style=for-the-badge&logo=vercel)](https://project.resume-json-pdf.rylan.cn/)
+
+**Export JSON template online → Modify data locally → Upload modified JSON File → Export PDF / HTML resume online**
 
 > [!Tip]  
-> **引入了简单的在线编辑文字的功能 → 设置模式下点击相关文字**  
+> **Introduced a simple online text editing feature → Click on the relevant text in the setting mode**
 
-这个项目的开发初衷是为了制作简历时能更关注于文字本身，不纠结页面表单的填写和样式的排版，并实现最大程度的动态拓展。更推荐本地填写，在线微调，暂时未支持复杂的在线增删功能。
+The original intention of this project is to focus more on the content of the resume itself, without worrying about filling out page forms and formatting styles, and to achieve maximum dynamic expansion. It is recommended to fill out locally, fine-tune online, and currently does not support complex online adding and deleting functions.
 
-#### 参数说明
+#### Parameter
 
-- 缺少某个字段不会报错，但页面相应部分渲染为空白，可能导致排版错位
+- Missing a certain field won't result in an error, but the corresponding part will be rendered as blank, potentially causing layout issues.
 
-- 注意 JSON 格式规范，缺少括号逗号等情况会导入失败
+- Pay attention to JSON format specifications; missing parentheses, commas, etc., can lead to import failures.
 
 **Profile**  
-| 字段 | 含义 | 备注 |
+| Field | Meaning | Note |
 | :--- | :--- | :--- |
-| name | 名字 | |
-| avatar | 照片 | 在线上传默认转为 Base64 储存，本地可以修改为图床对应的链接 |
-| footnote[] | 附加说明 | { "label": "标签", "content": "内容" } |
-| contact[] | 联系方式 | { "icon": "图标", "key": "键", "value": "值" } |
+| name | | |
+| avatar | | Uploaded online defaults to Base64 storage or modified locally to a image link |
+| footnote[] | | |
+| contact[] | | { "icon": "", "value": "" } |
 
 **Experience[ ]**  
-| 字段 | 含义 | 备注 |
+| Field | Meaning | Note |
 | :--- | :--- | :--- |
-| section | 分区 | |
-| icon | 图标 | |
-| items[] | 经历 | { "title": "标题", "subtitle": "副标题", "timeline": "时间线", "tech": "技术栈", <br> "details": [ "描述内容" ] } |
+| section | | |
+| icon | | |
+| items[] | | { "title": "", "subtitle": "", "timeline": "", "tech": "", "details": ["", ""] } |
 
 **Style**  
-| 字段 | 含义 | 备注 |
+| Field | Meaning | Note |
 | :--- | :--- | :--- |
-| template | 模板 | avatar / plain |
-| fontStyle ✨ | 字体 | default / fancy |
-| color | 颜色 | 16 进制格式 |
-| pagePy | 简历页面 上下内边距 | number |
-| profileMb | 个人信息 下外边距 | number |
-| experienceMb | 经历部分 下外边距 | number |
-| plainFootPx | 附加说明 左右内边距 | number（只对 plain 模板有效）|
-| plainContactPx | 联系方式 左右内边距 | number（只对 plain 模板有效）|
-| detailsFont | 经历部分 字体大小 | number |
+| template | | avatar / plain |
+| fontStyle | | default / fancy |
+| color | | Hexadecimal |
+| pagePy | Resume Padding Y | Number |
+| profileMb | Profile Margin bottom | Number |
+| experienceMb | Experience Margin bottom | Number |
+| plainFootPx | Footnote Padding X | Number (only valid for the plain template) |
+| plainContactPx | Contact Padding X | Number (only valid for the plain template) |
+| detailsFont | Experience Section Font Size | number |
 
-### 🔮 二次开发
+### 🔮 For Development
 
 <p>
   <img src="https://img.shields.io/badge/node-20.x-green" alt="node version"/>
@@ -69,17 +75,17 @@
   <img src="https://img.shields.io/badge/yarn-1.x-blue" alt="yarn version"/>
 </p>
 
-如果你熟悉 Web 前端技术且对源码感兴趣，可以根据以下命令，在本地启动这个程序
+If you are familiar with Web frontend technologies and are interested in the source code, you can run this program using the following commands.
 
 ```sh
 npm install # or 'yarn'
 npm run dev
 ```
 
-## 🌷 效果预览
+## 🌷 Preview
 
-![resume-json-pdf-avatar-cn](https://s2.loli.net/2024/04/21/VD2dbJneyHAuZOW.png)
+![resume-json-pdf-avatar-en](https://s2.loli.net/2024/04/21/6sS5EQIpol7vPzW.png)
 
 ---
 
-![resume-json-pdf-plain-cn](https://s2.loli.net/2024/04/21/3oanYrBTEsqgSKJ.png)
+![resume-json-pdf-plain-en](https://s2.loli.net/2024/04/21/hSBOZIYumoEDd14.png)
