@@ -23,12 +23,12 @@ const ZH_EXPERIENCE: ExperienceData[] = [
         timeline: '2020-至今',
         tech: 'Tokio + Nom + Bevy',
         details: [
-          '熟练Rust编程语言和Node开发',
+          '熟悉Rust编程语言和Node开发',
           '了解常用的软件架构模式及软件开发流程',
           '熟悉Linux操作和Shell，能熟练使用基本的编程编译工具',
           '熟悉常用数据库的使用，如Mysql, Postgresql, Sqlite',
-          '深度参与可视化和聊天类软件的实际开发',
-          '了解音视频相关协议，如rtsp/hls/flv等协议',
+          '深度参与可视化组件系统和聊天类软件的实际开发',
+          '了解音视频相关协议，如rtmp/hls/flv/rtsp等协议',
         ],
       },
       {
@@ -63,23 +63,25 @@ const ZH_EXPERIENCE: ExperienceData[] = [
     icon: 'IoCodeSlashSharp',
     items: [
       {
-        title: 'xiu-copy',
-        subtitle: 'https://github.com/zuiyu1998/xiu.git',
-        timeline: '2023.06 - 至今',
-        tech: 'Rust + Rtsp',
-        details: [
-          '基于xiu本身的功能添加了向主流直播网站推送流的功能，如B站',
-          '实现了对直播流的',
-        ],
-      },
-      {
-        title: 'im-demo',
+        title: 'next-im',
         subtitle: 'https://github.com/zuiyu1998/next-im-v1.git',
         timeline: '2022.12 - 2023.06',
         tech: 'Rust + Tokio + Im + Sqlite3',
         details: [
           '实现了一对一消息和组消息，包括实时消息传送，消息存储，用户重连',
           '实现了好友系统，包括添加好友，处理好友请求',
+          '使用grpc框架对各项服务进行解耦和负载均衡',
+        ],
+      },
+      {
+        title: '深恋',
+        subtitle: '一个在各大平台上架的音频聊天软件',
+        timeline: '2021.6 - 2021.9',
+        tech: 'Rust + Tokio + Im + Sqlite3',
+        details: [
+          '借助声网实现了一对多聊天房间，支持主持人管理，上下麦等操作',
+          '使用svga实现了直播房间的礼物系统',
+          '项目正常运营至今',
         ],
       },
     ],
