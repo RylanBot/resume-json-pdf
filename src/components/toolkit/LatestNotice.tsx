@@ -24,7 +24,7 @@ const LatestNotice = () => {
   return (
     <>
       {showNotice && (
-        <div className="fixed top-72 right-12 bg-slate-500 text-white w-40 p-4 rounded-lg shadow-md">
+        <div id="latest-notice" className="fixed top-72 right-12 bg-slate-500 text-white w-40 p-4 rounded-lg shadow-md max-sm:hidden">
           <div className="flex justify-center items-center mb-4">
             <p className="font-bold text-lg font-serif italic">Notice</p>
             <button className="ml-auto" onClick={handleClose}>

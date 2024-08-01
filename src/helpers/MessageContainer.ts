@@ -36,7 +36,7 @@ class MessageContainer {
         const message = { id: this.messageId++, content };
         this.messages.push(message);
         this.handlers.forEach(handler => handler(this.messages));
-        setTimeout(() => this.startRemovingMessage(message.id), 3000);
+        setTimeout(() => this.startRemovingMessage(message.id), 5000);
     }
 
     private removeMessage(id: number) {

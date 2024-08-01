@@ -5,7 +5,7 @@ const LangSwitch: React.FC = () => {
     const { lang } = useParams();
 
     return (
-        <div className='text-sm'>
+        <div className='text-sm max-sm:text-xs'>
             <Link
                 to="/zh"
                 className={`px-2 py-1 ${lang === "zh" ? 'text-[#d6fbff] font-semibold' : 'text-slate-200'}`}

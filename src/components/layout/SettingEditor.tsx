@@ -69,7 +69,7 @@ const SettingEditor: React.FC = () => {
 
     return (
         <>
-            <div className="fixed z-20 top-16 w-80 overflow-y-auto max-h-screen px-4 py-2 transition-all duration-500 ease-in-out">
+            <div className="bg-white h-screen fixed z-20 top-16 max-sm:top-14 w-80 overflow-y-auto px-4 py-2 transition-all duration-500 ease-in-out">
                 <button onClick={handleConfirmEdit} className="setting-button fixed top-4 left-6 w-20">
                     <div className="flex items-center">
                         <RiSave3Fill className="mr-2" />

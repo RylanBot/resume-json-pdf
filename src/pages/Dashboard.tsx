@@ -12,6 +12,7 @@ import LangSwitch from '@/components/toolkit/LangSwitch';
 import LatestNotice from '@/components/toolkit/LatestNotice';
 
 import { exportHtml, exportJson, importJson } from '@/helpers/FileService';
+import { messageContainer } from '@/helpers/MessageContainer';
 
 import useEditWithUndo from '@/hooks/useEditWithUndo';
 import useLocale from '@/hooks/useLocale';
@@ -42,7 +43,7 @@ const Dashboard: React.FC = () => {
                 {/* 左侧设置按钮 */}
                 {!editModeStore && (
                     <div className="flex justify-start ml-4">
-                        <button onClick={handleStartEdit} className="setting-button fixed top-4 left-4 w-24">
+                        <button onClick={handleStartEdit} className="setting-button fixed top-4 max-sm:top-16 left-4 w-24">
                             <div className="flex items-center">
                                 <TbSettings2 className="mr-2" />
                                 <span className="text-xs">{locale.common.SETTING}</span>
@@ -56,7 +57,7 @@ const Dashboard: React.FC = () => {
                     <a className="flex items-center my-2 mr-4"
                         href="https://github.com/RylanBot/resume-json-pdf" target="_blank" rel="noopener noreferrer">
                         <BsGithub className="w-6 h-6 mr-2" />
-                        <p className="text-2xl font-bold">resume-json-pdf</p>
+                        <p className="text-2xl font-bold max-sm:text-sm whitespace-nowrap">resume-json-pdf</p>
                     </a>
                     {/* 语言切换 */}
                     <LangSwitch />
@@ -67,7 +68,7 @@ const Dashboard: React.FC = () => {
                     <>
                         <div className='flex'>
                             {/* 导入 */}
-                            <label className="setting-button fixed top-4 right-40 w-32 mr-4 cursor-pointer">
+                            <label className="setting-button fixed top-4 max-sm:top-16 right-40 max-sm:right-32 w-32 mr-4 cursor-pointer">
                                 <input
                                     type="file"
                                     accept=".json"
@@ -86,7 +87,7 @@ const Dashboard: React.FC = () => {
                             </label>
 
                             {/* 导出 */}
-                            <div className="fixed top-4 mb-10 right-4">
+                            <div className="fixed top-4 max-sm:top-16 mb-10 right-4">
                                 <div className="group inline-block">
                                     <button className="setting-button w-36">
                                         <TbDownload className="mr-2" />

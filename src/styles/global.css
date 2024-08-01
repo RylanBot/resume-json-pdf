@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-gray-300;
+}
+
 @media print {
   .print-hidden {
     display: none !important;
@@ -43,13 +47,13 @@
 }
 
 .setting-button {
-  @apply px-1 py-2 text-sm font-semibold bg-white text-slate-800 rounded-lg shadow-md flex items-center justify-center;
+  @apply px-1 py-2 text-sm font-semibold bg-white text-slate-800 rounded-lg shadow-md flex items-center justify-center max-sm:scale-75;
 }
 
 .setting-title {
   @apply font-semibold text-slate-800 text-sm my-3 whitespace-pre-wrap;
 }
 
-.editable{
+.editable {
   @apply p-0.5 rounded-sm focus:outline-none focus:border-2 focus:border-gray-300;
 }
