@@ -95,6 +95,14 @@ export const exportHtml = () => {
         #contact-icon {
             margin-top: 4px;
         }
+        @media (max-width: 640px) {
+            #export-page {
+                position: absolute;
+                transform: translate(-50%, -50%);
+                top: 50%;
+                left: 50%;
+            }
+        }
     `;
     cssString += customCss;
 
