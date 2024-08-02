@@ -1,18 +1,16 @@
 import React, { useRef } from 'react';
-import ReactToPrint from 'react-to-print';
 
 import { BiCodeCurly } from 'react-icons/bi';
 import { BsGithub } from 'react-icons/bs';
-import { RiFilePdf2Line } from 'react-icons/ri';
 import { TbBrandHtml5, TbDownload, TbSettings2, TbUpload } from 'react-icons/tb';
 
 import ResumeContent from '@/components/layout/ResumeContent';
 import SettingEditor from '@/components/layout/SettingEditor';
 import LangSwitch from '@/components/toolkit/LangSwitch';
 import LatestNotice from '@/components/toolkit/LatestNotice';
+import PrintPdfButton from '@/components/toolkit/PrintPdfButton';
 
 import { exportHtml, exportJson, importJson } from '@/helpers/FileService';
-import { messageContainer } from '@/helpers/MessageContainer';
 
 import useEditWithUndo from '@/hooks/useEditWithUndo';
 import useLocale from '@/hooks/useLocale';
@@ -108,17 +106,7 @@ const Dashboard: React.FC = () => {
                                                     <span className="text-xs">HTML</span>
                                                 </div>
                                             </button>
-                                            <ReactToPrint
-                                                trigger={() => (
-                                                    <button className="p-2 text-sm font-semibold bg-white text-slate-800">
-                                                        <div className="flex items-center px-5 py-1">
-                                                            <RiFilePdf2Line className="mr-4" />
-                                                            <span className="text-xs">PDF</span>
-                                                        </div>
-                                                    </button>
-                                                )}
-                                                content={() => printComponentRef.current}
-                                            />
+                                            <PrintPdfButton printRef={printComponentRef}/>
                                         </div>
                                     </div>
                                 </div>
