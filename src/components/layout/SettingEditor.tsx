@@ -197,7 +197,7 @@ const SettingEditor: React.FC = () => {
                 {/* 上传图片 */}
                 {tempStyleStore.template === 'avatar' && (
                     <label className="flex items-center justify-center w-56 bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-6 rounded mx-8 my-8 cursor-pointer">
-                        <input type="file" className="hidden" onChange={handleImageChange} />
+                        <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
                         <BsImageFill className="mr-2 w-3 h-3" />
                         <span className="text-xs">{locale.common.UPLOAD_AVATAR}</span>
                     </label>
