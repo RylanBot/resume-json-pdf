@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import EditableText from "@/components/toolkit/EditableText";
 import { ProfileData } from "@/types/profile";
@@ -9,13 +9,26 @@ interface ProfileListProps {
 }
 
 const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!data.avatar) return;
+    const img = new Image();
+    img.src = data.avatar;
+    img.onload = () => setImgLoaded(true);
+  }, [data.avatar]);
+
   return (
     <div className="flex justify-between items-center custom-profile">
       <div className="flex items-center">
         {data.avatar && (
-          <div className="w-[80px] h-[100px] mr-6">
-            <img src={data.avatar} className="w-full h-full" />
-          </div>
+          imgLoaded ? (
+            <div className="w-[80px] h-[100px] mr-6">
+              <img src={data.avatar} className="w-full h-full" />
+            </div>
+          ) : (
+            <div className="w-[80px] h-[100px] mr-6 bg-gray-200 loading-pulse" />
+          )
         )}
         <div className="ml-2">
           <p className="text-xl mt-1 mb-3 theme-text-color">
