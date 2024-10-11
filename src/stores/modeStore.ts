@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface ModeSate {
+interface ModeStore {
     editModeStore: boolean,
 }
 
@@ -8,7 +8,7 @@ interface ModeAction {
     setEditModeStore: (newEditMode: boolean) => void
 }
 
-type ModeState = ModeSate & ModeAction;
+type ModeState = ModeStore & ModeAction;
 
 const useModeStore = create<ModeState>((set) => ({
     editModeStore: false,
