@@ -8,12 +8,17 @@ const ZH_PROFILE: ProfileData = {
       label: '求职意向',
       content: '前端、rust开发',
     },
-    // {
-    //   label: '到岗时间',
-    //   content: '2024 年 x 月',
-    // },
+    {
+      label: '在职状态',
+      content: '在职求职中',
+    },
   ],
   contact: [
+    {
+      icon: 'LiaBirthdayCakeSolid',
+      key: '生日',
+      value: '1998.10.01',
+    },
     {
       icon: 'PiPhoneCallFill',
       key: '电话',
