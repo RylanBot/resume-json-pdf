@@ -11,7 +11,7 @@ English | [简体中文](./README-CN.md)
 - **Italic text**: \*Italic\* will be rendered as *Italic* 
 - **Bold text**: \*\*Bold\*\* will be rendered as **Bold**
 - **Inline code blocks**: \`React\` \`TypeScript\` \`Tailwind CSS\` will be rendered as `React` `TypeScript` `Tailwind CSS`
-- **Links**: https://github.com/RylanBot will be rendered as [github.com/RylanBot](https://github.com/RylanBot)
+- **Links**: https:\// github.com/RylanBot will be rendered as [github.com/RylanBot](https://github.com/RylanBot)
 
 ### 💕 Support Custom Styles
 - **Templates**: Versions with and without photos
