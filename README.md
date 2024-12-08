@@ -65,7 +65,7 @@ The original intention of this project is to focus more on the content of the re
 | experienceMb | Experience Margin bottom | Number |
 | plainFootPx | Footnote Padding X | Number (only valid for the plain template) |
 | plainContactPx | Contact Padding X | Number (only valid for the plain template) |
-| detailsFont | Experience Section Font Size | number |
+| detailsFont | Experience Section Font Size | Number |
 
 ### 🔮 For Development
 

@@ -60,12 +60,12 @@
 | template | 模板 | avatar / plain |
 | fontStyle | 字体 | default / fancy |
 | color | 颜色 | 16 进制格式 |
-| pagePy | 简历页面 上下内边距 | number |
-| profileMb | 个人信息 下外边距 | number |
-| experienceMb | 经历部分 下外边距 | number |
-| plainFootPx | 附加说明 左右内边距 | number（只对 plain 模板有效）|
-| plainContactPx | 联系方式 左右内边距 | number（只对 plain 模板有效）|
-| detailsFont | 经历部分 字体大小 | number |
+| pagePy | 简历页面 上下内边距 | Number |
+| profileMb | 个人信息 下外边距 | Number |
+| experienceMb | 经历部分 下外边距 | Number |
+| plainFootPx | 附加说明 左右内边距 | Number（只对 plain 模板有效）|
+| plainContactPx | 联系方式 左右内边距 | Number（只对 plain 模板有效）|
+| detailsFont | 经历部分 字体大小 | Number |
 
 ### 🔮 二次开发
 
