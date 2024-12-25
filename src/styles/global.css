@@ -21,12 +21,38 @@ body {
   }
 }
 
+#setting-editor {
+  background-color: #ffffff;
+  height: 100vh;
+  position: fixed;
+  z-index: 20;
+  top: 4rem;
+  width: 20rem;
+  overflow-y: auto;
+  padding: 0.5rem 1rem;
+  transition: all 0.5s ease-in-out;
+}
+
+@media (max-width: 640px) {
+  #setting-editor {
+    height: 30vh;
+    width: 100vw;
+    top: auto;
+    bottom: 0;
+    border-top: 3px solid #ccc;
+    border-radius: 1rem 1rem 0 0;
+    transform: translateY(100%);
+    opacity: 0;
+    animation: slideUp 0.2s ease-out forwards;
+  }
+}
+
 .setting-button {
   @apply px-1 py-2 text-sm font-semibold bg-white text-slate-800 rounded-lg shadow-md flex items-center justify-center max-sm:scale-75;
 }
 
 .setting-title {
-  @apply font-semibold text-slate-800 text-sm my-3 whitespace-pre-wrap;
+  @apply font-semibold text-slate-800 text-sm max-sm:text-xs my-3 max-sm:w-32 whitespace-pre-wrap;
 }
 
 .editable {

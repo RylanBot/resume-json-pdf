@@ -69,15 +69,15 @@ const SettingEditor: React.FC = () => {
 
     return (
         <>
-            <div className="bg-white h-screen fixed z-20 top-16 max-sm:top-14 w-80 overflow-y-auto px-4 py-2 transition-all duration-500 ease-in-out">
-                <button onClick={handleConfirmEdit} className="setting-button fixed top-4 left-6 w-20">
+            <div id="setting-editor">
+                <button onClick={handleConfirmEdit} className="w-20 setting-button fixed top-4 left-6 max-md:bg-slate-200">
                     <div className="flex items-center">
                         <RiSave3Fill className="mr-2" />
                         <span className="text-xs">{locale.common.SAVE}</span>
                     </div>
                 </button>
 
-                <button onClick={handleCancelEdit} className="setting-button fixed top-4 left-32 w-20">
+                <button onClick={handleCancelEdit} className="w-20 setting-button fixed top-4 left-32 max-md:left-28 max-md:bg-slate-200">
                     <div className="flex items-center">
                         <TbLocationCancel className="mr-2" />
                         <span className="text-xs">{locale.common.CANCEL}</span>
@@ -85,10 +85,10 @@ const SettingEditor: React.FC = () => {
                 </button>
 
                 {/* 切换模板 */}
-                <div className="flex items-center ml-8 mb-3">
-                    <h3 className="setting-title mr-4 w-16">{locale.field.TEMPLATE}</h3>
+                <div className="flex items-center ml-8 mb-3 max-md:mt-16">
+                    <h3 className="setting-title w-16">{locale.field.TEMPLATE}</h3>
                     <div className="flex">
-                        <label className="flex items-center cursor-pointer w-24">
+                        <label className="flex cursor-pointer w-24">
                             <input
                                 type="radio"
                                 value="avatar"
@@ -97,7 +97,7 @@ const SettingEditor: React.FC = () => {
                                 onChange={(e) => handleTemplateChange(e.target.value)}
                                 className="h-4 w-4 mr-2 cursor-pointer"
                             />
-                            <span className="text-sm font-semibold text-slate-800">Avatar</span>
+                            <span className="text-sm max-md:text-xs font-semibold text-slate-800">Avatar</span>
                         </label>
                         <label className="flex items-center cursor-pointer">
                             <input
@@ -108,14 +108,14 @@ const SettingEditor: React.FC = () => {
                                 onChange={(e) => handleTemplateChange(e.target.value)}
                                 className="h-4 w-4 mr-2 cursor-pointer"
                             />
-                            <span className="text-sm font-semibold text-slate-800">Plain</span>
+                            <span className="text-sm max-md:text-xs font-semibold text-slate-800">Plain</span>
                         </label>
                     </div>
                 </div>
 
                 {/* 切换字体 */}
                 <div className="flex items-center ml-8 mb-3">
-                    <h3 className="setting-title mr-4 w-16">{locale.field.FONT_STYLE}</h3>
+                    <h3 className="setting-title w-16">{locale.field.FONT_STYLE}</h3>
                     <div className="flex">
                         <label className="flex cursor-pointer w-24">
                             <input
@@ -126,7 +126,7 @@ const SettingEditor: React.FC = () => {
                                 onChange={(e) => handleFontStyleChange(e.target.value)}
                                 className="h-4 w-4 mr-2 cursor-pointer"
                             />
-                            <span className="text-sm font-semibold text-slate-800">Default</span>
+                            <span className="text-sm max-md:text-xs font-semibold text-slate-800">Default</span>
                         </label>
                         <label className="flex cursor-pointer">
                             <input
@@ -137,7 +137,7 @@ const SettingEditor: React.FC = () => {
                                 onChange={(e) => handleFontStyleChange(e.target.value)}
                                 className="h-4 w-4 mr-2 cursor-pointer"
                             />
-                            <span className="text-sm font-semibold text-slate-800">Fancy</span>
+                            <span className="text-sm max-md:text-xs font-semibold text-slate-800">Fancy</span>
                         </label>
                     </div>
                 </div>
@@ -145,7 +145,7 @@ const SettingEditor: React.FC = () => {
                 {/* 颜色选择器 */}
                 <div className="flex items-center mx-8 my-3">
                     <h3 className="setting-title mr-4">{formatTitle(locale.field.COLOR)}</h3>
-                    <div className="px-6 ml-24">
+                    <div className="px-6 ml-24 max-md:ml-8">
                         <input
                             type="color"
                             value={tempStyleStore.color}
@@ -158,7 +158,7 @@ const SettingEditor: React.FC = () => {
                 {/* 滑动修改样式 */}
                 <div className="space-y-3 mx-8">
                     <div className="flex items-center">
-                        <h3 className="setting-title mr-4 w-48">{formatTitle(locale.field.PAGE_PADDING_Y)}</h3>
+                        <h3 className="setting-title w-48">{formatTitle(locale.field.PAGE_PADDING_Y)}</h3>
                         <StyleSlider
                             min={12} max={40}
                             value={tempStyleStore?.pagePy}
@@ -167,7 +167,7 @@ const SettingEditor: React.FC = () => {
                     </div>
 
                     <div className="flex items-center">
-                        <h3 className="setting-title mr-4 w-48">{formatTitle(locale.field.PROFILE_MARGIN_BOTTOM)}</h3>
+                        <h3 className="setting-title w-48">{formatTitle(locale.field.PROFILE_MARGIN_BOTTOM)}</h3>
                         <StyleSlider
                             min={8} max={24}
                             value={tempStyleStore.profileMb}
@@ -176,7 +176,7 @@ const SettingEditor: React.FC = () => {
                     </div>
 
                     <div className="flex items-center">
-                        <h3 className="setting-title mr-4 w-48">{formatTitle(locale.field.EXPERIENCE_MARGIN_BOTTOM)}</h3>
+                        <h3 className="setting-title w-48">{formatTitle(locale.field.EXPERIENCE_MARGIN_BOTTOM)}</h3>
                         <StyleSlider
                             min={8} max={24}
                             value={tempStyleStore.experienceMb}
@@ -185,7 +185,7 @@ const SettingEditor: React.FC = () => {
                     </div>
 
                     <div className="flex items-center">
-                        <h3 className="setting-title mr-4 w-48">{formatTitle(locale.field.DETAILS_FONT)}</h3>
+                        <h3 className="setting-title w-48">{formatTitle(locale.field.DETAILS_FONT)}</h3>
                         <StyleSlider
                             min={14} max={16}
                             value={tempStyleStore.detailsFont}
@@ -196,7 +196,7 @@ const SettingEditor: React.FC = () => {
 
                 {/* 上传图片 */}
                 {tempStyleStore.template === 'avatar' && (
-                    <label className="flex items-center justify-center w-56 bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-6 rounded mx-8 my-8 cursor-pointer">
+                    <label className="flex items-center justify-center w-56 max-md:w-[75vw] max-md:overflow-x bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-6 rounded mx-8 my-8 cursor-pointer">
                         <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
                         <BsImageFill className="mr-2 w-3 h-3" />
                         <span className="text-xs">{locale.common.UPLOAD_AVATAR}</span>
@@ -205,9 +205,9 @@ const SettingEditor: React.FC = () => {
 
                 {tempStyleStore.template === 'plain' && (
                     <>
-                        <div className="mt-3 space-y-3 mx-8">
+                        <div className="mt-3 space-y-3 mx-8 max-md:mb-6">
                             <div className="flex items-center">
-                                <h3 className="setting-title mr-4 w-48">{formatTitle(locale.field.FOOTNOTE_PADDING_X)}</h3>
+                                <h3 className="setting-title w-48">{formatTitle(locale.field.FOOTNOTE_PADDING_X)}</h3>
                                 <StyleSlider
                                     min={8} max={40}
                                     value={tempStyleStore.plainFootPx}
@@ -215,7 +215,7 @@ const SettingEditor: React.FC = () => {
                                 />
                             </div>
                             <div className="flex items-center">
-                                <h3 className="setting-title mr-4 w-48">{formatTitle(locale.field.CONTACT_PADDING_X)}</h3>
+                                <h3 className="setting-title w-48">{formatTitle(locale.field.CONTACT_PADDING_X)}</h3>
                                 <StyleSlider
                                     min={8} max={40}
                                     value={tempStyleStore.plainContactPx}
@@ -223,7 +223,6 @@ const SettingEditor: React.FC = () => {
                                 />
                             </div>
                         </div>
-
                     </>
                 )}
 

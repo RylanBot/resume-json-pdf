@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
             <div className="fixed z-10 print-hidden w-full p-2 bg-slate-600 text-white flex justify-between items-center">
                 {/* 左侧设置按钮 */}
                 {!editModeStore && (
-                    <div className="flex justify-start ml-4">
+                    <div className="flex justify-start md:ml-4">
                         <button onClick={handleStartEdit} className="setting-button fixed top-4 max-sm:top-16 left-4 w-24">
                             <div className="flex items-center">
                                 <TbSettings2 className="mr-2" />
