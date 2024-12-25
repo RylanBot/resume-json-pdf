@@ -2,7 +2,7 @@ import React from 'react';
 
 import ExperienceList from '@/components/templates/ExperienceList';
 import ProfileList from '@/components/templates/ProfileList';
-import A4Background from '@/components/toolkit/A4Background';
+import A4Background from '@/components/layout/A4Background';
 
 import useEditWithUndo from '@/hooks/useEditWithUndo';
 
