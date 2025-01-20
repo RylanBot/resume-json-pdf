@@ -7,7 +7,7 @@ import { TbLocationCancel } from "react-icons/tb";
 import useEditWithUndo from "@/hooks/useEditWithUndo";
 import useLocale from "@/hooks/useLocale";
 
-import { formatTitle } from "@/helpers/CommonUtils";
+import { formatTitle } from "@/helpers/CommonUtil";
 import useModeStore from "@/stores/modeStore";
 import type { StyleData } from "@/types/style";
 
