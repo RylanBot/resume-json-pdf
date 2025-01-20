@@ -1,8 +1,6 @@
-# resume-json-pdf
+# <img alt="Logo" src="./public/favicon.ico" width="35"/> resume-json-pdf
 
 [English](./README.md) | 简体中文
-
-**本地 “沉浸式” 编写 JSON 文件，在线生成 PDF / HTML 简历 📄**
 
 ## 🔥 功能介绍
 
@@ -16,17 +14,17 @@
 ### 💕 支持自定义样式
 - **模板**：含照片和无照片的版本
 - **图标**：参考 [Font Awesome](https://fontawesome.com/icons) 库
-- **字体**：默认（Times）或者 Noto Serif SC
-- **颜色**：使用取色器挑选
+- **字体**：挑选或输入任何本地字体
+- **颜色**：使用取色器
 - **排版**：调节边距使页面布局合理
 
 ## 🧙🏻 快速上手
 
 ### 🔮 开箱即用
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-点击查看-lightseagreen?style=for-the-badge&logo=vercel)](https://project.resume-json-pdf.rylan.cn/)
+[![在线示例](https://img.shields.io/badge/在线示例-点击查看-lightsteelblue?style=for-the-badge&logo=vercel)](https://project.resume-json-pdf.rylan.cn/)
 
-**在线导出 JSON 模板 → 本地修改数据 → 上传修改后的 JSON 文件 → 在线导出 PDF / HTML 简历**  
+**导出 JSON 模板 → 本地修改数据 → 上传修改后的 JSON 文件 → 导出 PDF / HTML 简历**  
 
 > [!Tip]  
 > **引入了简单的在线编辑文字的功能 → 设置模式下点击相关文字**  
@@ -57,35 +55,29 @@
 **Style**  
 | 字段 | 含义 | 备注 |
 | :--- | :--- | :--- |
-| template | 模板 | avatar / plain |
-| fontStyle | 字体 | default / fancy |
+| template | 模板 | `avatar` / `plain` |
+| fontStyle | 字体 | 任何本地字体名（在线挑选有限） |
 | color | 颜色 | 16 进制格式 |
 | pagePy | 简历页面 上下内边距 | Number |
 | profileMb | 个人信息 下外边距 | Number |
 | experienceMb | 经历部分 下外边距 | Number |
-| plainFootPx | 附加说明 左右内边距 | Number（只对 plain 模板有效）|
-| plainContactPx | 联系方式 左右内边距 | Number（只对 plain 模板有效）|
+| plainFootPx | 附加说明 左右内边距 | Number（只对 `plain` 模板有效）|
+| plainContactPx | 联系方式 左右内边距 | Number（只对 `plain` 模板有效）|
 | detailsFont | 经历部分 字体大小 | Number |
 
 ### 🔮 二次开发
 
-<p>
-  <img src="https://img.shields.io/badge/node-20.x-green" alt="node version"/>
-  <img src="https://img.shields.io/badge/npm-10.x-red" alt="npm version"/>
-  <img src="https://img.shields.io/badge/yarn-1.x-blue" alt="yarn version"/>
-</p>
-
-如果你熟悉 Web 前端技术且对源码感兴趣，可以根据以下命令，在本地启动这个程序
+如果你熟悉 Web 前端技术且对源码感兴趣，可以根据以下命令，在本地启动这个程序：
 
 ```sh
-npm install # or 'yarn'
+npm install
 npm run dev
 ```
 
 ## 🌷 效果预览
 
-![resume-json-pdf-avatar-cn](https://s2.loli.net/2024/04/21/VD2dbJneyHAuZOW.png)
+![头像模板](https://s2.loli.net/2024/04/21/VD2dbJneyHAuZOW.png)
 
 ---
 
-![resume-json-pdf-plain-cn](https://s2.loli.net/2024/04/21/3oanYrBTEsqgSKJ.png)
+![普通模板](https://s2.loli.net/2024/04/21/3oanYrBTEsqgSKJ.png)

@@ -8,6 +8,10 @@ body {
   @apply bg-gray-300;
 }
 
+input::placeholder {
+  @apply italic text-xs;
+}
+
 @media print {
   .print-hidden {
     display: none !important;
@@ -27,7 +31,7 @@ body {
   position: fixed;
   z-index: 20;
   top: 4rem;
-  width: 20rem;
+  width: 22rem;
   overflow-y: auto;
   padding: 0.5rem 1rem;
   transition: all 0.5s ease-in-out;

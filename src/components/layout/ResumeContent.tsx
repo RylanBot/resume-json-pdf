@@ -17,7 +17,7 @@ const ResumeContent = React.forwardRef<HTMLDivElement, object>((_, ref) => {
         <div ref={ref}>
             <A4Background>
                 <div style={{
-                    fontFamily: `${tempStyleStore.fontStyle === 'fancy' ? 'Noto Serif SC' : 'Times'}`,
+                    fontFamily: `${tempStyleStore.fontStyle}`,
                     "--theme-color": tempStyleStore.color,
                     "--page-py": `${tempStyleStore.pagePy}px`,
                     "--profile-mb": `${tempStyleStore.profileMb}px`,

@@ -4,16 +4,15 @@ import { BsImageFill } from "react-icons/bs";
 import { RiSave3Fill } from "react-icons/ri";
 import { TbLocationCancel } from "react-icons/tb";
 
-import { formatTitle } from "@/helpers/CommonUtils";
-
-import { StyleData } from "@/types/style";
-
-import StyleSlider from "@/components/toolkit/StyleSlider";
-
 import useEditWithUndo from "@/hooks/useEditWithUndo";
 import useLocale from "@/hooks/useLocale";
 
+import { formatTitle } from "@/helpers/CommonUtils";
 import useModeStore from "@/stores/modeStore";
+import type { StyleData } from "@/types/style";
+
+import FontSelectInput from "@/components/toolkit/FontSelectInput";
+import StyleSlider from "@/components/toolkit/StyleSlider";
 
 const SettingEditor: React.FC = () => {
     const { locale } = useLocale();
@@ -43,8 +42,8 @@ const SettingEditor: React.FC = () => {
         updateTempStyle('template', newTemplate);
     };
 
-    const handleFontStyleChange = (newColor: string) => {
-        updateTempStyle('fontStyle', newColor);
+    const handleFontStyleChange = (newFont: string) => {
+        updateTempStyle('fontStyle', newFont);
     };
 
     const handleColorChange = (newColor: string) => {
@@ -86,8 +85,8 @@ const SettingEditor: React.FC = () => {
 
                 {/* 切换模板 */}
                 <div className="flex items-center ml-8 mb-3 max-md:mt-16">
-                    <h3 className="setting-title w-16">{locale.field.TEMPLATE}</h3>
-                    <div className="flex">
+                    <h3 className="setting-title w-24">{locale.field.TEMPLATE}</h3>
+                    <div className="flex items-center">
                         <label className="flex cursor-pointer w-24">
                             <input
                                 type="radio"
@@ -115,30 +114,12 @@ const SettingEditor: React.FC = () => {
 
                 {/* 切换字体 */}
                 <div className="flex items-center ml-8 mb-3">
-                    <h3 className="setting-title w-16">{locale.field.FONT_STYLE}</h3>
+                    <h3 className="setting-title w-20 max-sm:w-28">{locale.field.FONT_STYLE}</h3>
                     <div className="flex">
-                        <label className="flex cursor-pointer w-24">
-                            <input
-                                type="radio"
-                                value="default"
-                                name="font"
-                                checked={tempStyleStore.fontStyle === 'default'}
-                                onChange={(e) => handleFontStyleChange(e.target.value)}
-                                className="h-4 w-4 mr-2 cursor-pointer"
-                            />
-                            <span className="text-sm max-md:text-xs font-semibold text-slate-800">Default</span>
-                        </label>
-                        <label className="flex cursor-pointer">
-                            <input
-                                type="radio"
-                                value="fancy"
-                                name="font"
-                                checked={tempStyleStore.fontStyle === 'fancy'}
-                                onChange={(e) => handleFontStyleChange(e.target.value)}
-                                className="h-4 w-4 mr-2 cursor-pointer"
-                            />
-                            <span className="text-sm max-md:text-xs font-semibold text-slate-800">Fancy</span>
-                        </label>
+                        <FontSelectInput 
+                            font={tempStyleStore.fontStyle ?? ""}
+                            onChange={(font) => handleFontStyleChange(font)}
+                        />
                     </div>
                 </div>
 
@@ -196,7 +177,7 @@ const SettingEditor: React.FC = () => {
 
                 {/* 上传图片 */}
                 {tempStyleStore.template === 'avatar' && (
-                    <label className="flex items-center justify-center w-56 max-md:w-[75vw] max-md:overflow-x bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-6 rounded mx-8 my-8 cursor-pointer">
+                    <label className="flex items-center justify-center bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-6 rounded mx-8 my-8 cursor-pointer">
                         <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
                         <BsImageFill className="mr-2 w-3 h-3" />
                         <span className="text-xs">{locale.common.UPLOAD_AVATAR}</span>

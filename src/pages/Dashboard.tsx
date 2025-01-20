@@ -11,11 +11,10 @@ import LatestNotice from '@/components/toolkit/LatestNotice';
 import PrintPdfButton from '@/components/toolkit/PrintPdfButton';
 
 import { exportHtml, exportJson, importJson } from '@/helpers/FileService';
+import useModeStore from '@/stores/modeStore';
 
 import useEditWithUndo from '@/hooks/useEditWithUndo';
 import useLocale from '@/hooks/useLocale';
-
-import useModeStore from '@/stores/modeStore';
 
 const Dashboard: React.FC = () => {
     const { locale } = useLocale();
@@ -51,7 +50,7 @@ const Dashboard: React.FC = () => {
                 )}
 
                 {/* 标题 */}
-                <div className={`flex-grow flex justify-center items-center ${editModeStore ? "ml-80" : ""} transition-all duration-500 ease-in-out`}>
+                <div className={`flex-grow flex justify-center items-center ${editModeStore ? "lg:ml-80" : ""} transition-all duration-500 ease-in-out`}>
                     <a className="flex items-center my-2 mr-4"
                         href="https://github.com/RylanBot/resume-json-pdf" target="_blank" rel="noopener noreferrer">
                         <BsGithub className="w-6 h-6 mr-2" />

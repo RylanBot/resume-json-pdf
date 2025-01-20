@@ -1,8 +1,6 @@
-# resume-json-pdf
+# <img alt="Logo" src="./public/favicon.ico" width="35"/> resume-json-pdf
 
 English | [简体中文](./README-CN.md) 
-
-**Edit JSON files locally for an engaging writing process and obtain PDF / HTML resumes online 📄**
 
 ## 🔥 Feature
 
@@ -16,17 +14,17 @@ English | [简体中文](./README-CN.md)
 ### 💕 Support Custom Styles
 - **Templates**: Versions with and without photos
 - **Icons**: Refer to the [Font Awesome](https://fontawesome.com/icons) library
-- **Fonts**: Default (Times) or Noto Serif SC
-- **Colors**: Use a color picker to select
+- **Fonts**: Select or input any local font
+- **Colors**: Use a color picker
 - **Layout**: Adjust margins for a reasonable page design
 
 ## 🧙🏻 Quick Start
 
 ### 🔮 Ready to Use
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20for%20visist-lightseagreen?style=for-the-badge&logo=vercel)](https://project.resume-json-pdf.rylan.cn/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20To%20View-lightsteelblue?style=for-the-badge&logo=vercel)](https://project.resume-json-pdf.rylan.cn/)
 
-**Export JSON template online → Modify data locally → Upload modified JSON File → Export PDF / HTML resume online**
+**Export JSON template → Modify data locally → Upload modified JSON File → Export PDF / HTML resume**
 
 > [!Tip]  
 > **Introduced a simple online text editing feature → Click on the relevant text in the setting mode**
@@ -57,35 +55,29 @@ The original intention of this project is to focus more on the content of the re
 **Style**  
 | Field | Meaning | Note |
 | :--- | :--- | :--- |
-| template | | avatar / plain |
-| fontStyle | | default / fancy |
+| template | | `avatar` / `plain` |
+| fontStyle | | Any local font name (online selection limited) |
 | color | | Hexadecimal |
 | pagePy | Resume Padding Y | Number |
 | profileMb | Profile Margin bottom | Number |
 | experienceMb | Experience Margin bottom | Number |
-| plainFootPx | Footnote Padding X | Number (only valid for the plain template) |
-| plainContactPx | Contact Padding X | Number (only valid for the plain template) |
+| plainFootPx | Footnote Padding X | Number (only valid for the `plain` template) |
+| plainContactPx | Contact Padding X | Number (only valid for the `plain` template) |
 | detailsFont | Experience Section Font Size | Number |
 
 ### 🔮 For Development
 
-<p>
-  <img src="https://img.shields.io/badge/node-20.x-green" alt="node version"/>
-  <img src="https://img.shields.io/badge/npm-10.x-red" alt="npm version"/>
-  <img src="https://img.shields.io/badge/yarn-1.x-blue" alt="yarn version"/>
-</p>
-
-If you are familiar with Web frontend technologies and are interested in the source code, you can run this program using the following commands.
+If you are familiar with the Web frontend technologies and are interested in source code, you can run this program using the following commands:
 
 ```sh
-npm install # or 'yarn'
+npm install
 npm run dev
 ```
 
 ## 🌷 Preview
 
-![resume-json-pdf-avatar-en](https://s2.loli.net/2024/04/21/6sS5EQIpol7vPzW.png)
+![Avatar Template](https://s2.loli.net/2024/04/21/6sS5EQIpol7vPzW.png)
 
 ---
 
-![resume-json-pdf-plain-en](https://s2.loli.net/2024/04/21/hSBOZIYumoEDd14.png)
+![Plain Template](https://s2.loli.net/2024/04/21/hSBOZIYumoEDd14.png)

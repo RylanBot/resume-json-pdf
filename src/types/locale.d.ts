@@ -23,4 +23,5 @@ interface Field {
     CONTACT_PADDING_X: string;
     DETAILS_FONT: string;
     FONT_STYLE: string;
+    FONT_PLACEHOLDER: string;
 }

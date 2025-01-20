@@ -20,6 +20,7 @@ const enLang: Locale = {
         FOOTNOTE_PADDING_X: "Footnote Padding X",
         CONTACT_PADDING_X: "Contact Padding X",
         DETAILS_FONT: "Experience Font Size",
+        FONT_PLACEHOLDER: 'Select or input any name',
     }
 };
 

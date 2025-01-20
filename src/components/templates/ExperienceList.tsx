@@ -41,7 +41,7 @@ const ExperienceCard: React.FC<ExperienceCardProp> = ({
             const subtitleWidthInMn = pixelsToMm(subtitleWidth);
             const timelineWidthInMn = pixelsToMm(timelineWidth);
 
-            const shouldBreak = titleWidthInMn + subtitleWidthInMn + timelineWidthInMn + pagePxMn * 2 > 205;
+            const shouldBreak = titleWidthInMn + subtitleWidthInMn + timelineWidthInMn + pagePxMn * 2 > 255;
             setLineBreak(shouldBreak);
         });
 
@@ -52,7 +52,7 @@ const ExperienceCard: React.FC<ExperienceCardProp> = ({
         return () => {
             observer.disconnect();
         };
-    }, [tempStores]);
+    }, [tempStores.styleStore.fontStyle]);
 
     return (
         <div>
