@@ -1,8 +1,24 @@
-import { StyleData } from "@/types/style";
+import { checkAvailableFonts } from "@/helpers/CommonUtil";
+import type { StyleData } from "@/types/style";
+
+const FONT_LIST = [
+    // 无衬线 sans-serif
+    "Arial",
+    "Calibri",
+    // 衬线 serif
+    "FangSong",
+    "STSong",
+    "STZhongsong",
+    "Times New Roman",
+    // 等宽 monospace
+    "Courier New",
+];
+
+export const AVAILABLE_FONTS = checkAvailableFonts(FONT_LIST);
 
 const COMMON_STYLE: StyleData = {
     template: "avatar",
-    fontStyle: "Times New Roman",
+    fontStyle: AVAILABLE_FONTS[0],
     color: "#225081",
     pagePy: 12,
     profileMb: 8,
@@ -10,6 +26,6 @@ const COMMON_STYLE: StyleData = {
     plainFootPx: 8,
     plainContactPx: 8,
     detailsFont: 16
-}
+};
 
 export default COMMON_STYLE;

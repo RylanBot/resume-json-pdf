@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
+import { AVAILABLE_FONTS } from "@/data/style";
 import useLocale from "@/hooks/useLocale";
 
 interface FontSelectInputProps {
@@ -40,35 +41,6 @@ const FontSelectInput: React.FC<FontSelectInputProps> = ({
     };
   }, []);
 
-  const checkFontAvailability = (font: string) => {
-    const testString = "abcdefghijklmnopqrstuvwxyz0123456789";
-    const testElement = document.createElement("span");
-
-    testElement.style.fontSize = "12px";
-    testElement.style.visibility = "hidden";
-    testElement.textContent = testString;
-
-    document.body.appendChild(testElement);
-    const defaultWidth = testElement.offsetWidth;
-
-    testElement.style.fontFamily = font;
-    const fontWidth = testElement.offsetWidth;
-
-    document.body.removeChild(testElement);
-
-    // 宽度不同说明字体可用
-    return defaultWidth !== fontWidth;
-  };
-
-  const FONT_LIST = [
-    "Arial",
-    "Calibri",
-    "Courier New",
-    "FangSong",
-    "STZhongsong",
-    "Times New Roman",
-  ].filter((font) => checkFontAvailability(font));
-
   return (
     <div ref={wrapperRef} className="flex">
       <input
@@ -81,7 +53,7 @@ const FontSelectInput: React.FC<FontSelectInputProps> = ({
       {isDropdownOpen && (
         <div className="w-40 absolute bg-white border border-gray-300 mt-8 rounded-md">
           <ul>
-            {FONT_LIST.map((font) => (
+            {AVAILABLE_FONTS.map((font) => (
               <li
                 key={font}
                 className="px-3 py-2 text-sm cursor-pointer hover:bg-gray-100"
