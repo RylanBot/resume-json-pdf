@@ -9,6 +9,8 @@ import useLocale from "@/hooks/useLocale";
 
 import { formatTitle } from "@/helpers/CommonUtil";
 import useModeStore from "@/stores/modeStore";
+
+import { TEMPLATE_NAME_AVATAR, TEMPLATE_NAME_PLAIN } from "@/data/style";
 import type { StyleData } from "@/types/style";
 
 import FontSelectInput from "@/components/toolkit/FontSelectInput";
@@ -90,9 +92,9 @@ const SettingEditor: React.FC = () => {
                         <label className="flex cursor-pointer w-24">
                             <input
                                 type="radio"
-                                value="avatar"
+                                value={TEMPLATE_NAME_AVATAR}
                                 name="template"
-                                checked={tempStyleStore.template === 'avatar'}
+                                checked={tempStyleStore.template === TEMPLATE_NAME_AVATAR}
                                 onChange={(e) => handleTemplateChange(e.target.value)}
                                 className="h-4 w-4 mr-2 cursor-pointer"
                             />
@@ -101,9 +103,9 @@ const SettingEditor: React.FC = () => {
                         <label className="flex items-center cursor-pointer">
                             <input
                                 type="radio"
-                                value="plain"
+                                value={TEMPLATE_NAME_PLAIN}
                                 name="template"
-                                checked={tempStyleStore.template === 'plain'}
+                                checked={tempStyleStore.template === TEMPLATE_NAME_PLAIN}
                                 onChange={(e) => handleTemplateChange(e.target.value)}
                                 className="h-4 w-4 mr-2 cursor-pointer"
                             />
@@ -130,8 +132,8 @@ const SettingEditor: React.FC = () => {
                         <input
                             type="color"
                             value={tempStyleStore.color}
-                            onChange={(e) => { handleColorChange(e.target.value) }}
-                            className="w-8 h-8 rounded bg-slate-200 p-1 cursor-pointer"
+                            onChange={(e) => handleColorChange(e.target.value)}
+                            className="w-8 h-8 rounded-sm bg-slate-200 p-0.5 cursor-pointer"
                         />
                     </div>
                 </div>
@@ -176,7 +178,7 @@ const SettingEditor: React.FC = () => {
                 </div>
 
                 {/* 上传图片 */}
-                {tempStyleStore.template === 'avatar' && (
+                {tempStyleStore.template === TEMPLATE_NAME_AVATAR && (
                     <label className="flex items-center justify-center bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-6 rounded mx-8 my-8 cursor-pointer">
                         <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
                         <BsImageFill className="mr-2 w-3 h-3" />

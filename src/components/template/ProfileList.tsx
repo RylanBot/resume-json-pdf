@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import EditableText from "@/components/toolkit/EditableText";
-import { ProfileData } from "@/types/profile";
+import { TEMPLATE_NAME_AVATAR, TEMPLATE_NAME_PLAIN } from "@/data/style";
+import type { ProfileData } from "@/types/profile";
 
 interface ProfileListProps {
   data: ProfileData;
@@ -135,9 +136,9 @@ const ProfileListPlain: React.FC<ProfileListProps> = ({ data }) => {
 
 const ProfileList: React.FC<ProfileListProps> = ({ data, theme }) => {
   switch (theme) {
-    case "avatar":
+    case TEMPLATE_NAME_AVATAR:
       return <ProfileListAvatar data={data} />;
-    case "plain":
+    case TEMPLATE_NAME_PLAIN:
       return <ProfileListPlain data={data} />;
     default:
       return <ProfileListAvatar data={data} />;

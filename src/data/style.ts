@@ -16,8 +16,11 @@ const FONT_LIST = [
 
 export const AVAILABLE_FONTS = checkAvailableFonts(FONT_LIST);
 
+export const TEMPLATE_NAME_AVATAR = "avatar";
+export const TEMPLATE_NAME_PLAIN = "plain";
+
 const COMMON_STYLE: StyleData = {
-    template: "avatar",
+    template: TEMPLATE_NAME_AVATAR,
     fontStyle: AVAILABLE_FONTS[0],
     color: "#225081",
     pagePy: 12,
