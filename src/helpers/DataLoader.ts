@@ -1,19 +1,10 @@
-import { ExperienceData } from '@/types/experience';
-import { Locale } from '@/types/locale';
-import { ProfileData } from '@/types/profile';
-import { StyleData } from '@/types/style';
-
 import useDataStore from '@/stores/dataStore';
 
-import enLang from '@/locales/en';
-import zhLang from '@/locales/zh';
+import { COMMON_STYLE, EN_EXPERIENCE, EN_PROFILE, ZH_EXPERIENCE, ZH_PROFILE } from '@/data';
+import { EN_LANG, ZH_LANG } from '@/locales';
 
-import COMMON_STYLE from '@/data/style';
-
-import EN_EXPERIENCE from '@/data/en/experience';
-import EN_PROFILE from '@/data/en/profile';
-import ZH_EXPERIENCE from '@/data/zh/experience';
-import ZH_PROFILE from '@/data/zh/profile';
+import type { ExperienceData, ProfileData, StyleData } from '@/types/data';
+import type { Locale } from '@/types/locale';
 
 /**
  * 在这里添加所有支持的语言
@@ -25,7 +16,7 @@ export type Language = typeof VALID_LANG[number];
 
 interface LangData extends Record<Language, Locale> { }
 
-interface JsonData {
+interface ResumeData {
     style: StyleData;
     experience: Record<Language, ExperienceData[]>;
     profile: Record<Language, ProfileData>;
@@ -34,15 +25,15 @@ interface JsonData {
 /**
  * 配置对应的语言包
  */
-export const LANG_PACK: LangData = {
-    'en': enLang,
-    'zh': zhLang,
+export const LOCALE: LangData = {
+    'en': EN_LANG,
+    'zh': ZH_LANG,
 }
 
 /**
  * 配置对应的简历数据
  */
-const RESUME_JSON: JsonData = {
+const RESUME_JSON: ResumeData = {
     style: COMMON_STYLE,
     experience: {
         'en': EN_EXPERIENCE,
@@ -54,7 +45,7 @@ const RESUME_JSON: JsonData = {
     },
 };
 
-export const JsonInit = (lang: Language) => {
+export const initResumeData = (lang: Language) => {
     const { setStyleStore, setProfileStore, setExperienceStore } = useDataStore.getState();
     setStyleStore(RESUME_JSON.style);
     setProfileStore(RESUME_JSON.profile[lang]);

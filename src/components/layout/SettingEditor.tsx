@@ -1,5 +1,3 @@
-import React from "react";
-
 import { BsImageFill } from "react-icons/bs";
 import { RiSave3Fill } from "react-icons/ri";
 import { TbLocationCancel } from "react-icons/tb";
@@ -7,14 +5,12 @@ import { TbLocationCancel } from "react-icons/tb";
 import useEditWithUndo from "@/hooks/useEditWithUndo";
 import useLocale from "@/hooks/useLocale";
 
+import { TEMPLATE_NAME_AVATAR, TEMPLATE_NAME_PLAIN } from "@/data";
 import { formatTitle } from "@/helpers/CommonUtil";
 import useModeStore from "@/stores/modeStore";
+import type { StyleData } from "@/types/data";
 
-import { TEMPLATE_NAME_AVATAR, TEMPLATE_NAME_PLAIN } from "@/data/style";
-import type { StyleData } from "@/types/style";
-
-import FontSelectInput from "@/components/toolkit/FontSelectInput";
-import StyleSlider from "@/components/toolkit/StyleSlider";
+import { FontSelectInput, StyleSlider } from "../toolkit";
 
 const SettingEditor: React.FC = () => {
     const { locale } = useLocale();
@@ -91,23 +87,23 @@ const SettingEditor: React.FC = () => {
                     <div className="flex items-center">
                         <label className="flex cursor-pointer w-24">
                             <input
+                                className="h-4 w-4 mr-2 cursor-pointer"
                                 type="radio"
                                 value={TEMPLATE_NAME_AVATAR}
                                 name="template"
                                 checked={tempStyleStore.template === TEMPLATE_NAME_AVATAR}
                                 onChange={(e) => handleTemplateChange(e.target.value)}
-                                className="h-4 w-4 mr-2 cursor-pointer"
                             />
                             <span className="text-sm max-md:text-xs font-semibold text-slate-800">Avatar</span>
                         </label>
                         <label className="flex items-center cursor-pointer">
                             <input
+                                className="h-4 w-4 mr-2 cursor-pointer"
                                 type="radio"
                                 value={TEMPLATE_NAME_PLAIN}
                                 name="template"
                                 checked={tempStyleStore.template === TEMPLATE_NAME_PLAIN}
                                 onChange={(e) => handleTemplateChange(e.target.value)}
-                                className="h-4 w-4 mr-2 cursor-pointer"
                             />
                             <span className="text-sm max-md:text-xs font-semibold text-slate-800">Plain</span>
                         </label>
@@ -130,10 +126,10 @@ const SettingEditor: React.FC = () => {
                     <h3 className="setting-title mr-4">{formatTitle(locale.field.COLOR)}</h3>
                     <div className="px-6 ml-24 max-md:ml-8">
                         <input
+                            className="w-8 h-8 rounded-sm bg-slate-200 p-0.5 cursor-pointer"
                             type="color"
                             value={tempStyleStore.color}
                             onChange={(e) => handleColorChange(e.target.value)}
-                            className="w-8 h-8 rounded-sm bg-slate-200 p-0.5 cursor-pointer"
                         />
                     </div>
                 </div>
@@ -180,7 +176,7 @@ const SettingEditor: React.FC = () => {
                 {/* 上传图片 */}
                 {tempStyleStore.template === TEMPLATE_NAME_AVATAR && (
                     <label className="flex items-center justify-center bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-6 rounded mx-8 my-8 cursor-pointer">
-                        <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
+                        <input className="hidden" type="file" accept="image/*" onChange={handleImageChange} />
                         <BsImageFill className="mr-2 w-3 h-3" />
                         <span className="text-xs">{locale.common.UPLOAD_AVATAR}</span>
                     </label>

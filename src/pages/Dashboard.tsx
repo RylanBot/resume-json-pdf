@@ -1,20 +1,17 @@
-import React, { useRef } from 'react';
+import { useRef } from "react";
 
-import { BiCodeCurly } from 'react-icons/bi';
-import { BsGithub } from 'react-icons/bs';
-import { TbBrandHtml5, TbDownload, TbSettings2, TbUpload } from 'react-icons/tb';
+import { BiCodeCurly } from "react-icons/bi";
+import { BsGithub } from "react-icons/bs";
+import { TbBrandHtml5, TbDownload, TbSettings2, TbUpload } from "react-icons/tb";
 
-import ResumeContent from '@/components/layout/ResumeContent';
-import SettingEditor from '@/components/layout/SettingEditor';
-import LangSwitch from '@/components/toolkit/LangSwitch';
-import LatestNotice from '@/components/toolkit/LatestNotice';
-import PrintPdfButton from '@/components/toolkit/PrintPdfButton';
+import useEditWithUndo from "@/hooks/useEditWithUndo";
+import useLocale from "@/hooks/useLocale";
 
-import { exportHtml, exportJson, importJson } from '@/helpers/FileService';
-import useModeStore from '@/stores/modeStore';
+import { ResumeContent, SettingEditor } from "@/components/layout";
+import { LangSwitch, LatestNotice, PrintPdfButton } from "@/components/toolkit";
 
-import useEditWithUndo from '@/hooks/useEditWithUndo';
-import useLocale from '@/hooks/useLocale';
+import { exportHtml, exportJson, importJson } from "@/helpers/FileService";
+import useModeStore from "@/stores/modeStore";
 
 const Dashboard: React.FC = () => {
     const { locale } = useLocale();
@@ -40,7 +37,10 @@ const Dashboard: React.FC = () => {
                 {/* 左侧设置按钮 */}
                 {!editModeStore && (
                     <div className="flex justify-start md:ml-4">
-                        <button onClick={handleStartEdit} className="setting-button fixed top-4 max-sm:top-16 left-4 w-24">
+                        <button
+                            className="setting-button fixed top-4 max-sm:top-16 left-4 w-24"
+                            onClick={handleStartEdit}
+                        >
                             <div className="flex items-center">
                                 <TbSettings2 className="mr-2" />
                                 <span className="text-xs">{locale.common.SETTING}</span>
@@ -51,8 +51,12 @@ const Dashboard: React.FC = () => {
 
                 {/* 标题 */}
                 <div className={`flex-grow flex justify-center items-center ${editModeStore ? "lg:ml-80" : ""} transition-all duration-500 ease-in-out`}>
-                    <a className="flex items-center my-2 mr-4"
-                        href="https://github.com/RylanBot/resume-json-pdf" target="_blank" rel="noopener noreferrer">
+                    <a 
+                      className="flex items-center my-2 mr-4"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href="https://github.com/RylanBot/resume-json-pdf"
+                      >
                         <BsGithub className="w-6 h-6 mr-2" />
                         <p className="text-2xl font-bold max-sm:text-sm whitespace-nowrap">resume-json-pdf</p>
                     </a>
@@ -67,6 +71,7 @@ const Dashboard: React.FC = () => {
                             {/* 导入 */}
                             <label className="setting-button fixed top-4 max-sm:top-16 right-40 max-sm:right-32 w-32 mr-4 cursor-pointer">
                                 <input
+                                    className="hidden"
                                     type="file"
                                     accept=".json"
                                     onChange={(event) => {
@@ -75,7 +80,6 @@ const Dashboard: React.FC = () => {
                                             event.target.value = ''; // 重置文件输入，否则文件不会再次触发 change 事件
                                         }
                                     }}
-                                    className="hidden"
                                 />
                                 <div className="flex items-center">
                                     <TbUpload className="mr-2" />
@@ -93,13 +97,19 @@ const Dashboard: React.FC = () => {
                                     {/* 下拉选项 */}
                                     <div className="mt-1 w-36 rounded-md shadow-sm bg-white z-50 hidden group-hover:block">
                                         <div className="py-1">
-                                            <button onClick={exportJson} className="p-2 text-sm font-semibold bg-white text-slate-800">
+                                            <button
+                                                className="p-2 text-sm font-semibold bg-white text-slate-800"
+                                                onClick={exportJson}
+                                            >
                                                 <div className="flex items-center px-5 py-1">
                                                     <BiCodeCurly className="mr-4" />
                                                     <span className="text-xs">JSON</span>
                                                 </div>
                                             </button>
-                                            <button onClick={exportHtml} className="p-2 text-sm font-semibold bg-white text-slate-800">
+                                            <button
+                                                className="p-2 text-sm font-semibold bg-white text-slate-800"
+                                                onClick={exportHtml}
+                                            >
                                                 <div className="flex items-center px-5 py-1">
                                                     <TbBrandHtml5 className="mr-4" />
                                                     <span className="text-xs">HTML</span>

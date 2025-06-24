@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import TextParser from '@/helpers/TextParser';
 import useEditWithUndo from '@/hooks/useEditWithUndo';
@@ -86,13 +86,13 @@ const EditableText: React.FC<EditableTextProps> = (
         <span
             key={+new Date()} // 添加唯一标识，避免文字清空时 Remove DOM 报错
             ref={editableRef}
+            className="font-normal editable"
             contentEditable={isEditing}
             onClick={handleClick}
             onBlur={handleBlur}
             onKeyDown={handleKeyDown}
             onPaste={handlePaste}
             suppressContentEditableWarning={true} // 强行绕过 React 的警告
-            className="font-normal editable"
         >
             <RenderText />
         </span>

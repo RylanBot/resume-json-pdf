@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 
-import EditableText from "@/components/toolkit/EditableText";
-import { TEMPLATE_NAME_AVATAR, TEMPLATE_NAME_PLAIN } from "@/data/style";
-import type { ProfileData } from "@/types/profile";
+import { TEMPLATE_NAME_AVATAR, TEMPLATE_NAME_PLAIN } from "@/data";
+import type { ProfileData } from "@/types/data";
+
+import { EditableText } from "../toolkit";
 
 interface ProfileListProps {
   data: ProfileData;
@@ -22,15 +23,14 @@ const ProfileListAvatar: React.FC<ProfileListProps> = ({ data }) => {
   return (
     <div className="flex justify-between items-center custom-profile">
       <div className="flex items-center">
-        {data.avatar && (
-          imgLoaded ? (
+        {data.avatar &&
+          (imgLoaded ? (
             <div className="w-[80px] h-[100px] mr-6">
               <img src={data.avatar} className="w-full h-full" />
             </div>
           ) : (
             <div className="w-[80px] h-[100px] mr-6 bg-gray-200 loading-pulse" />
-          )
-        )}
+          ))}
         <div className="ml-2">
           <p className="text-xl mt-1 mb-3 theme-text-color">
             {data.name && (

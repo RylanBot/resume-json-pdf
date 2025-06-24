@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { LANG_PACK } from '@/helpers/DataLoader';
+import { LOCALE } from '@/helpers/DataLoader';
 
 function useLocale() {
     const { lang } = useParams();
 
     const locale = useMemo(() => {
-        return LANG_PACK[lang || 'en'];
+        return LOCALE[lang || 'en'];
     }, [lang]);
     return { locale };
 }

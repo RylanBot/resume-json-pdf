@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import useMessageHandler from '@/hooks/useMessageHandler';
 import { withLangGuard } from '@/hooks/useRouterGuard';
 
-import Dashboard from "@/pages/Dashboard";
+import Dashboard from '@/pages/Dashboard';
 import LangRedirect from '@/pages/LangRedirect';
 
 function App() {

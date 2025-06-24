@@ -1,6 +1,6 @@
-import { Locale } from '@/types/locale';
+import type { Locale } from '@/types/locale';
 
-const zhLang: Locale = {
+const ZH_LANG: Locale = {
     common: {
         IMPORT_JSON: '导入 JSON',
         EXPORT_OPTIONS: '导出 选项',
@@ -8,7 +8,7 @@ const zhLang: Locale = {
         SAVE: '保存',
         CANCEL: '取消',
         UPLOAD_AVATAR: '上传照片',
-        LATEST_NOTICE: '最近项目进行了部分重构。旧用户可以查看 README 并重新下载一份 JSON 模板。感谢支持。'
+        LATEST_NOTICE: '最近项目进行了部分重构。旧用户可以查看 README 并重新下载一份 JSON 模板。'
     },
     field: {
         TEMPLATE: '模板',
@@ -24,4 +24,4 @@ const zhLang: Locale = {
     }
 };
 
-export default zhLang;
+export default ZH_LANG;

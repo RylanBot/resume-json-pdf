@@ -1,4 +1,4 @@
-import { ProfileData } from '@/types/profile';
+import type { ProfileData } from '@/types/data';
 
 const ZH_PROFILE: ProfileData = {
     name: 'Xxx',
@@ -14,7 +14,7 @@ const ZH_PROFILE: ProfileData = {
         },
         {
             icon: 'fa-solid fa-envelope',
-            value: '**邮箱：**rylanbot@foxmail.com'
+            value: '**邮箱：**rylanbot@qq.com'
         },
         {
             icon: 'fab fa-weixin',

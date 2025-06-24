@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
-import EditableText from '@/components/toolkit/EditableText';
+import useDataStore from "@/stores/dataStore";
+import type { ExperienceData, ExperienceItem } from "@/types/data";
 
-import useDataStore from '@/stores/dataStore';
-import { ExperienceData, ExperienceItem } from '@/types/experience';
+import { EditableText } from "../toolkit";
 
 interface ExperienceCardProp extends ExperienceItem {
     sectionIndex: number;
@@ -70,8 +70,10 @@ const ExperienceCard: React.FC<ExperienceCardProp> = ({
                         <>
                             {!lineBreak && <span className='font-normal text-gray-400 theme-divider-color mx-1 align-middle'>丨</span>}
                             <span ref={subtitleRef} className='align-middle'>
-                                <EditableText text={subtitle} path={`experience.${sectionIndex}.items[${itemIndex}].subtitle`}
-                                    className='theme-text-color font-semibold text-details '
+                                <EditableText
+                                  className='theme-text-color font-semibold text-details'
+                                  text={subtitle}
+                                  path={`experience.${sectionIndex}.items[${itemIndex}].subtitle`}
                                 />
                             </span>
                         </>

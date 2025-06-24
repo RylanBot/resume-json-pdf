@@ -1,6 +1,6 @@
-import { Locale } from "@/types/locale";
+import type { Locale } from "@/types/locale";
 
-const enLang: Locale = {
+const EN_LANG: Locale = {
     common: {
         IMPORT_JSON: 'Import JSON',
         EXPORT_OPTIONS: 'Export Options',
@@ -8,7 +8,7 @@ const enLang: Locale = {
         SAVE: "Save",
         CANCEL: "Cancel",
         UPLOAD_AVATAR: "Upload Image",
-        LATEST_NOTICE: "The project has been refactored recently. Previous users can check the README and download a new JSON template. Thanks for your support."
+        LATEST_NOTICE: "The project has been refactored recently. Previous users can check the README and download a new JSON template."
     },
     field: {
         TEMPLATE: "Template",
@@ -24,4 +24,4 @@ const enLang: Locale = {
     }
 };
 
-export default enLang;
+export default EN_LANG;

@@ -1,12 +1,8 @@
+import _ from 'lodash';
 import { useEffect } from "react";
 
-import useDataStore, { TempStore } from "@/stores/dataStore";
-
-import { ExperienceData } from "@/types/experience";
-import { ProfileData } from "@/types/profile";
-import { StyleData } from "@/types/style";
-
-import _ from 'lodash';
+import useDataStore, { type TempStore } from "@/stores/dataStore";
+import type { ExperienceData, ProfileData, StyleData } from "@/types/data";
 
 /**
  * 只暴露 temp data 实现页面预览

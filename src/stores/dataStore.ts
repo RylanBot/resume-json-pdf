@@ -1,8 +1,6 @@
 import { create } from 'zustand';
 
-import { ExperienceData } from '@/types/experience';
-import { ProfileData } from '@/types/profile';
-import { StyleData } from '@/types/style';
+import type { ExperienceData, ProfileData, StyleData } from '@/types/data';
 
 export interface TempStore {
   styleStore: StyleData;

@@ -1,5 +1,5 @@
 import { checkAvailableFonts } from "@/helpers/CommonUtil";
-import type { StyleData } from "@/types/style";
+import type { StyleData } from "@/types/data";
 
 const FONT_LIST = [
     // 无衬线 sans-serif

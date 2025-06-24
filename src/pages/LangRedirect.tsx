@@ -13,7 +13,8 @@ const LangRedirect = () => {
         const langToUse = VALID_LANG.includes(browserLang) ? browserLang : 'en';
 
         navigate(`/${langToUse}`, { replace: true });
-    }, []);
+
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return <></>
 }
