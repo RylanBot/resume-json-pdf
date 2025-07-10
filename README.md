@@ -48,6 +48,7 @@ The original intention of this project is to focus more on the content of the re
 **Experience[ ]**  
 | Field | Meaning | Note |
 | :--- | :--- | :--- |
+| page | Page Number | Default is 1 |
 | section | | |
 | icon | | |
 | items[] | | { "title": "", "subtitle": "", "timeline": "", "tech": "", "details": ["", ""] } |

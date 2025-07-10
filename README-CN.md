@@ -48,6 +48,7 @@
 **Experience[ ]**  
 | 字段 | 含义 | 备注 |
 | :--- | :--- | :--- |
+| page | 页数 | 默认为 1 |
 | section | 分区 | |
 | icon | 图标 | |
 | items[] | 经历 | { "title": "标题", "subtitle": "副标题", "timeline": "时间线", "tech": "技术栈", <br> "details": [ "描述内容" ] } |
