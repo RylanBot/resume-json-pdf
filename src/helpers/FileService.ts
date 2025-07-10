@@ -89,14 +89,14 @@ export const exportHtml = () => {
     });
 
     const customCss = `
-        #export-page {
+        .export-page {
             margin: 35px 0 !important;
         }
-        #contact-icon {
+        .contact-icon {
             margin-top: 4px;
         }
         @media (max-width: 640px) {
-            #export-page {
+            .export-page {
                 position: absolute;
                 transform: translate(-50%, -50%);
                 top: 50%;

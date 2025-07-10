@@ -19,6 +19,7 @@ export interface ExperienceItem {
 }
 
 export interface ExperienceData {
+    page?: number;
     section?: string;
     icon?: string;
     items?: ExperienceItem[];
