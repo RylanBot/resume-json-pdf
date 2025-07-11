@@ -15,8 +15,8 @@ const A4Background: React.FC<A4BackgroundProps> = ({ page, children }) => {
       } ${page > 1 ? "max-sm:-mt-[625px]" : ""}`}
     >
       <div
-        className={`export-page print-remove-styles md:mt-12 max-sm:scale-[0.4] ${
-          page > 1 ? "" : "max-sm:-mt-56"
+        className={`export-page print-remove-styles mb-6 max-sm:scale-[0.4] ${
+          page > 1 ? "" : "mt-24 max-sm:-mt-56"
         }`}
       >
         {children}
