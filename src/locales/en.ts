@@ -8,7 +8,9 @@ const EN_LANG: Locale = {
         SAVE: "Save",
         CANCEL: "Cancel",
         UPLOAD_AVATAR: "Upload Image",
-        LATEST_NOTICE: "The project has been refactored recently. Previous users can check the README and download a new JSON template."
+        LATEST_NOTICE: "Multi-page support",
+        CHANGELOG_VIEW: "Click to view changelog",
+        CHANGELOG_FILE: "CHANGELOG.md"
     },
     field: {
         TEMPLATE: "Template",

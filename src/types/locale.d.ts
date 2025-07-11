@@ -11,6 +11,8 @@ interface Common {
     CANCEL: string;
     UPLOAD_AVATAR: string;
     LATEST_NOTICE: string;
+    CHANGELOG_VIEW: string;
+    CHANGELOG_FILE: string;
 }
 
 interface Field {

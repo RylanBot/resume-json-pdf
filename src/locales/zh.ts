@@ -8,7 +8,9 @@ const ZH_LANG: Locale = {
         SAVE: '保存',
         CANCEL: '取消',
         UPLOAD_AVATAR: '上传照片',
-        LATEST_NOTICE: '最近项目进行了部分重构。旧用户可以查看 README 并重新下载一份 JSON 模板。'
+        LATEST_NOTICE: "支持多页简历",
+        CHANGELOG_VIEW: "点击查看变更日志",
+        CHANGELOG_FILE: "CHANGELOG-CN.md"
     },
     field: {
         TEMPLATE: '模板',
