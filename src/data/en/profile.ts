@@ -9,7 +9,7 @@ const EN_PROFILE: ProfileData = {
     contact: [
         {
             icon: 'fa-solid fa-envelope',
-            value: 'rylanbot@foxmail.com'
+            value: 'rylanbot@qq.com'
         },
         {
             icon: 'fab fa-github',
@@ -17,7 +17,7 @@ const EN_PROFILE: ProfileData = {
         },
         {
             icon: 'fa-brands fa-linkedin-in',
-            value: 'https://linkedin.com/in/xxxxxxxx'
+            value: 'https://linkedin.com/in/rylanbot'
         },
         {
             icon: 'fa-solid fa-rss',
