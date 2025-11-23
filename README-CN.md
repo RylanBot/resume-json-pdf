@@ -24,13 +24,6 @@
 
 [![在线示例](https://img.shields.io/badge/在线示例-点击查看-lightsteelblue?style=for-the-badge&logo=vercel)](https://project.resume-json-pdf.rylan.cn/)
 
-**导出 JSON 模板 → 本地修改数据 → 上传修改后的 JSON 文件 → 导出 PDF / HTML 简历**  
-
-> [!Tip]  
-> **引入了简单的在线编辑文字的功能 → 设置模式下点击相关文字**  
-
-这个项目的开发初衷是为了制作简历时能更关注于文字本身，不纠结页面表单的填写和样式的排版，并实现最大程度的动态拓展。更推荐本地填写，在线微调，暂时未支持复杂的在线增删功能。
-
 #### 参数说明
 
 - 缺少某个字段不会报错，但页面相应部分渲染为空白，可能导致排版错位

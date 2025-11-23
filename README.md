@@ -24,13 +24,6 @@ English | [简体中文](./README-CN.md)
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20To%20View-lightsteelblue?style=for-the-badge&logo=vercel)](https://project.resume-json-pdf.rylan.cn/)
 
-**Export JSON template → Modify data locally → Upload modified JSON File → Export PDF / HTML resume**
-
-> [!Tip]  
-> **Introduced a simple online text editing feature → Click on the relevant text in the setting mode**
-
-The original intention of this project is to focus more on the content of the resume itself, without worrying about filling out page forms and formatting styles, and to achieve maximum dynamic expansion. It is recommended to fill out locally, fine-tune online, and currently does not support complex online adding and deleting functions.
-
 #### Parameter
 
 - Missing a certain field won't result in an error, but the corresponding part will be rendered as blank, potentially causing layout issues.

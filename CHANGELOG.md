@@ -2,6 +2,9 @@
 > **This changelog records important milestones of the project, which may include breaking changes.**  
 > **Please check the README for parameter formats and adjust your JSON configuration files accordingly.**
 
+## 🌈 2025.11.24
+**Support editing JSON source code online.**
+
 ## 🌈 2025.07.11
 
 **Support for rendering multi-page resumes. The `page` field has been added to the _section_ of _experience_ to specify which page it belongs to.**
