@@ -1,29 +1,33 @@
 export interface Locale {
-    common: Common;
-    field: Field;
+  common: Common;
+  field: Field;
 }
 
-interface Common {
-    IMPORT_JSON: string;
-    EXPORT_OPTIONS: string;
-    SETTING: string;
-    SAVE: string;
-    CANCEL: string;
-    UPLOAD_AVATAR: string;
-    LATEST_NOTICE: string;
-    CHANGELOG_VIEW: string;
-    CHANGELOG_FILE: string;
-}
+type CommonKeys =
+  | "IMPORT_JSON"
+  | "EXPORT_OPTIONS"
+  | "SETTING"
+  | "SAVE"
+  | "CANCEL"
+  | "UPLOAD_AVATAR"
+  | "LATEST_NOTICE"
+  | "CHANGELOG_VIEW"
+  | "CHANGELOG_FILE"
+  | "VISUALIZATION"
+  | "SOURCE";
 
-interface Field {
-    TEMPLATE: string;
-    COLOR: string;
-    PAGE_PADDING_Y: string;
-    PROFILE_MARGIN_BOTTOM: string;
-    EXPERIENCE_MARGIN_BOTTOM: string;
-    FOOTNOTE_PADDING_X: string;
-    CONTACT_PADDING_X: string;
-    DETAILS_FONT: string;
-    FONT_STYLE: string;
-    FONT_PLACEHOLDER: string;
-}
+type Common = Record<CommonKeys, string>;
+
+export type FieldKey =
+  | "TEMPLATE"
+  | "COLOR"
+  | "PAGE_PADDING_Y"
+  | "PROFILE_MARGIN_BOTTOM"
+  | "EXPERIENCE_MARGIN_BOTTOM"
+  | "FOOTNOTE_PADDING_X"
+  | "CONTACT_PADDING_X"
+  | "DETAILS_FONT"
+  | "FONT_STYLE"
+  | "FONT_PLACEHOLDER";
+
+type Field = Record<FieldKey, string>;

@@ -26,7 +26,7 @@ const ZH_EXPERIENCE: ExperienceData[] = [
                 title: 'xxxx 技术有限公司',
                 subtitle: 'xxx 部门',
                 timeline: '2023.07 - 2023.09',
-                tech: "***`Vue` `Ant Design`***",
+                tech: "***`Vue` `TDesign`***",
                 details: [
                     '封装 **xxxxx 组件**，解决 xxxxx 问题',
                     '使用 xxxxx，**优化 xxxxx**',

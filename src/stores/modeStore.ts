@@ -1,18 +1,22 @@
 import { create } from "zustand";
 
 interface ModeStore {
-    editModeStore: boolean,
+  isEditMode: boolean;
+  isJsonMode: boolean;
 }
 
 interface ModeAction {
-    setEditModeStore: (newEditMode: boolean) => void
+  setIsEditMode: (val: boolean) => void;
+  setIsJsonMode: (val: boolean) => void;
 }
 
 type ModeState = ModeStore & ModeAction;
 
 const useModeStore = create<ModeState>((set) => ({
-    editModeStore: false,
-    setEditModeStore: (newEditMode) => set({ editModeStore: newEditMode }),
+  isEditMode: false,
+  isJsonMode: false,
+  setIsEditMode: (val) => set({ isEditMode: val }),
+  setIsJsonMode: (val) => set({ isJsonMode: val })
 }));
 
 export default useModeStore;

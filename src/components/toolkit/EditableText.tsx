@@ -15,7 +15,8 @@ interface EditableTextProps {
 const EditableText: React.FC<EditableTextProps> = (
     { text, path, type, className }
 ) => {
-    const { editModeStore } = useModeStore();
+    const { isEditMode, isJsonMode } = useModeStore();
+    const isVisualMode = isEditMode && !isJsonMode;
 
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [rawText, setRawText] = useState<string | undefined>(text);
@@ -38,7 +39,7 @@ const EditableText: React.FC<EditableTextProps> = (
     };
 
     const handleClick = () => {
-        if (editModeStore) {
+        if (isVisualMode) {
             setIsEditing(true);
             // 确保点击时将焦点设置到元素上，触发边框样式
             setTimeout(() => {
@@ -48,7 +49,7 @@ const EditableText: React.FC<EditableTextProps> = (
     };
 
     const handleBlur = () => {
-        if (editModeStore) {
+        if (isVisualMode) {
             setIsEditing(false);
             const newText = editableRef.current?.innerText;
             if (newText !== undefined && newText !== rawText) {
@@ -80,7 +81,7 @@ const EditableText: React.FC<EditableTextProps> = (
     useEffect(() => {
         setIsEditing(false);
         setRawText(text);
-    }, [text, editModeStore]);
+    }, [text, isVisualMode]);
 
     return (
         <span

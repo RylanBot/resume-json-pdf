@@ -1,5 +1,4 @@
-import _ from 'lodash';
-import { useEffect } from "react";
+import { cloneDeep, set } from "lodash-es";
 
 import useDataStore, { type TempStore } from "@/stores/dataStore";
 import type { ExperienceData, ProfileData, StyleData } from "@/types/data";
@@ -9,48 +8,56 @@ import type { ExperienceData, ProfileData, StyleData } from "@/types/data";
  * @param storeType 具体的 store 类型 (style/profile/experience)
  */
 function useEditWithUndo<K extends keyof TempStore>(storeType: K) {
-    const { setTempStore, resetTempStore, [storeType]: originalStore, tempStores } = useDataStore();
+  const {
+    setTempStore,
+    resetTempStore,
+    [storeType]: originalStore,
+    tempStores
+  } = useDataStore();
 
-    // 依赖真正 data，确保数据一致
-    useEffect(() => {
-        setTempStore(storeType, originalStore);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [originalStore]);
+  const originalSetters = {
+    profileStore: useDataStore.getState().setProfileStore,
+    experienceStore: useDataStore.getState().setExperienceStore,
+    styleStore: useDataStore.getState().setStyleStore
+  } as Record<
+    K,
+    (newValue: StyleData | ProfileData | ExperienceData[]) => void
+  >;
 
-    const originalSetters = {
-        profileStore: useDataStore.getState().setProfileStore,
-        experienceStore: useDataStore.getState().setExperienceStore,
-        styleStore: useDataStore.getState().setStyleStore,
-    } as Record<K, (newValue: StyleData | ProfileData | ExperienceData[]) => void>;
+  const startEdit = () => {
+    setTempStore(storeType, originalStore);
+  };
 
-    const startEdit = () => {
-        setTempStore(storeType, originalStore);
-    };
+  const confirmEdit = () => {
+    const setter = originalSetters[storeType];
+    const value = tempStores[storeType];
+    if (setter && value) {
+      setter(value);
+    }
+  };
 
-    const confirmEdit = () => {
-        const setter = originalSetters[storeType];
-        const value = tempStores[storeType];
-        if (setter && value) {
-            setter(value);
-        }
-    };
+  const cancelEdit = () => {
+    resetTempStore(storeType);
+  };
 
-    const cancelEdit = () => {
-        resetTempStore(storeType);
-    };
+  /**
+   * 局部更新 JSON 指定嵌套数组的某项
+   * @param subPath 字段所在路径
+   * @param newText 更新值
+   */
+  const updateTempValue = (subPath: string, newText: string | number) => {
+    const updatedStore = cloneDeep(tempStores[storeType]);
+    set(updatedStore, subPath, newText);
+    setTempStore(storeType, updatedStore);
+  };
 
-    /**
-     * 局部更新 JSON 指定嵌套数组的某项
-     * @param subPath 字段所在路径
-     * @param newText 更新值
-     */
-    const updateTempValue = (subPath: string, newText: string | number) => {
-        const updatedStore = _.cloneDeep(tempStores[storeType]);
-        _.set(updatedStore, subPath, newText);
-        setTempStore(storeType, updatedStore);
-    };
-
-    return { tempStore: tempStores[storeType], startEdit, confirmEdit, cancelEdit, updateTempValue };
+  return {
+    tempStore: tempStores[storeType],
+    startEdit,
+    confirmEdit,
+    cancelEdit,
+    updateTempValue
+  };
 }
 
 export default useEditWithUndo;

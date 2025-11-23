@@ -31,7 +31,7 @@ input::placeholder {
   position: fixed;
   z-index: 20;
   top: 4rem;
-  width: 22rem;
+  width: 26rem;
   overflow-y: auto;
   padding: 0.5rem 1rem;
   transition: all 0.5s ease-in-out;
@@ -52,7 +52,7 @@ input::placeholder {
 }
 
 .setting-button {
-  @apply px-1 py-2 text-sm font-semibold bg-white text-slate-800 rounded-lg shadow-md flex items-center justify-center max-sm:scale-75;
+  @apply fixed top-4 max-md:top-16 px-1 py-2 text-xs font-semibold bg-white text-slate-800 rounded-md shadow-md flex items-center justify-center max-sm:scale-75;
 }
 
 .setting-title {
@@ -61,4 +61,12 @@ input::placeholder {
 
 .editable {
   @apply p-0.5 rounded-sm focus:outline-none focus:border-2 focus:border-gray-300;
+}
+
+.message-container {
+  @apply fixed top-16 max-sm:top-32 right-0 p-4 w-64;
+}
+
+.message-item {
+  @apply flex items-center bg-white border border-gray-400 rounded-lg shadow-sm p-3 max-sm:p-2 mb-2 text-gray-800 text-sm max-sm:text-xs font-semibold;
 }

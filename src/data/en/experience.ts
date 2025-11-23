@@ -26,7 +26,7 @@ const EN_EXPERIENCE: ExperienceData[] = [
                 title: 'xxxx Technology Co., Ltd.',
                 subtitle: 'xxx Department',
                 timeline: 'July 2023 - Sept. 2023',
-                tech: '***`Vue` `Ant Design`***',
+                tech: '***`Vue` `TDesign`***',
                 details: [
                     'Encapsulated a **xxxxx component** to address the xxxxx problem',
                     'Implemented xxxxx and succeeded in **optimizing xxxxx**',

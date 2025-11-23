@@ -25,7 +25,7 @@ const PrintPdfButton: React.FC<PrintPdfButtonProps> = ({ printRef }) => {
 
   return (
     <button
-      className="p-2 text-sm font-semibold bg-white text-slate-800"
+      className="w-full p-2 rounded-bl-sm rounded-br-sm hover:bg-slate-100"
       onClick={handlePrint}
     >
       <div className="flex items-center px-5 py-1">

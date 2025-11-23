@@ -7,11 +7,11 @@ interface A4BackgroundProps {
 }
 
 const A4Background: React.FC<A4BackgroundProps> = ({ page, children }) => {
-  const { editModeStore } = useModeStore();
+  const { isEditMode } = useModeStore();
   return (
     <div
       className={`print-remove-styles flex flex-col items-center bg-gray-300 overflow-auto max-sm:overflow-hidden transition-all duration-500 ease-in-out ${
-        editModeStore ? "md:ml-80" : ""
+        isEditMode ? "md:ml-80" : ""
       } ${page > 1 ? "max-sm:-mt-[625px]" : ""}`}
     >
       <div

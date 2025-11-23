@@ -12,14 +12,14 @@ const rules: Rule[] = [
 ];
 
 const TextParser = (text: string, className?: string): ReactElement => {
-  const { editModeStore } = useModeStore();
+  const { isEditMode } = useModeStore();
 
   let html = text;
   rules.forEach(([rule, template]) => {
     html = html.replace(rule, template);
   });
 
-  if (editModeStore) {
+  if (isEditMode) {
     html = html.replace(
       /<a href='(.*?)' target='_blank'>(.*?)<\/a>/g,
       "<span>$2</span>"

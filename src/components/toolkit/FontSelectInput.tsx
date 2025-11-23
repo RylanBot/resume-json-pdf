@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { IoIosCloseCircleOutline } from "react-icons/io";
 
 import { AVAILABLE_FONTS } from "@/data";
 import useLocale from "@/hooks/useLocale";
@@ -11,7 +10,7 @@ interface FontSelectInputProps {
 
 const FontSelectInput: React.FC<FontSelectInputProps> = ({
   font,
-  onChange,
+  onChange
 }) => {
   const { locale } = useLocale();
 
@@ -44,7 +43,7 @@ const FontSelectInput: React.FC<FontSelectInputProps> = ({
   return (
     <div ref={wrapperRef} className="flex">
       <input
-        className="w-40 p-1 mr-3 border border-gray-300 text-sm max-sm:text-xs"
+        className="w-40 p-1 border border-gray-300 text-sm max-sm:text-xs"
         value={font}
         placeholder={locale.field.FONT_PLACEHOLDER}
         onChange={handleFontChange}
@@ -66,12 +65,6 @@ const FontSelectInput: React.FC<FontSelectInputProps> = ({
           </ul>
         </div>
       )}
-      <button
-        className="text-lg text-slate-600 hover:text-slate-400"
-        onClick={() => handleFontSelect("")}
-      >
-        <IoIosCloseCircleOutline />
-      </button>
     </div>
   );
 };
