@@ -24,7 +24,7 @@ const JSON_ERROR_MSG_ID = "json-error";
 const SettingEditor: React.FC = () => {
   const { locale } = useLocale();
 
-  const { isJsonMode, setIsEditMode } = useModeStore();
+  const { inSourceMode, setEditorActive } = useModeStore();
   const { setTempStore } = useDataStore.getState();
 
   // DashBoard 统一 start，这里统一 confirm + cancel
@@ -58,20 +58,23 @@ const SettingEditor: React.FC = () => {
     );
   }, [tempStyleStore, tempProfileStore, tempExperienceStore]);
 
-  const handleCancelEdit = () => {
+  const deactivateEditor = () => {
     messageContainer.remove(JSON_ERROR_MSG_ID);
+    setEditorActive(false);
+  };
+
+  const handleCancelEdit = () => {
     cancelEditStyle();
     cancelEditProfile();
     cancelEditEx();
-    setIsEditMode(false);
+    deactivateEditor();
   };
 
   const handleConfirmEdit = () => {
-    messageContainer.remove(JSON_ERROR_MSG_ID);
     confirmEditStyle();
     confirmEditProfile();
     confirmEditEx();
-    setIsEditMode(false);
+    deactivateEditor();
   };
 
   const handleStyleChange = (key: keyof StyleData, value: number | string) => {
@@ -137,7 +140,7 @@ const SettingEditor: React.FC = () => {
       </div>
 
       <div id="setting-editor">
-        {isJsonMode ? (
+        {inSourceMode ? (
           <div className="mt-1 overflow-hidden h-[90vh]">
             <Editor
               language="json"
@@ -168,13 +171,9 @@ const SettingEditor: React.FC = () => {
                     name="template"
                     value={TEMPLATE_NAME_AVATAR}
                     checked={tempStyleStore.template === TEMPLATE_NAME_AVATAR}
-                    onChange={(e) =>
-                      handleStyleChange("template", e.target.value)
-                    }
+                    onChange={(e) => handleStyleChange("template", e.target.value)}
                   />
-                  <span className="text-sm max-md:text-xs font-semibold text-slate-800">
-                    Avatar
-                  </span>
+                  <span className="text-sm max-md:text-xs font-semibold text-slate-800">Avatar</span>
                 </label>
                 <label className="flex cursor-pointer">
                   <input
@@ -183,13 +182,9 @@ const SettingEditor: React.FC = () => {
                     name="template"
                     value={TEMPLATE_NAME_PLAIN}
                     checked={tempStyleStore.template === TEMPLATE_NAME_PLAIN}
-                    onChange={(e) =>
-                      handleStyleChange("template", e.target.value)
-                    }
+                    onChange={(e) => handleStyleChange("template", e.target.value)}
                   />
-                  <span className="text-sm max-md:text-xs font-semibold text-slate-800">
-                    Plain
-                  </span>
+                  <span className="text-sm max-md:text-xs font-semibold text-slate-800">Plain</span>
                 </label>
               </div>
             </div>
@@ -205,9 +200,7 @@ const SettingEditor: React.FC = () => {
 
             {/* 颜色 */}
             <div className="flex justify-between items-center mx-8 my-3">
-              <h3 className="setting-title">
-                {formatTitle(locale.field.COLOR)}
-              </h3>
+              <h3 className="setting-title">{formatTitle(locale.field.COLOR)}</h3>
               <input
                 className="w-8 h-8 rounded-sm bg-slate-200 p-0.5 cursor-pointer"
                 type="color"
@@ -219,9 +212,7 @@ const SettingEditor: React.FC = () => {
             {/* 边距 */}
             <div className="space-y-3 mx-8">
               <div className="flex justify-between items-center">
-                <h3 className="setting-title">
-                  {formatTitle(locale.field.PAGE_PADDING_Y)}
-                </h3>
+                <h3 className="setting-title">{formatTitle(locale.field.PAGE_PADDING_Y)}</h3>
                 <StyleSlider
                   min={12}
                   max={40}
@@ -231,9 +222,7 @@ const SettingEditor: React.FC = () => {
               </div>
 
               <div className="flex justify-between items-center">
-                <h3 className="setting-title">
-                  {formatTitle(locale.field.PROFILE_MARGIN_BOTTOM)}
-                </h3>
+                <h3 className="setting-title">{formatTitle(locale.field.PROFILE_MARGIN_BOTTOM)}</h3>
                 <StyleSlider
                   min={8}
                   max={24}
@@ -243,9 +232,7 @@ const SettingEditor: React.FC = () => {
               </div>
 
               <div className="flex justify-between items-center">
-                <h3 className="setting-title">
-                  {formatTitle(locale.field.EXPERIENCE_MARGIN_BOTTOM)}
-                </h3>
+                <h3 className="setting-title">{formatTitle(locale.field.EXPERIENCE_MARGIN_BOTTOM)}</h3>
                 <StyleSlider
                   min={8}
                   max={24}
@@ -255,9 +242,7 @@ const SettingEditor: React.FC = () => {
               </div>
 
               <div className="flex justify-between items-center">
-                <h3 className="setting-title">
-                  {formatTitle(locale.field.DETAILS_FONT)}
-                </h3>
+                <h3 className="setting-title">{formatTitle(locale.field.DETAILS_FONT)}</h3>
                 <StyleSlider
                   min={14}
                   max={16}
@@ -285,9 +270,7 @@ const SettingEditor: React.FC = () => {
             {tempStyleStore.template === "plain" && (
               <div className="mt-3 space-y-3 mx-8 max-md:mb-6">
                 <div className="flex justify-between items-center">
-                  <h3 className="setting-title">
-                    {formatTitle(locale.field.FOOTNOTE_PADDING_X)}
-                  </h3>
+                  <h3 className="setting-title">{formatTitle(locale.field.FOOTNOTE_PADDING_X)}</h3>
                   <StyleSlider
                     min={8}
                     max={40}
@@ -297,9 +280,7 @@ const SettingEditor: React.FC = () => {
                 </div>
 
                 <div className="flex justify-between items-center">
-                  <h3 className="setting-title">
-                    {formatTitle(locale.field.CONTACT_PADDING_X)}
-                  </h3>
+                  <h3 className="setting-title">{formatTitle(locale.field.CONTACT_PADDING_X)}</h3>
                   <StyleSlider
                     min={8}
                     max={40}

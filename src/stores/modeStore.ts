@@ -1,22 +1,30 @@
+/**
+ * =============================
+ * | Editor          | Preview |
+ * |-----------------|---------|
+ * | visual / source |         | 
+ * ============================= 
+ */
+
 import { create } from "zustand";
 
 interface ModeStore {
-  isEditMode: boolean;
-  isJsonMode: boolean;
+  editorActive: boolean;
+  inSourceMode: boolean;
 }
 
 interface ModeAction {
-  setIsEditMode: (val: boolean) => void;
-  setIsJsonMode: (val: boolean) => void;
+  setEditorActive: (val: boolean) => void;
+  setInSourceMode: (val: boolean) => void;
 }
 
 type ModeState = ModeStore & ModeAction;
 
 const useModeStore = create<ModeState>((set) => ({
-  isEditMode: false,
-  isJsonMode: false,
-  setIsEditMode: (val) => set({ isEditMode: val }),
-  setIsJsonMode: (val) => set({ isJsonMode: val })
+  editorActive: false,
+  inSourceMode: false,
+  setEditorActive: (val) => set({ editorActive: val }),
+  setInSourceMode: (val) => set({ inSourceMode: val })
 }));
 
 export default useModeStore;
